@@ -1,5 +1,5 @@
 #wget https://github.com/${GitUser}/
-GitUser="huaweipadu"
+GitUser="Internetvps"
 #Open HTTP Puncher By DRGVPN
 #Direct Proxy Squid For OpenVPN TCP
 RED='\e[1;31m'
@@ -22,14 +22,14 @@ Port_OHP='8686';
 
 #Installing ohp Server
 cd 
-wget -O /usr/local/bin/ohps "https://raw.githubusercontent.com/${GitUser}/hangtuah/main/ohps"
+wget -O /usr/local/bin/ohps "https://raw.githubusercontent.com/${GitUser}/Internetvps/main/ohps"
 chmod +x /usr/local/bin/ohps
 
 #Buat Service Untuk OHP SSH
 cat > /etc/systemd/system/ohps.service <<END
 [Unit]
 Description=Direct Squid Proxy For open-ssh By drgvpn
-Documentation=https://t.me/anakjati567
+Documentation=https://t.me/info_androidinfo_android9
 Wants=network.target
 After=network.target
 

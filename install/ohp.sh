@@ -1,5 +1,5 @@
 #wget https://github.com/${GitUser}/
-GitUser="huaweipadu"
+GitUser="Internetvps"
 #Open HTTP Puncher By DRGVPN
 #Direct Proxy Squid For OpenVPN TCP
 RED='\e[1;31m'
@@ -22,14 +22,14 @@ Port_OHP='8585';
 
 #Installing ohp Server
 cd 
-wget -O /usr/local/bin/ohpd "https://raw.githubusercontent.com/${GitUser}/hangtuah/main/ohpd"
+wget -O /usr/local/bin/ohpd "https://raw.githubusercontent.com/${GitUser}/Internetvps/main/ohpd"
 chmod +x /usr/local/bin/ohpd
 
 #Buat Service Untuk OHP Dropbear
 cat > /etc/systemd/system/ohpd.service <<END
 [Unit]
 Description=Direct Squid Proxy For ssh-dropbear By drgvpn
-Documentation=https://t.me/anakjati567
+Documentation=https://t.me/info_androidinfo_android9
 Wants=network.target
 After=network.target
 
