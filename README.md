@@ -1,5 +1,5 @@
-# Script HANGTUAH V8-Websocket
- Welcome MAT KILAU😊
+# Script DRGVPN V8-Websocket
+ Welcome AUTOSCRIPT DRGVPN😊
 
  <h2 align="center">AutoScript VPN By HANGTUAH <img src="https://img.shields.io/badge/Version-6.0-blue.svg"></h2>
 
@@ -99,6 +99,8 @@ systemctl restart wg-quick@wg0
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ## Credit :
+
+*   @info_android9
 
 *   HANGTUAH
 
