@@ -1,5 +1,5 @@
 #wget https://github.com/${GitUser}/
-GitUser="drgvpnscript"
+GitUser="Internetvps"
 # Color Validation
 Lred='\e[1;91m'
 Lgreen='\e[92m'
@@ -17,7 +17,7 @@ NC='\033[0;37m'
 echo ''
 clear
 echo ''
-echo -e "$Lyellow                ⚡ PREMIUM SPEED SCRIPT ⚡"$NC
+echo -e "$Lyellow                ⚡ PREMIUM VPS AUTO SCRIPT ⚡"$NC
 echo -e "$green.........................................................."$NC
 echo -e "$Lyellow                  Autoscript By DRGVPN"$NC
 echo -e "$Lyellow                    CONTACT TELEGRAM"$NC

@@ -1,7 +1,7 @@
 # Script By DRGVPN
 # ==================================================
 #wget https://github.com/${GitUser}/
-GitUser="drgvpnscript"
+GitUser="Internetvps"
 # initialisasi var
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
