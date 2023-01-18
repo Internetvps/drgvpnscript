@@ -53,7 +53,7 @@ echo -e "\033[0;34m╒═══════════════════�
 echo -e " \\E[0;41;36m                DNS CHANGER                 \E[0m"
 echo -e "\033[0;34m╘════════════════════════════════════════════╛\033[0m"
 echo "DNS Changer By drgvpn"
-echo "Telegram : https://t.me/anakjati567 / @anakjati567"
+echo "Telegram : https://t.me/info_androidinfo_android9 / @info_androidinfo_android9"
 echo -e ""
 echo -e " [\e[36m•1 \e[0m] INPUT DNS TEMPORARY.REBOOT VPS FOR RETURN TO INITIAL DNS"
 echo -e " [\e[36m•2 \e[0m] INPUT DNS PERMANENTLY"
