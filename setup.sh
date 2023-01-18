@@ -20,53 +20,13 @@ echo ''
 echo -e "$Lyellow                ⚡ PREMIUM VPS AUTO SCRIPT ⚡"$NC
 echo -e "$green.........................................................."$NC
 echo -e "$Lyellow                  Autoscript By DRGVPN"$NC
-echo -e "$Lyellow                    CONTACT TELEGRAM"$NC
+echo -e "$Lyellow                    CONTACT ME TELEGRAM"$NC
 echo -e "$Lyellow                       @info_androi9"$NC
 echo -e "$green.........................................................."$NC
 echo ''
-echo -e "$Lyellow                       Tunggu 6 Saat!"$NC
+echo -e "$Lyellow                       Tunggu 10 Saat!"$NC
 echo -e "$green.........................................................."$NC
 sleep 6
-clear
-if [ "${EUID}" -ne 0 ]; then
-		echo "You need to run this script as root"
-		exit 1
-fi
-if [ "$(systemd-detect-virt)" == "openvz" ]; then
-		echo "OpenVZ is not supported"
-		exit 1
-fi
-red='\e[1;31m'
-green='\e[0;32m'
-NC='\e[0m'
-#IZIN SCRIPT
-MYIP=$(curl -sS ipv4.icanhazip.com)
-echo -e "\e[32mloading...\e[0m"
-clear
-# Valid Script
-VALIDITY() {
-    today=$(date -d "0 days" +"%Y-%m-%d")
-    Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | grep $MYIP | awk '{print $4}')
-    if [[ $today < $Exp1 ]]; then
-        echo -e "\e[32mTahniah! Anda Dibenarkan menggunakan AUTOSCRIPT DRGVPN0m"
-        sleep 5
-    else
-        echo -e "\e[31mYOUR SCRIPT HAS EXPIRED!\e[0m"
-        echo -e "\e[31mPlease renew your ipvps first\e[0m"
-        exit 0
-    fi
-}
-IZIN=$(curl https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | awk '{print $5}' | grep $MYIP)
-if [ $MYIP = $IZIN ]; then
-    echo -e "\e[32mPermission Accepted...\e[0m"
-    VALIDITY
-else
-    echo -e "\e[31mPermission Denied!\e[0m"
-    echo -e "\e[31mPlease buy script first\e[0m"
-    rm -f setup.sh
-    exit 0
-fi
-clear
 echo -e "\e[32mloading...\e[0m"
 clear
 mkdir /var/lib/premium-script;
