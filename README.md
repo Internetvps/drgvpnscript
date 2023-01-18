@@ -1,5 +1,5 @@
 # Script DRGVPN V8-Websocket
- Welcome AUTOSCRIPT DRGVPN😊
+ Welcome drgvpn😊
 
  <h2 align="center">AutoScript VPN By DRGVPN <img src="https://img.shields.io/badge/Version-6.0-blue.svg"></h2>
 
@@ -30,7 +30,7 @@ src="https://img.shields.io/badge/Service-Xray-success.svg">  <img src= "https:/
 ## INSTALLATION SCRIPT
 
   ```html
-  sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update && apt install -y bzip2 gzip coreutils screen curl && wget https://raw.githubusercontent.com/huaweipadu/hangtuah/main/setup.sh && chmod +x setup.sh && sed -i -e 's/\r$//' setup.sh && screen -S setup ./setup.sh
+  sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update && apt install -y bzip2 gzip coreutils screen curl && wget https://raw.githubusercontent.com/Internetvps/drgvpnscript/main/setup.sh && chmod +x setup.sh && sed -i -e 's/\r$//' setup.sh && screen -S setup ./setup.sh
 
   ```
  
@@ -102,13 +102,11 @@ systemctl restart wg-quick@wg0
 
 *   @info_android9
 
-*   HANGTUAH
-
 *   Project D
 
 *   V2ray
 
 <p align="center">
-  <a><img src="https://img.shields.io/badge/Copyright%20©-DRGVPN%20REMODAutoScriptVPN%202022.%20All%20rights%20reserved...-blueviolet.svg" style="max-width:200%;">
+  <a><img src="https://img.shields.io/badge/Copyright%20©-DRGVPN%20AutoScriptVPN%202022.%20All%20rights%20reserved...-blueviolet.svg" style="max-width:200%;">
     </p>
    </p>
