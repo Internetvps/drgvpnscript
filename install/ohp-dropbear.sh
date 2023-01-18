@@ -22,7 +22,7 @@ Port_OHP='8787';
 
 #Installing ohp Server
 cd 
-wget -O /usr/local/bin/ohp "https://raw.githubusercontent.com/${GitUser}/Internetvps/main/ohp"
+wget -O /usr/local/bin/ohp "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/ohp"
 chmod +x /usr/local/bin/ohp
 
 #Buat File OpenVPN TCP OHP
@@ -68,7 +68,7 @@ cd
 cat > /etc/systemd/system/ohp.service <<END
 [Unit]
 Description=Direct Squid Proxy For OpenVPN TCP By drgvpn
-Documentation=https://t.me/info_androidinfo_android9
+Documentation=https://t.me/info_android9
 Wants=network.target
 After=network.target
 

@@ -22,14 +22,14 @@ Port_OHP='8686';
 
 #Installing ohp Server
 cd 
-wget -O /usr/local/bin/ohps "https://raw.githubusercontent.com/${GitUser}/Internetvps/main/ohps"
+wget -O /usr/local/bin/ohps "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/ohps"
 chmod +x /usr/local/bin/ohps
 
 #Buat Service Untuk OHP SSH
 cat > /etc/systemd/system/ohps.service <<END
 [Unit]
 Description=Direct Squid Proxy For open-ssh By drgvpn
-Documentation=https://t.me/info_androidinfo_android9
+Documentation=https://t.me/info_android9
 Wants=network.target
 After=network.target
 
