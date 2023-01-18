@@ -1,5 +1,5 @@
 #wget https://github.com/${GitUser}/
-GitUser="huaweipadu"
+GitUser="Internetvps"
 #IZIN SCRIPT
 MYIP=$(curl -sS ipv4.icanhazip.com)
 echo -e "\e[32mloading...\e[0m"
@@ -54,7 +54,7 @@ rm -f /etc/systemd/system/ohps.service
 cat > /etc/systemd/system/ohps.service <<END
 [Unit]
 Description=Direct Squid Proxy For open-ssh By drgvpnVPN 
-Documentation=https://t.me/anakjati567
+Documentation=https://t.me/info_androidinfo_android9
 Wants=network.target
 After=network.target
 
@@ -87,7 +87,7 @@ rm -f /etc/systemd/system/ohpd.service
 cat > /etc/systemd/system/ohpd.service <<END
 [Unit]
 Description=Direct Squid Proxy For Dropbear By DRGVPN 
-Documentation=https://t.me/anakjati567
+Documentation=https://t.me/info_androidinfo_android9
 Wants=network.target
 After=network.target
 
