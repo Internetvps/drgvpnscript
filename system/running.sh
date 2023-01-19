@@ -3,7 +3,7 @@ export green="\e[0;32m"
 export NC="\e[0m"
 
 # // GIT USER
-export GitUser="Internetvps"
+export GitUser="NikmatSenip"
 export MYIP=$(wget -qO- icanhazip.com);
 
 # // VPS INFO
@@ -44,17 +44,17 @@ export swap=$( free -m | awk 'NR==4 {print $2}' )
 # // USERNAME
 echo -e "$NC"
 rm -f /usr/bin/user
-export username=$( curl -sS https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | grep $MYIP | awk '{print $2}' )
+export username=$( curl -sS https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $2}' )
 echo "$username" > /usr/bin/user
 
 # // ORDER ID
 rm -f /usr/bin/ver
-export user=$( curl -sS https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | grep $MYIP | awk '{print $3}' )
+export user=$( curl -sS https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $3}' )
 echo "$user" > /usr/bin/ver
 
 # // VALIDITY
 rm -f /usr/bin/e
-export valid=$( curl -sS https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | grep $MYIP | awk '{print $4}' )
+export valid=$( curl -sS https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}' )
 echo "$valid" > /usr/bin/e
 
 # // DETAIL ORDER
@@ -119,7 +119,7 @@ echo -e "\e[32mloading...\e[0m"
 clear
 echo -e ""
 echo -e "Your VPS Information :"
-echo -e "\e[0;32mSCRIPT VPS BY DRGVPN\e[0m"
+echo -e "\e[0;32mSCRIPT VPS\e[0m"
 echo "-----------------------------------------------------------"
 echo "Operating System Information :"
 echo -e "VPS Type    : $typevps"
@@ -374,7 +374,6 @@ fi
 echo -e "\e[0;34m-----------------------------------------------------------\e[0m"
 echo -e ""
 echo -e "${green}JIKA TERDAPAT NOT RUNNING, PLEASE REPORT TO ADMIN FOR FIX$NC"
-echo -e "${green}Report to DRGVPN @info_android9$NC"
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
