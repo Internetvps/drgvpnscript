@@ -22,13 +22,13 @@ Port_OHP='8787';
 
 #Installing ohp Server
 cd 
-wget -O /usr/local/bin/ohp "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/ohp"
+wget -O /usr/local/bin/ohp "https://raw.githubusercontent.com/${GitUser}/hangtuah/main/ohp"
 chmod +x /usr/local/bin/ohp
 
 #Buat File OpenVPN TCP OHP
 cat > /etc/openvpn/client-tcp-ohp1194.ovpn <<END
 ############## WELCOME ###############
-############# By drgvpn ##############
+############# By DRGVPN ##############
 client
 dev tun
 proto tcp
@@ -45,7 +45,7 @@ auth-user-pass
 comp-lzo
 verb 3
 
-setenv FRIENDLY_NAME "drgvpn OHP"
+setenv FRIENDLY_NAME "DRGVPN OHP"
 http-proxy $MYIP 8787
 http-proxy-option CUSTOM-HEADER CONNECT HTTP/1.1
 http-proxy-option CUSTOM-HEADER Host bug.com
@@ -67,7 +67,7 @@ cd
 #Buat Service Untuk OHP Ovpn
 cat > /etc/systemd/system/ohp.service <<END
 [Unit]
-Description=Direct Squid Proxy For OpenVPN TCP By drgvpn
+Description=Direct Squid Proxy For OpenVPN TCP By DRGVPN
 Documentation=https://t.me/info_android9
 Wants=network.target
 After=network.target
@@ -88,4 +88,4 @@ echo ""
 echo -e "${GREEN}Done Installing OHP Server${NC}"
 echo -e "Port OVPN OHP TCP: $ohpp"
 echo -e "Link Download OVPN OHP: http://$MYIP:81/client-tcp-ohp1194.ovpn"
-echo -e "Script By drgvpn"
+echo -e "Script By DRGVPN"

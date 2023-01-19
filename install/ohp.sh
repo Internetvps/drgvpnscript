@@ -22,13 +22,13 @@ Port_OHP='8585';
 
 #Installing ohp Server
 cd 
-wget -O /usr/local/bin/ohpd "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/ohpd"
+wget -O /usr/local/bin/ohpd "https://raw.githubusercontent.com/${GitUser}/hangtuah/main/ohpd"
 chmod +x /usr/local/bin/ohpd
 
 #Buat Service Untuk OHP Dropbear
 cat > /etc/systemd/system/ohpd.service <<END
 [Unit]
-Description=Direct Squid Proxy For ssh-dropbear By drgvpn
+Description=Direct Squid Proxy For ssh-dropbear By DRGVPN
 Documentation=https://t.me/info_android9
 Wants=network.target
 After=network.target
@@ -48,4 +48,4 @@ systemctl restart ohpd
 echo ""
 echo -e "${GREEN}Done Installing OHP Dropbear${NC}"
 echo -e "Port OHP DROPBEAR: $ohpp"
-echo -e "Script By DRGVPN"
+echo -e "Script By info_android9"

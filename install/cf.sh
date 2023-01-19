@@ -25,9 +25,9 @@ exit 0
 fi
 clear
 apt install jq curl -y
-DOMAIN=drgvpn-vpn.ovh
+DOMAIN=DRG-vpn.ovh
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c4)
-SUB_DOMAIN=${sub}.drgvpn-vpn.ovh
+SUB_DOMAIN=${sub}.DRG-vpn.ovh
 CF_ID=alifmelorcoc@gmail.com
 CF_KEY=3a6ec62bf385082f3b806a01aae65edb15691
 set -euo pipefail

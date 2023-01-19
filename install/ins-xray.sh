@@ -127,17 +127,17 @@ cat> /usr/local/etc/xray/config.json << END
                         "xver": 1
                     },
                     {
-                        "path": "/drgvpn-vlesswstls", # // VMESS WS TLS
+                        "path": "/DRG-vlesswstls", # // VMESS WS TLS
                         "dest": 1212,
                         "xver": 1
                     },
                     {
-                        "path": "/drgvpn-vmesswstls", # // VLESS WS TLS
+                        "path": "/DRG-vmesswstls", # // VLESS WS TLS
                         "dest": 1213,
                         "xver": 1
                     },
                     {
-                        "path": "/drgvpn-trojanwstls", # // TROJAN WS TLS
+                        "path": "/DRG-trojanwstls", # // TROJAN WS TLS
                         "dest": 1214,
                         "xver": 1
                     }
@@ -383,7 +383,7 @@ cat> /usr/local/etc/xray/vless.json << END
                 "security": "none",
                 "wsSettings": {
                     "acceptProxyProtocol": true,
-                    "path": "/drgvpn-vlesswstls"
+                    "path": "/DRG-vlesswstls"
                 }
             }
         }
@@ -493,7 +493,7 @@ cat> /usr/local/etc/xray/vlessnone.json << END
          "network": "ws",
             "wsSettings": {
               "acceptProxyProtocol": true,
-                "path": "/pakya-vlesswsntls"
+                "path": "/DRG-vlesswsntls"
 
                 }
             }
@@ -607,7 +607,7 @@ cat> /usr/local/etc/xray/vmess.json << END
                 "security": "none",
                 "wsSettings": {
                     "acceptProxyProtocol": true,
-                    "path": "/drgvpn-vmesswstls"
+                    "path": "/DRG-vmesswstls"
                 }
             }
         }
@@ -717,7 +717,7 @@ cat> /usr/local/etc/xray/vmessnone.json << END
          "network": "ws",
             "wsSettings": {
               "acceptProxyProtocol": true,
-                "path": "/drgvpn-vmesswsntls"
+                "path": "/DRG-vmesswsntls"
                 }
             }
         }
@@ -829,7 +829,7 @@ cat> /usr/local/etc/xray/trojan.json << END
            "network": "ws",
            "wsSettings": {
              "acceptProxyProtocol": true,
-               "path": "/pakya-trojanwstls"
+               "path": "/DRG-trojanwstls"
              }
           }
        }
@@ -940,7 +940,7 @@ cat> /usr/local/etc/xray/trojannone.json << END
            "network": "ws",
            "wsSettings": {
              "acceptProxyProtocol": true,
-               "path": "/drgvpn-trojanwsntls"
+               "path": "/DRG-trojanwsntls"
              }
           }
        }
@@ -1050,17 +1050,17 @@ cat> /usr/local/etc/xray/none.json << END
             "xver": 1
           },
           {
-            "path": "/drgvpn-vlesswsntls", # // VLESS NONE
+            "path": "/DRG-vlesswsntls", # // VLESS NONE
             "dest": 1301,
             "xver": 1
           },
           {
-            "path": "/drgvpn-vmesswsntls", # // VMESS NONE
+            "path": "/DRG-vmesswsntls", # // VMESS NONE
             "dest": 1302,
             "xver": 1
           },
           {
-             "path": "/drgvpn-trojanwsntls", # // TROJAN NONE
+             "path": "/DRG-trojanwsntls", # // TROJAN NONE
             "dest": 1303,
             "xver": 1
           }
@@ -1196,10 +1196,10 @@ systemctl restart xray@trojannone
 
 # download script
 cd /usr/bin
-wget -O port-xray "https://raw.githubusercontent.com/${GitUser}/Internetvps/main/change-port/port-xray.sh"
-wget -O certv2ray "https://raw.githubusercontent.com/${GitUser}/Internetvps/main/cert.sh"
-wget -O trojaan "https://raw.githubusercontent.com/${GitUser}/Internetvps/main/menu/trojaan.sh"
-wget -O xraay "https://raw.githubusercontent.com/${GitUser}/Internetvps/main/menu/xraay.sh"
+wget -O port-xray "https://raw.githubusercontent.com/${GitUser}/hangtuah/main/change-port/port-xray.sh"
+wget -O certv2ray "https://raw.githubusercontent.com/${GitUser}/hangtuah/main/cert.sh"
+wget -O trojaan "https://raw.githubusercontent.com/${GitUser}/hangtuah/main/menu/trojaan.sh"
+wget -O xraay "https://raw.githubusercontent.com/${GitUser}/hangtuah/main/menu/xraay.sh"
 chmod +x port-xray
 chmod +x certv2ray
 chmod +x trojaan

@@ -22,13 +22,13 @@ Port_OHP='8686';
 
 #Installing ohp Server
 cd 
-wget -O /usr/local/bin/ohps "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/ohps"
+wget -O /usr/local/bin/ohps "https://raw.githubusercontent.com/${GitUser}/hangtuah/main/ohps"
 chmod +x /usr/local/bin/ohps
 
 #Buat Service Untuk OHP SSH
 cat > /etc/systemd/system/ohps.service <<END
 [Unit]
-Description=Direct Squid Proxy For open-ssh By drgvpn
+Description=Direct Squid Proxy For open-ssh By DRGVPN
 Documentation=https://t.me/info_android9
 Wants=network.target
 After=network.target
@@ -48,4 +48,4 @@ systemctl restart ohps
 echo ""
 echo -e "${GREEN}Done Installing OHP OpenSSH${NC}"
 echo -e "Port OHP OpenSSH: $ohpp"
-echo -e "Script By drgvpn"
+echo -e "Script By info_android9"
