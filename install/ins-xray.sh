@@ -1196,10 +1196,10 @@ systemctl restart xray@trojannone
 
 # download script
 cd /usr/bin
-wget -O port-xray "https://raw.githubusercontent.com/${GitUser}/hangtuah/main/change-port/port-xray.sh"
-wget -O certv2ray "https://raw.githubusercontent.com/${GitUser}/hangtuah/main/cert.sh"
-wget -O trojaan "https://raw.githubusercontent.com/${GitUser}/hangtuah/main/menu/trojaan.sh"
-wget -O xraay "https://raw.githubusercontent.com/${GitUser}/hangtuah/main/menu/xraay.sh"
+wget -O port-xray "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/change-port/port-xray.sh"
+wget -O certv2ray "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/cert.sh"
+wget -O trojaan "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/menu/trojaan.sh"
+wget -O xraay "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/menu/xraay.sh"
 chmod +x port-xray
 chmod +x certv2ray
 chmod +x trojaan
