@@ -98,7 +98,7 @@ daftarip=$(cat /root/data)
 rm -rf /root/allow
 git config --global user.email "alifgaming9546@gmail.com"
 git config --global user.name "Internetvps"
-git clone https://github.com/drgvpnscript/allow.git
+git clone https://github.com/Internetvps/allow.git
 mkdir /root/allow
 cd /root/allow/
 rm -rf .git
@@ -110,8 +110,8 @@ git init >/dev/null 2>&1
 git add .
 git commit -m register
 git branch -M main
-git remote add origin https://github.com/drgvpnscript/allow.git
-git push -f https://${tokengit}@github.com/drgvpnscript/allow.git
+git remote add origin https://github.com/Internetvps/allow.git
+git push -f https://${tokengit}@github.com/Internetvps/allow.git
 echo -e "IPVPS Registration Completed"
 sleep 1
 links1="apt-get update && apt-get upgrade -y && update-grub && sleep 2 && reboot"
@@ -167,7 +167,7 @@ rm -rf /root/data
 rm -rf /root/ipvps.conf
 git config --global user.email "alifgaming9546@gmail.com"
 git config --global user.name "Internetvps"
-git clone https://github.com/drgvpnscript/allow.git
+git clone https://github.com/Internetvps/allow.git
 mkdir /root/allow
 cd /root/allow/
 rm -rf .git
@@ -193,8 +193,8 @@ git init >/dev/null 2>&1
 git add .
 git commit -m delete
 git branch -M main
-git remote add origin https://github.com/drgvpnscript/allow.git
-git push -f https://${tokengit}@github.com/drgvpnscript/allow.git
+git remote add origin https://github.com/Internetvps/allow.git
+git push -f https://${tokengit}@github.com/Internetvps/allow.git
 clear
 echo -e "\033[0;34m----------------------------------------\033[0m"
 echo " Client IP Deleted Successfully"
@@ -222,7 +222,7 @@ clear
 rm -rf /root/allow
 git config --global user.email "alifgaming9546@gmail.com"
 git config --global user.name "Internetvps"
-git clone https://github.com/drgvpnscript/allow.git
+git clone https://github.com/Internetvps/allow.git
   mkdir /root/allow
   cd /root/allow/
   rm -rf .git
@@ -267,8 +267,8 @@ sed -i "s/### $user $exp/### $user $exp4/g" /root/allow/ipvps.conf
 git add .
 git commit -m renew
 git branch -M main
-git remote add origin https://github.com/drgvpnscript/allow.git
-git push -f https://${tokengit}@github.com/drgvpnscript/allow.git
+git remote add origin https://github.com/Internetvps/allow.git
+git push -f https://${tokengit}@github.com/Internetvps/allow.git
 echo -e "IPVPS Registration Completed"
   clear
 echo -e "\033[0;34m----------------------------------------\033[0m"
@@ -301,7 +301,7 @@ rm -rf /root/data
 rm -rf /root/ipvps.conf
 git config --global user.email "alifgaming9546@gmail.com"
 git config --global user.name "Internetvps"
-git clone https://github.com/drgvpnscript/allow.git
+git clone https://github.com/Internetvps/allow.git
 cd /root/allow/
 rm -rf .git
 git init
