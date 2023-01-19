@@ -26,10 +26,6 @@ echo -e "$green.........................................................."$NC
 echo ''
 echo -e "$Lyellow                       Tunggu 10 Saat!"$NC
 echo -e "$green.........................................................."$NC
-sleep 6
-clear
-echo -e "\e[32mloading...\e[0m"
-clear
 mkdir /var/lib/premium-script;
 default_email=$( curl https://raw.githubusercontent.com/${GitUser}/email/main/default.conf )
 clear
