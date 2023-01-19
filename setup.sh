@@ -1,3 +1,4 @@
+#!/bin/bash
 #wget https://github.com/${GitUser}/
 GitUser="internetvps"
 # Color Validation
@@ -24,7 +25,7 @@ echo -e "$Lyellow                    CONTACT TELEGRAM"$NC
 echo -e "$Lyellow                     @INFO_ANDROID9"$NC
 echo -e "$green.........................................................."$NC
 echo ''
-echo -e "$Lyellow                       Tunggu 6 Saat!"$NC
+echo -e "$Lyellow                  Tunggu 10 Saat bossku"$NC
 echo -e "$green.........................................................."$NC
 sleep 6
 clear
