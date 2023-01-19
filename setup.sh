@@ -1,6 +1,6 @@
 #!/bin/bash
 #wget https://github.com/${GitUser}/
-GitUser="internetvps"
+GitUser="Internetvps"
 # Color Validation
 Lred='\e[1;91m'
 Lgreen='\e[92m'
@@ -16,14 +16,17 @@ CYAN='\033[0;36m'
 NC='\033[0;37m'
 # ===================
 echo ''
+clear
+echo ''
+echo "                                                              "
 echo -e "$Lyellow                ⚡ PREMIUM SPEED SCRIPT ⚡"$NC
 echo -e "$green.........................................................."$NC
-echo -e "$Lyellow                  Autoscript By DRGVPN"$NC
+echo -e "$Lyellow                  Autoscript By drgvpn"$NC
 echo -e "$Lyellow                    CONTACT TELEGRAM"$NC
-echo -e "$Lyellow                     @INFO_ANDROID9"$NC
+echo -e "$Lyellow                       @info_android9"$NC
 echo -e "$green.........................................................."$NC
 echo ''
-echo -e "$Lyellow                  Tunggu 10 Saat bossku"$NC
+echo -e "$Lyellow                       Tunggu 6 Saat!"$NC
 echo -e "$green.........................................................."$NC
 sleep 6
 clear
@@ -45,9 +48,9 @@ clear
 # Valid Script
 VALIDITY() {
     today=$(date -d "0 days" +"%Y-%m-%d")
-    Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | grep $MYIP | awk '{print $4}')
+    Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
     if [[ $today < $Exp1 ]]; then
-        echo -e "\e[32mTahniah! Anda Dibenarkan menggunakan AUTOSCRIPT DRGVPN..\e[0m"
+        echo -e "\e[32mTahniah! Anda Dibenarkan menggunakan AUTOSCRIPT PAKYAVPN..\e[0m"
         sleep 5
     else
         echo -e "\e[31mYOUR SCRIPT HAS EXPIRED!\e[0m"
@@ -55,7 +58,20 @@ VALIDITY() {
         exit 0
     fi
 }
-IZIN=$(curl https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | awk '{print $5}' | grep $MYIP)
+# Valid Script
+VALIDITY() {
+    today=$(date -d "0 days" +"%Y-%m-%d")
+    Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
+    if [[ $today < $Exp1 ]]; then
+        echo -e "\e[32mTahniah! Anda Dibenarkan menggunakan AUTOSCRIPT PAKYAVPN..\e[0m"
+        sleep 5
+    else
+        echo -e "\e[31mYOUR SCRIPT HAS EXPIRED!\e[0m"
+        echo -e "\e[31mPlease renew your ipvps first\e[0m"
+        exit 0
+    fi
+}
+IZIN=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | awk '{print $5}' | grep $MYIP)
 if [ $MYIP = $IZIN ]; then
     echo -e "\e[32mPermission Accepted...\e[0m"
     VALIDITY
@@ -142,9 +158,9 @@ clear
 #install ohp-server
 echo -e "\e[0;32mINSTALLING OHP PORT...\e[0m"
 sleep 1
-wget https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/install/ohp.sh && chmod +x ohp.sh && ./ohp.sh
-wget https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/install/ohp-dropbear.sh && chmod +x ohp-dropbear.sh && ./ohp-dropbear.sh
-wget https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/install/ohp-ssh.sh && chmod +x ohp-ssh.sh && ./ohp-ssh.sh
+wget https://raw.githubusercontent.com/${GitUser}/hasilsenip/main/install/ohp.sh && chmod +x ohp.sh && ./ohp.sh
+wget https://raw.githubusercontent.com/${GitUser}/hasilsenip/main/install/ohp-dropbear.sh && chmod +x ohp-dropbear.sh && ./ohp-dropbear.sh
+wget https://raw.githubusercontent.com/${GitUser}/hasilsenip/main/install/ohp-ssh.sh && chmod +x ohp-ssh.sh && ./ohp-ssh.sh
 echo -e "\e[0;32mDONE INSTALLING OHP PORT\e[0m"
 clear
 #install websocket
@@ -252,13 +268,13 @@ echo "   - Auto Delete Expired Account" | tee -a log-install.txt
 echo "   - Full Orders For Various Services" | tee -a log-install.txt
 echo "   - White Label" | tee -a log-install.txt
 echo "   - Installation Log --> /root/log-install.txt"  | tee -a log-install.txt
-echo -e "\e[1;32m══════════════════Autoscript By DRGVPN══════════════════\e[0m" | tee -a log-install.txt
+echo -e "\e[1;32m══════════════════Autoscript By PAKYAVPN══════════════════\e[0m" | tee -a log-install.txt
 sleep 7
 clear
 echo ""
 echo -e "    \e[1;32m.------------------------------------------.\e[0m"
 echo -e "    \e[1;32m|     SUCCESFULLY INSTALLED THE SCRIPT     |\e[0m"
-echo -e "    \e[1;32m|         PREMIUM BY @INFO_ANDROID9         |\e[0m"
+echo -e "    \e[1;32m|         PREMIUM BY INFOANDROID          |\e[0m"
 echo -e "    \e[1;32m'------------------------------------------'\e[0m"
 echo ""
 echo -e "   \e[1;32mYour VPS Will Be Automatical Reboot In 5 seconds\e[0m"

@@ -1,3 +1,4 @@
+#!/bin/bash
 #wget https://github.com/${GitUser}/
 GitUser="Internetvps"
 #IZIN SCRIPT
@@ -20,15 +21,15 @@ clear
 uptime="$(uptime -p | cut -d " " -f 2-10)"
 # USERNAME
 rm -f /usr/bin/user
-username=$(curl https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | grep $MYIP | awk '{print $2}')
+username=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $2}')
 echo "$username" >/usr/bin/user
 # Order ID
 rm -f /usr/bin/ver
-user=$(curl https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | grep $MYIP | awk '{print $3}')
+user=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $3}')
 echo "$user" >/usr/bin/ver
 # validity
 rm -f /usr/bin/e
-valid=$(curl https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | grep $MYIP | awk '{print $4}')
+valid=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
 echo "$valid" >/usr/bin/e
 # DETAIL ORDER
 username=$(cat /usr/bin/user)
@@ -75,7 +76,7 @@ Info="${Green_font_prefix}(Active)${Font_color_suffix}"
 Error="${Green_font_prefix}${Font_color_suffix}${Red_font_prefix}[EXPIRED]${Font_color_suffix}"
 
 today=$(date -d "0 days" +"%Y-%m-%d")
-Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | grep $MYIP | awk '{print $4}')
+Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
 if [[ $today < $Exp1 ]]; then
     sts="${Info}"
 else
@@ -121,7 +122,7 @@ ascii=$(cat /usr/bin/test)
 clear
 echo -e "\e[$banner_colour"
 figlet -f $ascii "$banner"
-echo -e "\e[$text Premium Script"
+echo -e "\e[$text VPS Script"
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 echo -e "  \e[$back_text                    \e[30m[\e[$box SERVER INFORMATION\e[30m ]\e[1m                  \e[m"
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
@@ -150,19 +151,23 @@ echo -e " \e[$line╘═══════════════════�
 echo -e " \e[$text Ssh/Ovpn   V2ray   Vless   Vlessxtls   Trojan-Ws   Trojan-Tls \e[0m "    
 echo -e " \e[$below    $total_ssh         $vmess       $vless        $xtls           $trws           $trtls \e[0m "
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
-echo -e "  \e[$back_text                        \e[30m[\e[$box MAIN MENU\e[30m ]\e[1m                       \e[m"
+echo -e "  \e[$back_text                        \e[30m[\e[$box PANEL MENU\e[30m ]\e[1m                       \e[m"
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
-echo -e "  \e[$number (•1)\e[m \e[$below XRAY VMESS & VLESS\e[m           \e[$number (•7)\e[m \e[$below CLEAR LOG VPS\e[m"
-echo -e "  \e[$number (•2)\e[m \e[$below TROJAN XRAY & WS\e[m             \e[$number (•8)\e[m \e[$below CHANGE PORT\e[m"
-echo -e "  \e[$number (•3)\e[m \e[$below OPENSSH & OPENVPN\e[m            \e[$number (•9)\e[m \e[$below REBOOT VPS\e[m"
-echo -e "  \e[$number (•4)\e[m \e[$below MAXIS & DIGI CELCOM\e[m          \e[$number (10)\e[m \e[$below CHECK RUNNING\e[m"
-echo -e "  \e[$number (•5)\e[m \e[$below SYSTEM MENU\e[m                  \e[$number (11)\e[m \e[$below ADDIP ADMIN ONLY\e[m"
-echo -e "  \e[$number (•6)\e[m \e[$below MENU THEMES\e[m                  \e[$number (12)\e[m \e[$below INFO ALL PORT\e[m"
+echo -e "  \e[$number (•1)\e[m \e[$below XRAY VMESS & VLESS\e[m"
+echo -e "  \e[$number (•2)\e[m \e[$below TROJAN XRAY & WS\e[m"
+echo -e "  \e[$number (•3)\e[m \e[$below OPENSSH & OPENVPN\e[m"     
+echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
+echo -e "  \e[$back_text                        \e[30m[\e[$box VPS MENU\e[30m ]\e[1m                       \e[m"
+echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
+echo -e "  \e[$number (•4)\e[m \e[$below SYSTEM MENU\e[m          \e[$number (•8)\e[m \e[$below MENU THEMES\e[m"
+echo -e "  \e[$number (•5)\e[m \e[$below CHECK RUNNING\e[m        \e[$number (•9)\e[m \e[$below ADDIP ADMIN ONLY\e[m"
+echo -e "  \e[$number (•6)\e[m \e[$below CHANGE PORT\e[m          \e[$number (10)\e[m \e[$below INFO ALL PORT\e[m"
+echo -e "  \e[$number (•7)\e[m \e[$below REBOOT VPS\e[m           \e[$number (11)\e[m \e[$below CLEAR LOG VPS\e[m"
 echo -e ""
 echo -e "  \e[$below[Ctrl + C] For exit from main menu\e[m"
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
-echo -e "  \e[$below Version Name         : internetvps $Info1"
-echo -e "  \e[$below Autoscript By        : internetvps"
+echo -e "  \e[$below Version Name         : Hasil $Info1"
+echo -e "  \e[$below Autoscript By        : AQUAGURL"
 echo -e "  \e[$below Certificate Status   : Expired in $certifacate days"
 echo -e "  \e[$below Client Name          : $username"
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
@@ -180,31 +185,28 @@ case $menu in
     ssh
     ;;
 4)
-    maxisdigi
-    ;;
-5)
     system
     ;;
-6)
-    themes
-    ;;
-7)
-    clear-log
-    ;;
-8)
-    change-port
-    ;;
-9)
-    reboot
-    ;;
-10)
+5)
     check-sc
     ;;
-11)
+6)
+    change-port
+    ;;
+7)
+    reboot
+    ;;
+8)
+    themes
+    ;;
+9)
     addip
     ;;
-12)
+10)
     info
+    ;;
+11)
+    clear-log
     ;;
 x)
     clear

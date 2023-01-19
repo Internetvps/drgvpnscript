@@ -1,4 +1,4 @@
-# Script by drgvpn
+# Script VPS
 #!/bin/bash
 clear
 MAX=1

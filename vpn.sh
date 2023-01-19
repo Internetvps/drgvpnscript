@@ -1,5 +1,3 @@
-# Script By DRGVPN
-# ==================================================
 #wget https://github.com/${GitUser}/
 GitUser="Internetvps"
 # initialisasi var
@@ -39,9 +37,7 @@ sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 
 # Buat config client TCP 1194
 cat > /etc/openvpn/client-tcp-1194.ovpn <<-END
-############## WELCOME TO DRGVPN ###############
-############## By DRGVPN ###############
-setenv FRIENDLY_NAME "DRGVPN TCP"
+setenv FRIENDLY_NAME "OVPN TCP"
 client
 dev tun
 proto tcp
@@ -65,9 +61,7 @@ sed -i $MYIP2 /etc/openvpn/client-tcp-1194.ovpn;
 
 # Buat config client UDP 2200
 cat > /etc/openvpn/client-udp-2200.ovpn <<-END
-############## WELCOME TO DRGVPN ###############
-############## By DRGVPN ###############
-setenv FRIENDLY_NAME "DRGVPN UDP"
+setenv FRIENDLY_NAME "OVPN UDP"
 client
 dev tun
 proto udp
@@ -90,9 +84,7 @@ sed -i $MYIP2 /etc/openvpn/client-udp-2200.ovpn;
 
 # Buat config client SSL
 cat > /etc/openvpn/client-tcp-ssl.ovpn <<-END
-############## WELCOME TO DRGVPN ###############
-############## BY DRGVPN ###############
-setenv FRIENDLY_NAME "DRGVPN SSL"
+setenv FRIENDLY_NAME "OVPN SSL"
 client
 dev tun
 proto tcp

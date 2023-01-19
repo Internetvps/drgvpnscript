@@ -5,7 +5,7 @@ MYIP=$(curl -sS ipv4.icanhazip.com)
 # Valid Script
 VALIDITY () {
     today=`date -d "0 days" +"%Y-%m-%d"`
-    Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | grep $MYIP | awk '{print $4}')
+    Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
     if [[ $today < $Exp1 ]]; then
     echo -e "\e[32mYOUR SCRIPT ACTIVE..\e[0m"
     else
@@ -14,7 +14,7 @@ VALIDITY () {
     exit 0
 fi
 }
-IZIN=$(curl https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | awk '{print $5}' | grep $MYIP)
+IZIN=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | awk '{print $5}' | grep $MYIP)
 if [ $MYIP = $IZIN ]; then
 echo -e "\e[32mPermission Accepted...\e[0m"
 VALIDITY
@@ -49,7 +49,6 @@ echo " Done Install Webmin"
 echo " $IP:10000"
 echo " Username : root"
 echo " Password : Your Paasword VPS"
-echo " Script By DRGVPN"
 }
 function restart () {
 echo " Restarting Webmin"
@@ -59,7 +58,6 @@ echo " Start Uninstall Webmin"
 clear
 echo ""
 echo " Done Restart Webmin"
-echo " Script By DRGVPN"
 }
 function uninstall () {
 echo " Removing Repositori Webmin"
@@ -72,7 +70,6 @@ apt autoremove --purge webmin -y > /dev/null 2>&1
 clear
 echo ""
 echo " Done Uninstall Webmin"
-echo " Script By DRGVPN"
 }
 if [[ "$cek" = "perl" ]]; then
 sts="${Info}"
@@ -82,13 +79,12 @@ fi
 clear
 echo -e " =============================="
 echo -e "           Webmin Menu         "
-echo -e "            By DRGVPN          "
 echo -e " =============================="
 echo -e " Status $sts"
 echo -e "  1. Install Webmin"
 echo -e "  2. Restart Webmin"
 echo -e "  3. Uninstall Webmin"
-echo -e " AutoScriptVPS By DRGVPN"
+echo -e " AutoScriptVPS"
 echo -e " Press CTRL+C to return"
 read -rp " Please Enter The Correct Number : " -e num
 if [[ "$num" = "1" ]]; then
