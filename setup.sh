@@ -16,8 +16,6 @@ CYAN='\033[0;36m'
 NC='\033[0;37m'
 # ===================
 echo ''
-clear
-echo -e "$green.........................................................."$NC
 echo -e "$Lyellow                ⚡ PREMIUM SPEED SCRIPT ⚡"$NC
 echo -e "$green.........................................................."$NC
 echo -e "$Lyellow                  Autoscript By DRGVPN"$NC
