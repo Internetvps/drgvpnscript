@@ -28,10 +28,6 @@ echo -e "$Lyellow                       Tunggu 10 Saat!"$NC
 echo -e "$green.........................................................."$NC
 sleep 6
 clear
-#IZIN SCRIPT
-MYIP=$(curl -sS ipv4.icanhazip.com)
-echo -e "\e[32mloading...\e[0m"
-clear
 # Valid Script
 VALIDITY() {
     today=$(date -d "0 days" +"%Y-%m-%d")
