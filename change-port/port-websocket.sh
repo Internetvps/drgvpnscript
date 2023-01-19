@@ -7,7 +7,7 @@ clear
 # Valid Script
 VALIDITY () {
     today=`date -d "0 days" +"%Y-%m-%d"`
-    Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | grep $MYIP | awk '{print $4}')
+    Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
     if [[ $today < $Exp1 ]]; then
     echo -e "\e[32mYOUR SCRIPT ACTIVE..\e[0m"
     else
@@ -16,7 +16,7 @@ VALIDITY () {
     exit 0
 fi
 }
-IZIN=$(curl https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | awk '{print $5}' | grep $MYIP)
+IZIN=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | awk '{print $5}' | grep $MYIP)
 if [ $MYIP = $IZIN ]; then
 echo -e "\e[32mPermission Accepted...\e[0m"
 VALIDITY
@@ -56,8 +56,8 @@ if [[ -z $cek ]]; then
 rm -f /etc/systemd/system/cdn-dropbear.service
 cat > /etc/systemd/system/cdn-dropbear.service <<END
 [Unit]
-Description=Python WS-Dropbear By DRGVPN 
-Documentation=https://DRG.xyz
+Description=Python WS-Dropbear
+Documentation=https://aquagurl.me
 After=network.target nss-lookup.target
 
 [Service]
@@ -111,8 +111,8 @@ if [[ -z $cek ]]; then
 rm -f /etc/systemd/system/cdn-ovpn.service
 cat > /etc/systemd/system/cdn-ovpn.service <<END
 [Unit]
-Description=Python WS-Ovpn By DRGVPN 
-Documentation=https://DRG.xyz
+Description=Python WS-Ovpn 
+Documentation=https://aquagurl.me
 After=network.target nss-lookup.target
 
 [Service]

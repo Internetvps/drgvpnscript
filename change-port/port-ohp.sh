@@ -7,7 +7,7 @@ clear
 # Valid Script
 VALIDITY () {
     today=`date -d "0 days" +"%Y-%m-%d"`
-    Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | grep $MYIP | awk '{print $4}')
+    Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
     if [[ $today < $Exp1 ]]; then
     echo -e "\e[32mYOUR SCRIPT ACTIVE..\e[0m"
     else
@@ -16,7 +16,7 @@ VALIDITY () {
     exit 0
 fi
 }
-IZIN=$(curl https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | awk '{print $5}' | grep $MYIP)
+IZIN=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | awk '{print $5}' | grep $MYIP)
 if [ $MYIP = $IZIN ]; then
 echo -e "\e[32mPermission Accepted...\e[0m"
 VALIDITY
@@ -53,8 +53,8 @@ if [[ -z $cek ]]; then
 rm -f /etc/systemd/system/ohps.service
 cat > /etc/systemd/system/ohps.service <<END
 [Unit]
-Description=Direct Squid Proxy For open-ssh By DRGVPN 
-Documentation=https://t.me/info_android9
+Description=Direct Squid Proxy For open-ssh
+Documentation=https://t.me/meaaoouuuu
 Wants=network.target
 After=network.target
 
@@ -86,8 +86,8 @@ if [[ -z $cek ]]; then
 rm -f /etc/systemd/system/ohpd.service
 cat > /etc/systemd/system/ohpd.service <<END
 [Unit]
-Description=Direct Squid Proxy For Dropbear By DRGVPN 
-Documentation=https://t.me/info_android9
+Description=Direct Squid Proxy For Dropbear 
+Documentation=https://t.me/meaaoouuuu
 Wants=network.target
 After=network.target
 
