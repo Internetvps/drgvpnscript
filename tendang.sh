@@ -1,4 +1,4 @@
-# Script by DRGVPN
+# Script by drgvpn
 #!/bin/bash
 clear
 MAX=1

@@ -1,4 +1,4 @@
-# Created by DRGVPN
+# Created by drgvpn
 #wget https://github.com/${GitUser}/
 GitUser="Internetvps"
 #IZIN SCRIPT

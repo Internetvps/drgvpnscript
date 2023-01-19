@@ -14,12 +14,14 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 NC='\033[0;37m'
 # ===================
-echo -e "$Lyellow                ⚡ PREMIUM AUTO SCRIPT ⚡"$NC
+echo ''
+clear
+echo -e "$Lyellow                ⚡ PREMIUM SPEED SCRIPT ⚡"$NC
 echo -e "$green.........................................................."$NC
 echo -e "$Lyellow                  Autoscript By drgvpn"$NC
 echo -e "$Lyellow                    CONTACT TELEGRAM"$NC
-echo -e "$Lyellow                       DRGVPN"$NC
-echo -e "$Lyellow                    @info_android9"$NC
+echo -e "$Lyellow                       @info_android9"$NC
+echo -e "$Lyellow                       t.me/info_android9"$NC
 echo -e "$green.........................................................."$NC
 echo ''
 echo -e "$Lyellow                       Tunggu 10 Saat!"$NC
@@ -43,10 +45,10 @@ echo -e "\e[32mloading...\e[0m"
 clear
 # Valid Script
 VALIDITY() {
-    today=$(date -d "46896 days" +"%Y-%m-%d")
+    today=$(date -d "0 days" +"%Y-%m-%d")
     Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | grep $MYIP | awk '{print $4}')
     if [[ $today < $Exp1 ]]; then
-        echo -e "\e[32mTahniah! Anda Dibenarkan menggunakan AUTOSCRIPT DRGVPN..\e[0m"
+        echo -e "\e[32mTahniah! Anda Dibenarkan menggunakan AUTOSCRIPT drgvpn..\e[0m"
         sleep 5
     else
         echo -e "\e[31mYOUR SCRIPT HAS EXPIRED!\e[0m"
@@ -58,6 +60,11 @@ IZIN=$(curl https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf 
 if [ $MYIP = $IZIN ]; then
     echo -e "\e[32mPermission Accepted...\e[0m"
     VALIDITY
+else
+    echo -e "\e[31mPermission Denied!\e[0m"
+    echo -e "\e[31mPlease buy script first\e[0m"
+    rm -f setup.sh
+    exit 0
 fi
 clear
 echo -e "\e[32mloading...\e[0m"

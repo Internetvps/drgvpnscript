@@ -100,7 +100,7 @@ systemctl restart wg-quick@wg0
 
 ## Credit :
 
-*   @info_android9
+*   DRGVPN
 
 *   Project D
 
