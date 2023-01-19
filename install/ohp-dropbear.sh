@@ -1,6 +1,5 @@
 #wget https://github.com/${GitUser}/
 GitUser="Internetvps"
-#Open HTTP Puncher By DRGVPN
 #Direct Proxy Squid For OpenVPN TCP
 RED='\e[1;31m'
 GREEN='\e[0;32m'
@@ -27,8 +26,6 @@ chmod +x /usr/local/bin/ohp
 
 #Buat File OpenVPN TCP OHP
 cat > /etc/openvpn/client-tcp-ohp1194.ovpn <<END
-############## WELCOME ###############
-############# By DRGVPN ##############
 client
 dev tun
 proto tcp
@@ -45,7 +42,7 @@ auth-user-pass
 comp-lzo
 verb 3
 
-setenv FRIENDLY_NAME "DRGVPN OHP"
+setenv FRIENDLY_NAME "OVPN OHP"
 http-proxy $MYIP 8787
 http-proxy-option CUSTOM-HEADER CONNECT HTTP/1.1
 http-proxy-option CUSTOM-HEADER Host bug.com
@@ -67,8 +64,8 @@ cd
 #Buat Service Untuk OHP Ovpn
 cat > /etc/systemd/system/ohp.service <<END
 [Unit]
-Description=Direct Squid Proxy For OpenVPN TCP By DRGVPN
-Documentation=https://t.me/info_android9
+Description=Direct Squid Proxy For OpenVPN TCP
+Documentation=https://t.me/meaaoouuuu
 Wants=network.target
 After=network.target
 
@@ -88,4 +85,3 @@ echo ""
 echo -e "${GREEN}Done Installing OHP Server${NC}"
 echo -e "Port OVPN OHP TCP: $ohpp"
 echo -e "Link Download OVPN OHP: http://$MYIP:81/client-tcp-ohp1194.ovpn"
-echo -e "Script By DRGVPN"

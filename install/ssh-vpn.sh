@@ -1,4 +1,3 @@
-# By DRGVPN
 # ==================================================
 #wget https://github.com/${GitUser}/
 GitUser="Internetvps"
@@ -15,10 +14,10 @@ ver=$VERSION_ID
 country="MY"
 state="Kelantan"
 locality="Kota Bharu"
-organization="@info_android9"
-organizationalunit="@info_android9"
-commonname="DRGVPN"
-email="admin@drgvpn.com"
+organization="@meaaoouuuu"
+organizationalunit="@meaaoouuuu"
+commonname="AQUAGURL"
+email="admin@aquagurl.com"
 
 # // simple password minimal
 wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/password"

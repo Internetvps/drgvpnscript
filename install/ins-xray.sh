@@ -1,3 +1,4 @@
+#!/bin/bash
 # // wget https://github.com/${GitUser}/
 GitUser="Internetvps"
 
@@ -7,7 +8,7 @@ export MYIP=$(curl -sS ipv4.icanhazip.com)
 # // GETTING
 VALIDITY () {
     today=`date -d "0 days" +"%Y-%m-%d"`
-    Exp1=$(curl -sS https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | grep $MYIP | awk '{print $4}')
+    Exp1=$(curl -sS https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
     if [[ $today < $Exp1 ]]; then
     echo -e "\e[32mYOUR SCRIPT ACTIVE..\e[0m"
     else
@@ -16,7 +17,7 @@ VALIDITY () {
     exit 0
 fi
 }
-IZIN=$(curl -sS https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | awk '{print $5}' | grep $MYIP)
+IZIN=$(curl -sS https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | awk '{print $5}' | grep $MYIP)
 if [ $MYIP = $IZIN ]; then
 echo -e "\e[32mPermission Accepted...\e[0m"
 VALIDITY
@@ -26,6 +27,9 @@ echo -e "\e[31mPlease buy script first\e[0m"
 exit 0
 fi
 clear
+
+# // install socat
+apt install socat
 
 # // EMAIL & DOMAIN
 export emailcf=$(cat /usr/local/etc/xray/email)
@@ -127,17 +131,17 @@ cat> /usr/local/etc/xray/config.json << END
                         "xver": 1
                     },
                     {
-                        "path": "/DRG-vlesswstls", # // VMESS WS TLS
+                        "path": "/aquagurl-vlesswstls", # // VMESS WS TLS
                         "dest": 1212,
                         "xver": 1
                     },
                     {
-                        "path": "/DRG-vmesswstls", # // VLESS WS TLS
+                        "path": "/aquagurl-vmesswstls", # // VLESS WS TLS
                         "dest": 1213,
                         "xver": 1
                     },
                     {
-                        "path": "/DRG-trojanwstls", # // TROJAN WS TLS
+                        "path": "/aquagurl-trojanwstls", # // TROJAN WS TLS
                         "dest": 1214,
                         "xver": 1
                     }
@@ -383,7 +387,7 @@ cat> /usr/local/etc/xray/vless.json << END
                 "security": "none",
                 "wsSettings": {
                     "acceptProxyProtocol": true,
-                    "path": "/DRG-vlesswstls"
+                    "path": "/aquagurl-vlesswstls"
                 }
             }
         }
@@ -493,7 +497,7 @@ cat> /usr/local/etc/xray/vlessnone.json << END
          "network": "ws",
             "wsSettings": {
               "acceptProxyProtocol": true,
-                "path": "/DRG-vlesswsntls"
+                "path": "/aquagurl-vlesswsntls"
 
                 }
             }
@@ -607,7 +611,7 @@ cat> /usr/local/etc/xray/vmess.json << END
                 "security": "none",
                 "wsSettings": {
                     "acceptProxyProtocol": true,
-                    "path": "/DRG-vmesswstls"
+                    "path": "/aquagurl-vmesswstls"
                 }
             }
         }
@@ -717,7 +721,7 @@ cat> /usr/local/etc/xray/vmessnone.json << END
          "network": "ws",
             "wsSettings": {
               "acceptProxyProtocol": true,
-                "path": "/DRG-vmesswsntls"
+                "path": "/aquagurl-vmesswsntls"
                 }
             }
         }
@@ -829,7 +833,7 @@ cat> /usr/local/etc/xray/trojan.json << END
            "network": "ws",
            "wsSettings": {
              "acceptProxyProtocol": true,
-               "path": "/DRG-trojanwstls"
+               "path": "/aquagurl-trojanwstls"
              }
           }
        }
@@ -940,7 +944,7 @@ cat> /usr/local/etc/xray/trojannone.json << END
            "network": "ws",
            "wsSettings": {
              "acceptProxyProtocol": true,
-               "path": "/DRG-trojanwsntls"
+               "path": "/aquagurl-trojanwsntls"
              }
           }
        }
@@ -1050,17 +1054,17 @@ cat> /usr/local/etc/xray/none.json << END
             "xver": 1
           },
           {
-            "path": "/DRG-vlesswsntls", # // VLESS NONE
+            "path": "/aquagurl-vlesswsntls", # // VLESS NONE
             "dest": 1301,
             "xver": 1
           },
           {
-            "path": "/DRG-vmesswsntls", # // VMESS NONE
+            "path": "/aquagurl-vmesswsntls", # // VMESS NONE
             "dest": 1302,
             "xver": 1
           },
           {
-             "path": "/DRG-trojanwsntls", # // TROJAN NONE
+             "path": "/aquagurl-trojanwsntls", # // TROJAN NONE
             "dest": 1303,
             "xver": 1
           }
