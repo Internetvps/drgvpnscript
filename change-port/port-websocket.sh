@@ -57,7 +57,7 @@ rm -f /etc/systemd/system/cdn-dropbear.service
 cat > /etc/systemd/system/cdn-dropbear.service <<END
 [Unit]
 Description=Python WS-Dropbear By DRGVPN 
-Documentation=https://DRGVPN.xyz
+Documentation=https://DRG.xyz
 After=network.target nss-lookup.target
 
 [Service]
@@ -111,8 +111,8 @@ if [[ -z $cek ]]; then
 rm -f /etc/systemd/system/cdn-ovpn.service
 cat > /etc/systemd/system/cdn-ovpn.service <<END
 [Unit]
-Description=Python WS-Ovpn By drgvpnVPN 
-Documentation=https://drgvpn.xyz
+Description=Python WS-Ovpn By DRGVPN 
+Documentation=https://DRG.xyz
 After=network.target nss-lookup.target
 
 [Service]
