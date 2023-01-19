@@ -1,5 +1,5 @@
 #wget https://github.com/${GitUser}/
-GitUser="internetvps"
+GitUser="Internetvps"
 if [ "${EUID}" -ne 0 ]; then
 		echo "You need to run this script as root"
 		exit 1
@@ -79,7 +79,7 @@ sleep 2
 echo -e "\e[1;36mStart Update For New Version, Please Wait..\e[m"
 sleep 2
 clear
-echo -e "\e[0;32mGetting New Version Script By DRGVPN...\e[0m"
+echo -e "\e[0;32mGetting New Version Script..\e[0m"
 sleep 1
 echo ""
 # UPDATE RUN-UPDATE
@@ -104,7 +104,7 @@ wget -O system "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/m
 wget -O menu "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/menu.sh"
 wget -O add-host "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/system/add-host.sh"
 wget -O check-sc "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/system/running.sh"
-wget -O certv2ray "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/cert.sh"
+wget -O cert "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/cert.sh"
 wget -O trojaan "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/menu/trojaan.sh"
 wget -O xraay "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/menu/xraay.sh"
 wget -O xp "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/xp.sh"
@@ -122,7 +122,7 @@ chmod +x system
 chmod +x menu
 chmod +x add-host
 chmod +x check-sc
-chmod +x certv2ray
+chmod +x cert
 chmod +x trojaan
 chmod +x xraay
 chmod +x xp
