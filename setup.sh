@@ -16,20 +16,12 @@ NC='\033[0;37m'
 # ===================
 echo ''
 clear
-echo ''
-echo -e "$RED         ██████╗░░█████╗░██╗░░██╗██╗░░░██╗░█████╗░ $NC"
-echo -e "$RED         ██╔══██╗██╔══██╗██║░██╔╝╚██╗░██╔╝██╔══██╗ $NC"
-echo -e "$RED         ██████╔╝███████║█████═╝░░╚████╔╝░███████║ $NC"
-echo -e "$RED         ██╔═══╝░██╔══██║██╔═██╗░░░╚██╔╝░░██╔══██║ $NC"
-echo -e "$RED         ██║░░░░░██║░░██║██║░╚██╗░░░██║░░░██║░░██║ $NC"
-echo -e "$RED         ╚═╝░░░░░╚═╝░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝ $NC"
-echo "                                                              "
+echo -e "$green.........................................................."$NC
 echo -e "$Lyellow                ⚡ PREMIUM SPEED SCRIPT ⚡"$NC
 echo -e "$green.........................................................."$NC
-echo -e "$Lyellow                  Autoscript By PAKYAVPN"$NC
+echo -e "$Lyellow                  Autoscript By DRGVPN"$NC
 echo -e "$Lyellow                    CONTACT TELEGRAM"$NC
-echo -e "$Lyellow                       @anakjati567"$NC
-echo -e "$Lyellow                       @Back_Door_Trick"$NC
+echo -e "$Lyellow                     @INFO-ANDROID9"$NC
 echo -e "$green.........................................................."$NC
 echo ''
 echo -e "$Lyellow                       Tunggu 6 Saat!"$NC
@@ -261,13 +253,13 @@ echo "   - Auto Delete Expired Account" | tee -a log-install.txt
 echo "   - Full Orders For Various Services" | tee -a log-install.txt
 echo "   - White Label" | tee -a log-install.txt
 echo "   - Installation Log --> /root/log-install.txt"  | tee -a log-install.txt
-echo -e "\e[1;32m══════════════════Autoscript By PAKYAVPN══════════════════\e[0m" | tee -a log-install.txt
+echo -e "\e[1;32m══════════════════Autoscript By DRGVPN══════════════════\e[0m" | tee -a log-install.txt
 sleep 7
 clear
 echo ""
 echo -e "    \e[1;32m.------------------------------------------.\e[0m"
 echo -e "    \e[1;32m|     SUCCESFULLY INSTALLED THE SCRIPT     |\e[0m"
-echo -e "    \e[1;32m|         PREMIUM BY @anakjati567          |\e[0m"
+echo -e "    \e[1;32m|         PREMIUM BY @INFO-ANDROID9         |\e[0m"
 echo -e "    \e[1;32m'------------------------------------------'\e[0m"
 echo ""
 echo -e "   \e[1;32mYour VPS Will Be Automatical Reboot In 5 seconds\e[0m"
