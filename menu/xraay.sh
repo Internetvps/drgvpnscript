@@ -8,7 +8,7 @@ export MYIP=$(curl -sS ipv4.icanhazip.com)
 VALIDITY () {
     clear
     today=`date -d "0 days" +"%Y-%m-%d"`
-    Exp1=$(curl -sS https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | grep $MYIP | awk '{print $4}')
+    Exp1=$(curl -sS https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
     if [[ $today < $Exp1 ]]; then
     echo -e "\e[32mYOUR SCRIPT ACTIVE..\e[0m"
     else
@@ -17,7 +17,7 @@ VALIDITY () {
     exit 0
 fi
 }
-IZIN=$(curl -sS https://raw.githubusercontent.com/${GitUser}/allow1/main/ipvps.conf | awk '{print $5}' | grep $MYIP)
+IZIN=$(curl -sS https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | awk '{print $5}' | grep $MYIP)
 if [ $MYIP = $IZIN ]; then
 echo -e "\e[32mPermission Accepted...\e[0m"
 VALIDITY
@@ -86,8 +86,8 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-export patchtls=/DRG-vmesswstls
-export patchnontls=/DRG-vmesswsntls
+export patchtls=/aquagurl-vmesswstls
+export patchnontls=/aquagurl-vmesswsntls
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
 read -p "   Bug Address (Example: www.google.com) : " address
@@ -150,7 +150,7 @@ cat > /usr/local/etc/xray/$user-clash-for-android.yaml <<-END
 # CONFIG CLASH VMESS
 port: 7890
 socks-port: 7891
-allow1-lan: true
+allow-lan: true
 mode: Rule
 log-level: info
 external-controller: 127.0.0.1:9090
@@ -300,8 +300,8 @@ export exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
 
 # // Make Random Username 
 export user=Trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
-export patchtls=/DRG-vmesswstls
-export patchnontls=/DRG-vmesswsntls
+export patchtls=/aquagurl-vmesswstls
+export patchnontls=/aquagurl-vmesswsntls
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
 read -p "   Bug Address (Example: www.google.com) : " address
@@ -362,7 +362,7 @@ cat > /usr/local/etc/xray/$user-clash-for-android.yaml <<-END
 # CONFIG CLASH VMESS
 port: 7890
 socks-port: 7891
-allow1-lan: true
+allow-lan: true
 mode: Rule
 log-level: info
 external-controller: 127.0.0.1:9090
@@ -629,8 +629,8 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#vms " "/usr/local/etc/xray/vmess.json")
 			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 		fi
 	done
-export patchtls=/DRG-vmesswstls
-export patchnontls=/DRG-vmesswsntls
+export patchtls=/aquagurl-vmesswstls
+export patchnontls=/aquagurl-vmesswsntls
 export user=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
 export harini=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export exp=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
@@ -674,7 +674,7 @@ cat > /usr/local/etc/xray/$user-clash-for-android.yaml <<-END
 # CONFIG CLASH VMESS
 port: 7890
 socks-port: 7891
-allow1-lan: true
+allow-lan: true
 mode: Rule
 log-level: info
 external-controller: 127.0.0.1:9090
@@ -866,8 +866,8 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-export patchtls=/DRG-vlesswstls
-export patchnontls=/DRG-vlesswsntls
+export patchtls=/aquagurl-vlesswstls
+export patchnontls=/aquagurl-vlesswsntls
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
 read -p "   Bug Address (Example: www.google.com) : " address
@@ -953,8 +953,8 @@ export exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
 # Make Random Username 
 export user=Trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
 
-export patchtls=/DRG-vlesswstls
-export patchnontls=/DRG-vlesswsntls
+export patchtls=/aquagurl-vlesswstls
+export patchnontls=/aquagurl-vlesswsntls
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
 read -p "   Bug Address (Example: www.google.com) : " address
@@ -1150,8 +1150,8 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#vls " "/usr/local/etc/xray/vless.json")
 			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 		fi
 	done
-export patchtls=/DRG-vlesswstls
-export patchnontls=/DRG-vlesswsntls
+export patchtls=/aquagurl-vlesswstls
+export patchnontls=/aquagurl-vlesswsntls
 export user=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
 export harini=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export exp=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
