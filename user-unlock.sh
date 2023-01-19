@@ -1,6 +1,6 @@
 # Created by DRGVPN
 #wget https://github.com/${GitUser}/
-GitUser="Internetvps"
+GitUser="internetvps"
 #IZIN SCRIPT
 MYIP=$(curl -sS ipv4.icanhazip.com)
 echo -e "\e[32mloading...\e[0m"
