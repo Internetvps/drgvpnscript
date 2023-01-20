@@ -124,7 +124,7 @@ echo -e "\e[$banner_colour"
 figlet -f $ascii "$banner"
 echo -e "\e[$text VPS Script"
 echo -e " \e[$line**************************************************************\e[m"
-echo -e "  \e[$back_text                 \e[30m[\e[$box ♠SERVER INFOMATION♠\e[30m ]\e[1m    
+echo -e "  \e[$back_text                    \e[30m[\e[$box ♠SYSTEM INFORMATION♠\e[30m ]\e[1m                  \e[m"
 echo -e " \e[$line**************************************************************\e[m"
 echo -e "  \e[$text Cpu Model            :$cname"
 echo -e "  \e[$text Cpu Frequency        :$freq MHz"
@@ -142,37 +142,41 @@ echo -e "  \e[$text Order ID             : $oid"
 echo -e "  \e[$text Expired Status       : $exp $sts"
 echo -e "  \e[$text Provided By          : $creditt"
 echo -e "  \e[$text Status Update        : $stl"
-echo -e " \e[$line****************************************************************\e[m"
+echo -e " \e[$line***************************************************************\e[m"
 echo -e "  \e[$text Traffic\e[0m       \e[${text}Today      Yesterday     Month   "
 echo -e "  \e[$text Download\e[0m   \e[${text}   $dtoday    $dyest       $dmon   \e[0m"
 echo -e "  \e[$text Upload\e[0m     \e[${text}   $utoday    $uyest       $umon   \e[0m"
 echo -e "  \e[$text Total\e[0m       \e[${text}  $ttoday    $tyest       $tmon  \e[0m "
-echo -e " \e[$line*****************************************************************\e[m"
+echo -e " \e[$line***************************************************************\e[m"
 echo -e " \e[$text Ssh/Ovpn   V2ray   Vless   Vlessxtls   Trojan-Ws   Trojan-Tls \e[0m "    
 echo -e " \e[$below    $total_ssh         $vmess       $vless        $xtls           $trws           $trtls \e[0m "
 echo -e " \e[$line***************************************************************\e[m"
-echo -e "  \e[$back_text                        \e[30m[\e[$box ♠CREATE VPS ID♠\e[30m ]\e[1m                       \e[m"
+echo -e "  \e[$back_text                        \e[30m[\e[$box ♠PANEL MENU♠\e[30m ]\e[1m                       \e[m"
 echo -e " \e[$line***************************************************************\e[m"
-echo -e "  \e[$number <1>\e[m \e[$below XRAY VMESS & VLESS\e[m"
-echo -e "  \e[$number <2>\e[m \e[$below TROJAN XRAY & WS\e[m"
-echo -e "  \e[$number <3>\e[m \e[$below OPENSSH & OPENVPN\e[m"     
-echo -e "  \e[$number <4>\e[m \e[$below SYSTEM MENU\e[m          
-echo -e "  \e[$number <5>\e[m \e[$below CHECK RUNNING\e[m        
-echo -e "  \e[$number <6>\e[m \e[$below CHANGE PORT\e[m          
-echo -e "  \e[$number <7>\e[m \e[$below REBOOT VPS\e[m           
-echo -e "  \e[$number <8>\e[m \e[$below MENU THEMES\e[m"
-echo -e "   \e[$number <9>\e[m \e[$below ADDIP ADMIN ONLY\e[m"
-echo -e "   \e[$number <10>\e[m \e[$below INFO ALL PORT\e[m"
-echo -e "  \e[$number <11>\e[m \e[$below CLEAR LOG VPS\e[m"
-echo -e "  \e[$below🔰Ctrl + C🔰 press for exit \e[m"
+echo -e "  \e[$number (•1)\e[m \e[$below XRAY VMESS & VLESS\e[m"
+echo -e "  \e[$number (•2)\e[m \e[$below TROJAN XRAY & WS\e[m"
+echo -e "  \e[$number (•3)\e[m \e[$below OPENSSH & OPENVPN\e[m"     
 echo -e " \e[$line**************************************************************\e[m"
-echo -e "  \e[$below Version Name         : drgvpn 1.0v"
+echo -e "  \e[$back_text                        \e[30m[\e[$box ♠VPS MENU♠\e[30m ]\e[1m                       \e[m"
+echo -e " \e[$line**************************************************************\e[m"
+echo -e "  \e[$number (•4)\e[m \e[$below SYSTEM MENU\e[m         
+echo -e "  \e[$number (•5)\e[m \e[$below CHECK RUNNING\e[m        
+echo -e "  \e[$number (•6)\e[m \e[$below CHANGE PORT\e[m         
+echo -e "  \e[$number (•7)\e[m \e[$below REBOOT VPS\e[m
+echo -e "  \e[$number (•8)\e[m \e[$below MENU THEMES\e[m"
+echo -e "  \e[$number (•9)\e[m \e[$below ADDIP ADMIN ONLY\e[m"
+echo -e "  \e[$number (•10)\e[m \e[$below INFO ALL PORT\e[m"
+echo -e "  \e[$number (•11)\e[m \e[$below CLEAR LOG VPS\e[m"
+echo -e ""
+echo -e "  \e[$below[Ctrl + C] For exit from main menu\e[m"
+echo -e " \e[$line*************************************************************\e[m"
+echo -e "  \e[$below Version Name         : DRGVPN 1.0V"
 echo -e "  \e[$below Autoscript By        : DRGVPN"
 echo -e "  \e[$below Certificate Status   : Expired in $certifacate days"
 echo -e "  \e[$below Client Name          : $username"
-echo -e " \e[$line***************************************************************\e[m"
+echo -e " \e[$line*************************************************************\e[m"
 echo -e "\e[$below "
-read -p " Select number :  " menu
+read -p " Select menu :  " menu
 echo -e ""
 case $menu in
 1)
