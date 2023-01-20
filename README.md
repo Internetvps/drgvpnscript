@@ -2,6 +2,8 @@
 
  <h2 align="center">AutoScript VPN <img src="https://img.shields.io/badge/Version-senip_1.4-blue.svg"></h2>
 
+## ⏩ DM ME IF YOU WANT USE THIS SCRIPT... ⏪
+## JUST DM ME FOR REG IP http://t.me/info_android9
 
 <h2 align="center"> Supported Linux Distribution</h2>
 <p align="center"><img src="https://d33wubrfki0l68.cloudfront.net/5911c43be3b1da526ed609e9c55783d9d0f6b066/9858b/assets/img/debian-ubuntu-hover.png"></p>
@@ -15,7 +17,7 @@ src="https://img.shields.io/badge/Service-Xray-success.svg">  <img src= "https:/
 ## Update & Upgrade First Your VPS for Debian 10 & 11
 
   ```html
-  apt-get update && apt-get upgrade -y && update-grub && sleep 2 && reboot
+  apt-get update && apt-get upgrade -y 
 
   ```
 
@@ -96,6 +98,15 @@ systemctl restart wg-quick@wg0
    - Full Orders For Various Services
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## ⏩ BUY ME A COFFEE IF YOU LIKE THIS SCRIPT... ⏪
+
+<b>
+<br>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/89685787/213615495-bf99dc3a-8e9d-48cc-a1e9-2a3691c2cd88.jpg" width="300" title="Autoscript-Lite">
+<b>
+
 
 
 <p align="center">
