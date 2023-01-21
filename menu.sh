@@ -1,4 +1,3 @@
-#!/bin/bash
 #wget https://github.com/${GitUser}/
 GitUser="Internetvps"
 #IZIN SCRIPT
@@ -148,7 +147,7 @@ echo -e "  \e[$text Upload\e[0m     \e[${text}   $utoday    $uyest       $umon  
 echo -e "  \e[$text Total\e[0m       \e[${text}  $ttoday    $tyest       $tmon  \e[0m "
 echo -e " \e[$line***************************************************************\e[m"
 echo -e " \e[$text Ssh/Ovpn   V2ray   Vless   Vlessxtls   Trojan-Ws   Trojan-Tls \e[0m "    
-echo -e " \e[$below    $total_ssh         $vmess       $vless        $xtls           $trws           $trtls \e[0m "
+echo -e " \e[$below$total_ssh  $vmess $vless    $xtls        $trws      $trtls \e[0m "
 echo -e " \e[$line***************************************************************\e[m"
 echo -e " \e[$number  [•1]\e[m \e[$below • XRAY VMESS & VLESS\e[m"
 echo -e "  \e[$number [•2]\e[m \e[$below • TROJAN XRAY & WS\e[m"
