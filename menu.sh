@@ -1,4 +1,3 @@
-#!/bin/bash
 #wget https://github.com/${GitUser}/
 GitUser="Internetvps"
 #IZIN SCRIPT
@@ -150,17 +149,12 @@ echo -e " \e[$line**************************************************************
 echo -e " \e[$text Ssh/Ovpn   V2ray   Vless   Vlessxtls   Trojan-Ws   Trojan-Tls \e[0m "    
 echo -e " \e[$below    $total_ssh         $vmess       $vless       $xtls             $trws          $trtls \e[0m "
 echo -e " \e[$line***************************************************************\e[m"
-echo -e " \e[$number  [•1]\e[m \e[$below • XRAY VMESS & VLESS\e[m"
-echo -e "  \e[$number [•2]\e[m \e[$below • TROJAN XRAY & WS\e[m"
-echo -e "  \e[$number [•3]\e[m \e[$below • SSH & OPENVPN\e[m"     
-echo -e "  \e[$number [•4]\e[m \e[$below • SYSTEM MENU\e[m"          
-echo -e " \e[$number  [•5]\e[m \e[$below • CHECK SCRIPT\e[m"
-echo -e "  \e[$number [•6]\e[m \e[$below • CHANGE PORT\e[m"        
-echo -e " \e[$number  [•7]\e[m \e[$below • REBOOT\e[m"
-echo -e "  \e[$number [•8]\e[m \e[$below • THEMES\e[m"          
-echo -e "  \e[$number [•9]\e[m \e[$below • ADD IP ADMIN\e[m"
-echo -e "  \e[$number [•10]\e[m \e[$below• INFO ALL PORT\e[m"
-echo -e "  \e[$number [•11]\e[m \e[$below• CLEAR LOG VPS\e[m"
+echo -e " \e[$number  •1\e[m \e[$below •XRAY VMESS & VLESS\e[m           \e[$number •7\e[m \e[$below •CLEAR LOG VPS\e[m"
+echo -e "  \e[$number •2\e[m \e[$below •TROJAN XRAY & WS\e[m             \e[$number •8\e[m \e[$below •CHANGE PORT\e[m"
+echo -e "  \e[$number •3\e[m \e[$below •OPENSSH & OPENVPN\e[m            \e[$number •9\e[m \e[$below •REBOOT VPS\e[m"
+echo -e "  \e[$number •4\e[m \e[$below •MAXIS & DIGI CELCOM\e[m          \e[$number •10\e[m \e[$below•CHECK RUNNING\e[m"
+echo -e "  \e[$number •5\e[m \e[$below •SYSTEM MENU\e[m                  \e[$number •11\e[m \e[$below•ADDIP ADMIN ONLY\e[m"
+echo -e "  \e[$number •6\e[m \e[$below •MENU THEMES\e[m                  \e[$number •12\e[m \e[$below•INFO ALL PORT\e[m"
 echo -e " \e[$line*************************************************************\e[m"
 echo -e "  \e[$below Autoscript By        : DRGVPN"
 echo -e "  \e[$below Certificate Status   : Expired in $certifacate days"
