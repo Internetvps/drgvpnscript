@@ -25,7 +25,7 @@ exit 0
 fi
 clear
 apt install jq curl -y
-DOMAIN=pakya-vpn.ovh
+DOMAIN=drgvpn-vpn.ovh
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c4)
 SUB_DOMAIN=${sub}.aquagurl.me
 CF_ID=aquagurl2601@gmail.com
