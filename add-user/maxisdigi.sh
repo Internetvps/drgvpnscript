@@ -1,5 +1,5 @@
 #wget https://github.com/${GitUser}/
-GitUser="NikmatSenip"
+GitUser="Internetvps"
 # Color Validation
 Lred='\e[1;91m'
 BGWHITE='\e[0;47;30m'
