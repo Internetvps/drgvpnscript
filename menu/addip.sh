@@ -33,7 +33,7 @@ fi
 
 setadmin() {
 #isi link git
-linkinstall="https://raw.githubusercontent.com/drgvpnscript/git-repo/main"
+linkinstall="https://raw.githubusercontent.com/namagit/git-repo/main"
 rm -rf /etc/adminip/
 mkdir -p /etc/adminip
 read -p "INPUT OWNER ACCESS TOKEN CODE " ans
@@ -63,7 +63,7 @@ rm -rf /root/allow
 read -p " - IP VPS      : " daftar
 echo -e "[ ${Lyellow}INFO${NC} ] Checking the IPVPS if Already Registered"
 sleep 1
-cek=$( curl -sS https://raw.githubusercontent.com/drgvpnscript/allow/main/ipvps.conf | awk '{print $5}' | grep $daftar )
+cek=$( curl -sS https://raw.githubusercontent.com/Internetvps/allow/main/ipvps.conf | awk '{print $5}' | grep $daftar )
 if [[ $daftar = $cek ]]; then
 echo -e "\e[1;31m The IP VPS Has Been Registered\e[0m"
 sleep 2
