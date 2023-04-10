@@ -165,7 +165,7 @@ echo -e "  \e[$number [•12]\e[m \e[$below•EXIT\e[m"
 echo -e " \e[$line*************************************************************\e[m"
 echo -e "  \e[$below Autoscript By        : DRGVPN"
 echo -e "  \e[$below remode by            : @info_android9"
-echo 
+echo -e "  \e[$below version.             : 1.0v"
 echo -e " \e[$line*************************************************************\e[m"
 echo -e "  \e[$below[Ctrl + C] keluar-dari-script\e[m"
 echo -e "\e[$below "
