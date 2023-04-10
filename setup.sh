@@ -18,7 +18,7 @@ NC='\033[0;37m'
 echo ''
 clear
 echo ''
-echo "                                                              "
+echo "                                                                   "
 echo -e "$Lyellow                ⚡ PREMIUM AUTO SCRIPT ⚡"$NC
 echo -e "$green.........................................................."$NC
 echo -e "$Lyellow                  Autoscript By drgvpn"$NC
