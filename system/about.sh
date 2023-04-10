@@ -4,13 +4,6 @@ GitUser="Internetvps"
 #IZIN SCRIPT
 MYIP=$(curl -sS ipv4.icanhazip.com)
 echo -e "\e[32mloading...\e[0m"
-clear
-echo -e "\e[32mloading...\e[0m"
-clear
-yl='\e[031;1m'
-bl='\e[36;1m'
-gl='\e[32;1m'
-clear
 yl='\e[031;1m'
 bl='\e[36;1m'
 gl='\e[32;1m'
