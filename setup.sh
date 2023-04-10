@@ -19,14 +19,14 @@ echo ''
 clear
 echo ''
 echo "                                                                   "
-echo -e "$Lyellow                ⚡ PREMIUM AUTO SCRIPT ⚡"$NC
+echo -e "$Lyellow                    PREMIUM AUTO SCRIPT "$NC
 echo -e "$green.........................................................."$NC
-echo -e "$Lyellow                  Autoscript By drgvpn"$NC
+echo -e "$Lyellow                   Autoscript By drgvpn"$NC
 echo -e "$Lyellow                    CONTACT TELEGRAM"$NC
-echo -e "$Lyellow                       @info_android9"$NC
+echo -e "$Lyellow                     @info_android9"$NC
 echo -e "$green.........................................................."$NC
 echo ''
-echo -e "$Lyellow                       Tunggu 10 Saat!"$NC
+echo -e "$Lyellow                      proses install..."$NC
 echo -e "$green.........................................................."$NC
 sleep 6
 clear
@@ -158,9 +158,9 @@ clear
 #install ohp-server
 echo -e "\e[0;32mINSTALLING OHP PORT...\e[0m"
 sleep 1
-wget https://raw.githubusercontent.com/${GitUser}/hasilsenip/main/install/ohp.sh && chmod +x ohp.sh && ./ohp.sh
-wget https://raw.githubusercontent.com/${GitUser}/hasilsenip/main/install/ohp-dropbear.sh && chmod +x ohp-dropbear.sh && ./ohp-dropbear.sh
-wget https://raw.githubusercontent.com/${GitUser}/hasilsenip/main/install/ohp-ssh.sh && chmod +x ohp-ssh.sh && ./ohp-ssh.sh
+wget https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/install/ohp.sh && chmod +x ohp.sh && ./ohp.sh
+wget https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/install/ohp-dropbear.sh && chmod +x ohp-dropbear.sh && ./ohp-dropbear.sh
+wget https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/install/ohp-ssh.sh && chmod +x ohp-ssh.sh && ./ohp-ssh.sh
 echo -e "\e[0;32mDONE INSTALLING OHP PORT\e[0m"
 clear
 #install websocket
