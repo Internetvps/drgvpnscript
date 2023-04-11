@@ -4,8 +4,7 @@ GitUser="Internetvps"
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
 MYIP=$(wget -qO- icanhazip.com);
-
-
+MYIP2=$(wget -qO- icanhazip.com);
 ANU=$(ip -o $ANU -4 route show to default | awk '{print $5}');
 domain=$(cat /root/domain)
 
@@ -58,7 +57,7 @@ comp-lzo
 verb 3
 END
 
-sed -i $MYIP /etc/openvpn/client-tcp-1194.ovpn;
+sed -i $MYIP2 /etc/openvpn/client-tcp-1194.ovpn;
 
 # Buat config client UDP 2200
 cat > /etc/openvpn/client-udp-2200.ovpn <<-END
@@ -81,7 +80,7 @@ comp-lzo
 verb 3
 END
 
-sed -i $MYIP /etc/openvpn/client-udp-2200.ovpn;
+sed -i $MYIP2 /etc/openvpn/client-udp-2200.ovpn;
 
 # Buat config client SSL
 cat > /etc/openvpn/client-tcp-ssl.ovpn <<-END
@@ -104,7 +103,7 @@ comp-lzo
 verb 3
 END
 
-sed -i $MYIP /etc/openvpn/client-tcp-ssl.ovpn;
+sed -i $MYIP2 /etc/openvpn/client-tcp-ssl.ovpn;
 
 cd
 # pada tulisan xxx ganti dengan alamat ip address VPS anda 
