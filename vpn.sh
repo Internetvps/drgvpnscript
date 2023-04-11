@@ -4,6 +4,7 @@ GitUser="Internetvps"
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
 MYIP=$(wget -qO- icanhazip.com);
+MYIP=$(wget -qO- icanhazip.com);
 
 ANU=$(ip -o $ANU -4 route show to default | awk '{print $5}');
 domain=$(cat /root/domain)
