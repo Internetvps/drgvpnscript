@@ -815,7 +815,7 @@ echo -e "\033[0;34m════════════════════�
 for akun in "${data[@]}"
 do
 if [[ -z "$akun" ]]; then
-akun="bash a"
+akun="tidakada"
 fi
 echo -n > /tmp/ipvmess.txt
 data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
@@ -1212,7 +1212,7 @@ echo -e "\033[0;34m════════════════════�
 for akun in "${data[@]}"
 do
 if [[ -z "$akun" ]]; then
-akun="bash a"
+akun="tidakada"
 fi
 echo -n > /tmp/ipvless.txt
 data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
@@ -1234,7 +1234,7 @@ else
 jum2=$(cat /tmp/ipvless.txt | nl)
 echo "user : $akun";
 echo "$jum2";
-echo ""
+echo "$akun"
 echo -e "\e[$line══════════════════════════════════════════\e[m"
 fi
 rm -rf /tmp/ipvmess.txt
@@ -1584,7 +1584,7 @@ echo -e "\033[0;34m════════════════════�
 for akun in "${data[@]}"
 do
 if [[ -z "$akun" ]]; then
-akun="bash a"
+akun="tidakada"
 fi
 echo -n > /tmp/ipxray.txt
 data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
