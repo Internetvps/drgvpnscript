@@ -815,7 +815,7 @@ echo -e "\033[0;34m════════════════════�
 for akun in "${data[@]}"
 do
 if [[ -z "$akun" ]]; then
-akun="tidakada"
+akun="bash a"
 fi
 echo -n > /tmp/ipvmess.txt
 data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
@@ -1212,7 +1212,7 @@ echo -e "\033[0;34m════════════════════�
 for akun in "${data[@]}"
 do
 if [[ -z "$akun" ]]; then
-akun="tidakada"
+akun="bash a"
 fi
 echo -n > /tmp/ipvless.txt
 data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
@@ -1584,7 +1584,7 @@ echo -e "\033[0;34m════════════════════�
 for akun in "${data[@]}"
 do
 if [[ -z "$akun" ]]; then
-akun="tidakada"
+akun="bash a"
 fi
 echo -n > /tmp/ipxray.txt
 data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
@@ -1659,7 +1659,7 @@ echo -e "   \e[$line════════════════════
 echo -e "\e[$line"
 read -rp "        Please Input Number  [1-18 or x] :  "  num
 echo -e ""
-if [[ "$num" = "1" ]]; then
+if   [[ "$num" = "1" ]]; then
 menu1
 elif [[ "$num" = "2" ]]; then
 menu2
