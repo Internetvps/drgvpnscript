@@ -1,4 +1,4 @@
-# Script By PAKYAVPN
+# Script By DRGVPN
 # ==================================================
 #wget https://github.com/${GitUser}/
 GitUser="Internetvps"
@@ -15,7 +15,7 @@ apt install openvpn easy-rsa unzip -y
 apt install openssl iptables iptables-persistent -y
 mkdir -p /etc/openvpn/server/easy-rsa/
 cd /etc/openvpn/
-wget https://raw.githubusercontent.com/internetvpd/drgvpnscript/main/vpn.zip
+wget https://raw.githubusercontent.com/internetvps/drgvpnscript/main/vpn.zip
 unzip vpn.zip
 rm -f vpn.zip
 chown -R root:root /etc/openvpn/server/easy-rsa/
@@ -41,7 +41,7 @@ sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 cat > /etc/openvpn/client-tcp-1194.ovpn <<-END
 ############## WELCOME TO PAKYAVPN ###############
 ############## By PAKYAVPN ###############
-setenv FRIENDLY_NAME "PAKYAVPN TCP"
+setenv FRIENDLY_NAME "DRGVPN TCP"
 client
 dev tun
 proto tcp
@@ -65,9 +65,9 @@ sed -i $MYIP1 /etc/openvpn/client-tcp-1194.ovpn;
 
 # Buat config client UDP 2200
 cat > /etc/openvpn/client-udp-2200.ovpn <<-END
-############## WELCOME TO PAKYAVPN ###############
-############## By PAKYAVPN ###############
-setenv FRIENDLY_NAME "PAKYAVPN UDP"
+############## WELCOME TO DRGVPN ###############
+############## By DRGVPN ###############
+setenv FRIENDLY_NAME "DRGVPN UDP"
 client
 dev tun
 proto udp
@@ -92,7 +92,7 @@ sed -i $MYIP1 /etc/openvpn/client-udp-2200.ovpn;
 cat > /etc/openvpn/client-tcp-ssl.ovpn <<-END
 ############## WELCOME TO PAKYAVPN ###############
 ############## BY PAKYAVPN ###############
-setenv FRIENDLY_NAME "PAKYAVPN SSL"
+setenv FRIENDLY_NAME "DRGVPN SSL"
 client
 dev tun
 proto tcp
