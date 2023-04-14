@@ -22,9 +22,9 @@ echo ''
 echo "                                                              "
 echo -e "$Lyellow                ⚡ PREMIUM SPEED SCRIPT ⚡"$NC
 echo -e "$green.........................................................."$NC
-echo -e "$Lyellow                  Autoscript By AQUAGURL"$NC
+echo -e "$Lyellow                  Autoscript By DRGVPN"$NC
 echo -e "$Lyellow                    CONTACT TELEGRAM"$NC
-echo -e "$Lyellow                       @meaaoouuuu"$NC
+echo -e "$Lyellow                       @info_android9"$NC
 echo -e "$green.........................................................."$NC
 echo ''
 echo -e "$Lyellow                       Tunggu 6 Saat!"$NC
