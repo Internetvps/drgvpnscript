@@ -1,6 +1,5 @@
-#!/bin/bash
 #wget https://github.com/${GitUser}/
-GitUser="Internetvps"
+GitUser="internetvps"
 
 # // IZIN SCRIPT
 export MYIP=$(curl -sS ipv4.icanhazip.com)
@@ -78,15 +77,15 @@ echo -e   "  \e[$line═══════════════════�
 echo -e   "  \e[$back_text           \e[30m[\e[$box CREATE USER XRAY VMESS WS TLS\e[30m ]\e[1m           \e[m"
 echo -e   "  \e[$line═══════════════════════════════════════════════════════\e[m"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "   Username: " -e user
-		CLIENT_EXISTS=$(grep -w $user /usr/local/etc/xray/vmess.json | wc -l)
+    read -rp "   Username: " -e user
+    CLIENT_EXISTS=$(grep -w $user /usr/local/etc/xray/vmess.json | wc -l)
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-			echo ""
-			echo "A client with the specified name was already created, please choose another name."
-			exit 1
-		fi
-	done
+    if [[ ${CLIENT_EXISTS} == '1' ]]; then
+      echo ""
+      echo "A client with the specified name was already created, please choose another name."
+      exit 1
+    fi
+  done
 export patchtls=/aquagurl-vmesswstls
 export patchnontls=/aquagurl-vmesswsntls
 export uuid=$(cat /proc/sys/kernel/random/uuid)
@@ -124,7 +123,7 @@ cat>/usr/local/etc/xray/$user-tls.json<<EOF
       "type": "none",
       "host": "$sni",
       "tls": "tls",
-	  "sni": "$sni"
+    "sni": "$sni"
 }
 EOF
 cat>/usr/local/etc/xray/$user-none.json<<EOF
@@ -336,7 +335,7 @@ cat>/usr/local/etc/xray/$user-tls.json<<EOF
       "type": "none",
       "host": "$sni",
       "tls": "tls",
-	  "sni": "$sni"
+    "sni": "$sni"
 }
 EOF
 cat>/usr/local/etc/xray/$user-none.json<<EOF
@@ -502,26 +501,26 @@ xraay
 function menu3 () {
 clear
 NUMBER_OF_CLIENTS=$(grep -c -E "^#vms " "/usr/local/etc/xray/vmess.json")
-	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
-		echo ""
-		echo "You have no existing clients!"
-		exit 1
-	fi
+  if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+    echo ""
+    echo "You have no existing clients!"
+    exit 1
+  fi
 
-	clear
-	echo " Delete User Xray Vmess Ws"
-	echo " Select the existing client you want to remove"
-	echo " Press CTRL+C to return"
-	echo " ==============================="
-	echo "     No  Expired   User"
-	grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 2-3 | nl -s ') '
-	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
-		if [[ ${CLIENT_NUMBER} == '1' ]]; then
-			read -rp "Select one client [1]: " CLIENT_NUMBER
-		else
-			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
-		fi
-	done	
+  clear
+  echo " Delete User Xray Vmess Ws"
+  echo " Select the existing client you want to remove"
+  echo " Press CTRL+C to return"
+  echo " ==============================="
+  echo "     No  Expired   User"
+  grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 2-3 | nl -s ') '
+  until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
+    if [[ ${CLIENT_NUMBER} == '1' ]]; then
+      read -rp "Select one client [1]: " CLIENT_NUMBER
+    else
+      read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+    fi
+  done  
 export harini=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export uuid=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 5 | sed -n "${CLIENT_NUMBER}"p)
 export user=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
@@ -552,26 +551,26 @@ xraay
 function menu4 () {
 clear
 NUMBER_OF_CLIENTS=$(grep -c -E "^#vms " "/usr/local/etc/xray/vmess.json")
-	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
-		clear
-		echo ""
-		echo "You have no existing clients!"
-		exit 1
-	fi
+  if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+    clear
+    echo ""
+    echo "You have no existing clients!"
+    exit 1
+  fi
 
-	clear
-	echo "Renew User Xray Vmess Ws"
-	echo "Select the existing client you want to renew"
-	echo " Press CTRL+C to return"
-	echo -e "==============================="
-	grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 2-3 | nl -s ') '
-	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
-		if [[ ${CLIENT_NUMBER} == '1' ]]; then
-			read -rp "Select one client [1]: " CLIENT_NUMBER
-		else
-			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
-		fi
-	done
+  clear
+  echo "Renew User Xray Vmess Ws"
+  echo "Select the existing client you want to renew"
+  echo " Press CTRL+C to return"
+  echo -e "==============================="
+  grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 2-3 | nl -s ') '
+  until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
+    if [[ ${CLIENT_NUMBER} == '1' ]]; then
+      read -rp "Select one client [1]: " CLIENT_NUMBER
+    else
+      read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+    fi
+  done
 read -p "Expired (days): " masaaktif
 export harini=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export uuid=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 5 | sed -n "${CLIENT_NUMBER}"p)
@@ -609,27 +608,27 @@ clear
 tls="$(cat ~/log-install.txt | grep -w "Vmess Ws Tls" | cut -d: -f2|sed 's/ //g')"
 none="$(cat ~/log-install.txt | grep -w "Vmess Ws None Tls" | cut -d: -f2|sed 's/ //g')"
 NUMBER_OF_CLIENTS=$(grep -c -E "^#vms " "/usr/local/etc/xray/vmess.json")
-	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
-		clear
-		echo ""
-		echo "You have no existing clients!"
-		exit 1
-	fi
+  if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+    clear
+    echo ""
+    echo "You have no existing clients!"
+    exit 1
+  fi
 
-	clear
-	echo ""
-	echo "SHOW USER XRAY VMESS WS"
-	echo "Select the existing client you want to renew"
-	echo " Press CTRL+C to return"
-	echo -e "==============================="
-	grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 2-3 | nl -s ') '
-	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
-		if [[ ${CLIENT_NUMBER} == '1' ]]; then
-			read -rp "Select one client [1]: " CLIENT_NUMBER
-		else
-			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
-		fi
-	done
+  clear
+  echo ""
+  echo "SHOW USER XRAY VMESS WS"
+  echo "Select the existing client you want to renew"
+  echo " Press CTRL+C to return"
+  echo -e "==============================="
+  grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 2-3 | nl -s ') '
+  until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
+    if [[ ${CLIENT_NUMBER} == '1' ]]; then
+      read -rp "Select one client [1]: " CLIENT_NUMBER
+    else
+      read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+    fi
+  done
 export patchtls=/aquagurl-vmesswstls
 export patchnontls=/aquagurl-vmesswsntls
 export user=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
@@ -649,7 +648,7 @@ cat>/usr/local/etc/xray/$user-tls.json<<EOF
       "type": "none",
       "host": "bug.com",
       "tls": "tls",
-	  "sni": "bug.com"
+    "sni": "bug.com"
 }
 EOF
 cat>/usr/local/etc/xray/$user-none.json<<EOF
@@ -808,42 +807,45 @@ xraay
 # FUCTION CEK USER
 function menu6 () {
 clear
-echo -n >/tmp/other.txt
-data=($(cat /usr/local/etc/xray/config.json | grep '^#=' | cut -d ' ' -f 2 | sort | uniq))
-echo -e "${BB}————————————————————————————————————————————————————${NC}"
-echo -e "              ${WB}Vmess User Login Account${NC}              "
-echo -e "${BB}————————————————————————————————————————————————————${NC}"
-for akun in "${data[@]}"; do
+echo -n > /tmp/other.txt
+data=( `cat /usr/local/etc/xray/vmess.json | grep '^#vms' | cut -d ' ' -f 2`); 
+echo -e "\033[0;34m══════════════════════════════════════════\033[0m"
+echo -e "\\E[0;44;37m      ⇱ XRAY Vmess WS User Login  ⇲       \E[0m"
+echo -e "\033[0;34m══════════════════════════════════════════\033[0m"
+for akun in "${data[@]}"
+do
 if [[ -z "$akun" ]]; then
-akun="Tidak Ada"
+akun="tidakada"
 fi
-echo -n >/tmp/ipvmess.txt
-data2=($(cat /var/log/xray/access.log | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq))
-for ip in "${data2[@]}"; do
-jum=$(cat /var/log/xray/access.log | grep -w "$akun" | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | grep -w "$ip" | sort | uniq)
+echo -n > /tmp/ipvmess.txt
+data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
+for ip in "${data2[@]}"
+do
+jum=$(cat /var/log/xray/access.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
 if [[ "$jum" = "$ip" ]]; then
-echo "$jum" >>/tmp/ipvmess.txt
+echo "$jum" >> /tmp/ipvmess.txt
 else
-echo "$ip" >>/tmp/other.txt
+echo "$ip" >> /tmp/other.txt
 fi
 jum2=$(cat /tmp/ipvmess.txt)
-sed -i "/$jum2/d" /tmp/other.txt >/dev/null 2>&1
+sed -i "/$jum2/d" /tmp/other.txt > /dev/null 2>&1
 done
 jum=$(cat /tmp/ipvmess.txt)
 if [[ -z "$jum" ]]; then
-echo >/dev/null
+echo > /dev/null
 else
 jum2=$(cat /tmp/ipvmess.txt | nl)
-echo "user : $akun"
-echo "$jum2"
-echo -e "${BB}————————————————————————————————————————————————————${NC}"
+echo "user : $akun";
+echo "$jum2";
+echo ""
+echo -e "\e[$line══════════════════════════════════════════\e[m"
 fi
 rm -rf /tmp/ipvmess.txt
-done
 rm -rf /tmp/other.txt
+done
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu"
-vless
+read -n 1 -s -r -p "Press any key to back on menu xray"
+xraay
 }
 
 # ADD USER VLESS WS
@@ -855,15 +857,15 @@ echo -e   "  \e[$line═══════════════════�
 echo -e   "  \e[$back_text           \e[30m[\e[$box CREATE USER XRAY VLESS WS TLS\e[30m ]\e[1m           \e[m"
 echo -e   "  \e[$line═══════════════════════════════════════════════════════\e[m"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "   Username: " -e user
-		CLIENT_EXISTS=$(grep -w $user /usr/local/etc/xray/vless.json | wc -l)
+    read -rp "   Username: " -e user
+    CLIENT_EXISTS=$(grep -w $user /usr/local/etc/xray/vless.json | wc -l)
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-			echo ""
-			echo "A client with the specified name was already created, please choose another name."
-			exit 1
-		fi
-	done
+    if [[ ${CLIENT_EXISTS} == '1' ]]; then
+      echo ""
+      echo "A client with the specified name was already created, please choose another name."
+      exit 1
+    fi
+  done
 export patchtls=/aquagurl-vlesswstls
 export patchnontls=/aquagurl-vlesswsntls
 export uuid=$(cat /proc/sys/kernel/random/uuid)
@@ -1024,26 +1026,26 @@ xraay
 function menu9 () {
 clear
 NUMBER_OF_CLIENTS=$(grep -c -E "^#vls " "/usr/local/etc/xray/vless.json")
-	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
-		echo ""
-		echo "You have no existing clients!"
-		exit 1
-	fi
+  if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+    echo ""
+    echo "You have no existing clients!"
+    exit 1
+  fi
 
-	clear
-	echo " Delete User Xray Vless Ws"
-	echo " Select the existing client you want to remove"
-	echo " Press CTRL+C to return"
-	echo " ==============================="
-	echo "     No  Expired   User"
-	grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 2-3 | nl -s ') '
-	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
-		if [[ ${CLIENT_NUMBER} == '1' ]]; then
-			read -rp "Select one client [1]: " CLIENT_NUMBER
-		else
-			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
-		fi
-	done
+  clear
+  echo " Delete User Xray Vless Ws"
+  echo " Select the existing client you want to remove"
+  echo " Press CTRL+C to return"
+  echo " ==============================="
+  echo "     No  Expired   User"
+  grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 2-3 | nl -s ') '
+  until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
+    if [[ ${CLIENT_NUMBER} == '1' ]]; then
+      read -rp "Select one client [1]: " CLIENT_NUMBER
+    else
+      read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+    fi
+  done
 export harini=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export uuid=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 5 | sed -n "${CLIENT_NUMBER}"p)
 export user=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
@@ -1070,26 +1072,26 @@ xraay
 function menu10 () {
 clear
 NUMBER_OF_CLIENTS=$(grep -c -E "^#vls " "/usr/local/etc/xray/vless.json")
-	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
-		clear
-		echo ""
-		echo "You have no existing clients!"
-		exit 1
-	fi
+  if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+    clear
+    echo ""
+    echo "You have no existing clients!"
+    exit 1
+  fi
 
-	clear
-	echo "Renew User Xray Vless Ws"
-	echo "Select the existing client you want to renew"
-	echo " Press CTRL+C to return"
-	echo -e "==============================="
-	grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 2-3 | nl -s ') '
-	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
-		if [[ ${CLIENT_NUMBER} == '1' ]]; then
-			read -rp "Select one client [1]: " CLIENT_NUMBER
-		else
-			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
-		fi
-	done
+  clear
+  echo "Renew User Xray Vless Ws"
+  echo "Select the existing client you want to renew"
+  echo " Press CTRL+C to return"
+  echo -e "==============================="
+  grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 2-3 | nl -s ') '
+  until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
+    if [[ ${CLIENT_NUMBER} == '1' ]]; then
+      read -rp "Select one client [1]: " CLIENT_NUMBER
+    else
+      read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+    fi
+  done
 read -p "Expired (days): " masaaktif
 export harini=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export uuid=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 5 | sed -n "${CLIENT_NUMBER}"p)
@@ -1127,27 +1129,27 @@ clear
 tls="$(cat ~/log-install.txt | grep -w "Vless Ws Tls" | cut -d: -f2|sed 's/ //g')"
 none="$(cat ~/log-install.txt | grep -w "Vless Ws None Tls" | cut -d: -f2|sed 's/ //g')"
 NUMBER_OF_CLIENTS=$(grep -c -E "^#vls " "/usr/local/etc/xray/vless.json")
-	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
-		clear
-		echo ""
-		echo "You have no existing clients!"
-		exit 1
-	fi
+  if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+    clear
+    echo ""
+    echo "You have no existing clients!"
+    exit 1
+  fi
 
-	clear
-	echo ""
-	echo "SHOW USER XRAY VLESS WS"
-	echo "Select the existing client you want to renew"
-	echo " Press CTRL+C to return"
-	echo -e "==============================="
-	grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 2-3 | nl -s ') '
-	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
-		if [[ ${CLIENT_NUMBER} == '1' ]]; then
-			read -rp "Select one client [1]: " CLIENT_NUMBER
-		else
-			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
-		fi
-	done
+  clear
+  echo ""
+  echo "SHOW USER XRAY VLESS WS"
+  echo "Select the existing client you want to renew"
+  echo " Press CTRL+C to return"
+  echo -e "==============================="
+  grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 2-3 | nl -s ') '
+  until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
+    if [[ ${CLIENT_NUMBER} == '1' ]]; then
+      read -rp "Select one client [1]: " CLIENT_NUMBER
+    else
+      read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+    fi
+  done
 export patchtls=/aquagurl-vlesswstls
 export patchnontls=/aquagurl-vlesswsntls
 export user=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
@@ -1202,43 +1204,45 @@ xraay
 # USER LOGIN VLESS WS
 function menu12 () {
 clear
-echo -n >/tmp/other.txt
-data=($(cat /usr/local/etc/xray/config.json | grep '^#=' | cut -d ' ' -f 2 | sort | uniq))
-echo -e "${BB}————————————————————————————————————————————————————${NC}"
-echo -e "              ${WB}Vless User Login Account${NC}              "
-echo -e "${BB}————————————————————————————————————————————————————${NC}"
-for akun in "${data[@]}"; do
+echo -n > /tmp/other.txt
+data=( `cat /usr/local/etc/xray/vless.json | grep '^#vls' | cut -d ' ' -f 2`);
+echo -e "\033[0;34m══════════════════════════════════════════\033[0m"
+echo -e "\\E[0;44;37m      ⇱ XRAY Vless WS User Login ⇲        \E[0m"
+echo -e "\033[0;34m══════════════════════════════════════════\033[0m"
+for akun in "${data[@]}"
+do
 if [[ -z "$akun" ]]; then
-akun="Tidak Ada"
+akun="tidakada"
 fi
-echo -n >/tmp/ipvmess.txt
-data2=($(cat /var/log/xray/access.log | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq))
-for ip in "${data2[@]}"; do
-jum=$(cat /var/log/xray/access.log | grep -w "$akun" | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | grep -w "$ip" | sort | uniq)
+echo -n > /tmp/ipvless.txt
+data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
+for ip in "${data2[@]}"
+do
+jum=$(cat /var/log/xray/access.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
 if [[ "$jum" = "$ip" ]]; then
-echo "$jum" >>/tmp/ipvmess.txt
+echo "$jum" >> /tmp/ipvless.txt
 else
-echo "$ip" >>/tmp/other.txt
+echo "$ip" >> /tmp/other.txt
 fi
-jum2=$(cat /tmp/ipvmess.txt)
-sed -i "/$jum2/d" /tmp/other.txt >/dev/null 2>&1
+jum2=$(cat /tmp/ipvless.txt)
+sed -i "/$jum2/d" /tmp/other.txt > /dev/null 2>&1
 done
-jum=$(cat /tmp/ipvmess.txt)
+jum=$(cat /tmp/ipvless.txt)
 if [[ -z "$jum" ]]; then
-echo >/dev/null
+echo > /dev/null
 else
-jum2=$(cat /tmp/ipvmess.txt | nl)
-echo "user : $akun"
-echo "$jum2"
-echo -e "${BB}————————————————————————————————————————————————————${NC}"
+jum2=$(cat /tmp/ipvless.txt | nl)
+echo "user : $akun";
+echo "$jum2";
+echo ""
+echo -e "\e[$line══════════════════════════════════════════\e[m"
 fi
 rm -rf /tmp/ipvmess.txt
-done
 rm -rf /tmp/other.txt
+done
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu"
-vless
-
+read -n 1 -s -r -p "Press any key to back on menu xray"
+xraay
 }
 
 # CREATE USER VLESS XTLS
@@ -1249,15 +1253,15 @@ echo -e   "  \e[$line═══════════════════�
 echo -e   "  \e[$back_text            \e[30m[\e[$box CREATE USER XRAY VLESS XTLS\e[30m ]\e[1m            \e[m"
 echo -e   "  \e[$line═══════════════════════════════════════════════════════\e[m"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "   Username: " -e user
-		CLIENT_EXISTS=$(grep -w $user /usr/local/etc/xray/config.json | wc -l)
+    read -rp "   Username: " -e user
+    CLIENT_EXISTS=$(grep -w $user /usr/local/etc/xray/config.json | wc -l)
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-			echo ""
-			echo "A client with the specified name was already created, please choose another name."
-			exit 1
-		fi
-	done
+    if [[ ${CLIENT_EXISTS} == '1' ]]; then
+      echo ""
+      echo "A client with the specified name was already created, please choose another name."
+      exit 1
+    fi
+  done
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "   Bug Address (Example: www.google.com) : " address
 read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
@@ -1401,27 +1405,27 @@ xraay
 function menu15 () {
 clear
 NUMBER_OF_CLIENTS=$(grep -c -E "^#vxtls " "/usr/local/etc/xray/config.json")
-	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
-		echo ""
-		echo "You have no existing clients!"
-		exit 1
-	fi
+  if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+    echo ""
+    echo "You have no existing clients!"
+    exit 1
+  fi
 
-	clear
-	echo ""
-	echo " Delete User Xray Vless Tcp Xtls"
-	echo " Select the existing client you want to remove"
-	echo " Press CTRL+C to return"
-	echo " ==============================="
-	echo "     No  Expired   User"
-	grep -E "^#vxtls " "/usr/local/etc/xray/config.json" | cut -d ' ' -f 2-3 | nl -s ') '
-	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
-		if [[ ${CLIENT_NUMBER} == '1' ]]; then
-			read -rp "Select one client [1]: " CLIENT_NUMBER
-		else
-			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
-		fi
-	done
+  clear
+  echo ""
+  echo " Delete User Xray Vless Tcp Xtls"
+  echo " Select the existing client you want to remove"
+  echo " Press CTRL+C to return"
+  echo " ==============================="
+  echo "     No  Expired   User"
+  grep -E "^#vxtls " "/usr/local/etc/xray/config.json" | cut -d ' ' -f 2-3 | nl -s ') '
+  until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
+    if [[ ${CLIENT_NUMBER} == '1' ]]; then
+      read -rp "Select one client [1]: " CLIENT_NUMBER
+    else
+      read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+    fi
+  done
 export harini=$(grep -E "^#vxtls " "/usr/local/etc/xray/config.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export uuid=$(grep -E "^#vxtls " "/usr/local/etc/xray/config.json" | cut -d ' ' -f 5 | sed -n "${CLIENT_NUMBER}"p)
 export user=$(grep -E "^#vxtls " "/usr/local/etc/xray/config.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
@@ -1446,27 +1450,27 @@ xraay
 function menu16 () {
 clear
 NUMBER_OF_CLIENTS=$(grep -c -E "^#vxtls " "/usr/local/etc/xray/config.json")
-	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
-		clear
-		echo ""
-		echo "You have no existing clients!"
-		exit 1
-	fi
+  if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+    clear
+    echo ""
+    echo "You have no existing clients!"
+    exit 1
+  fi
 
-	clear
-	echo ""
-	echo "Renew User Xray Vless Tcp Xtls"
-	echo "Select the existing client you want to renew"
-	echo " Press CTRL+C to return"
-	echo -e "==============================="
-	grep -E "^#vxtls " "/usr/local/etc/xray/config.json" | cut -d ' ' -f 2-3 | nl -s ') '
-	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
-		if [[ ${CLIENT_NUMBER} == '1' ]]; then
-			read -rp "Select one client [1]: " CLIENT_NUMBER
-		else
-			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
-		fi
-	done
+  clear
+  echo ""
+  echo "Renew User Xray Vless Tcp Xtls"
+  echo "Select the existing client you want to renew"
+  echo " Press CTRL+C to return"
+  echo -e "==============================="
+  grep -E "^#vxtls " "/usr/local/etc/xray/config.json" | cut -d ' ' -f 2-3 | nl -s ') '
+  until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
+    if [[ ${CLIENT_NUMBER} == '1' ]]; then
+      read -rp "Select one client [1]: " CLIENT_NUMBER
+    else
+      read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+    fi
+  done
 read -p "Expired (days): " masaaktif
 export harini=$(grep -E "^#vxtls " "/usr/local/etc/xray/config.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export uuid=$(grep -E "^#vxtls " "/usr/local/etc/xray/config.json" | cut -d ' ' -f 5 | sed -n "${CLIENT_NUMBER}"p)
@@ -1501,27 +1505,27 @@ function menu17 () {
 clear
 xtls="$(cat ~/log-install.txt | grep -w "Vless Tcp Xtls" | cut -d: -f2|sed 's/ //g')"
 NUMBER_OF_CLIENTS=$(grep -c -E "^#vxtls " "/usr/local/etc/xray/config.json")
-	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
-		clear
-		echo ""
-		echo "You have no existing clients!"
-		exit 1
-	fi
+  if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+    clear
+    echo ""
+    echo "You have no existing clients!"
+    exit 1
+  fi
 
-	clear
-	echo ""
-	echo "SHOW USER XRAY VLESS XTLS"
-	echo "Select the existing client you want to renew"
-	echo " Press CTRL+C to return"
-	echo -e "==============================="
-	grep -E "^#vxtls " "/usr/local/etc/xray/config.json" | cut -d ' ' -f 2-3 | nl -s ') '
-	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
-		if [[ ${CLIENT_NUMBER} == '1' ]]; then
-			read -rp "Select one client [1]: " CLIENT_NUMBER
-		else
-			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
-		fi
-	done
+  clear
+  echo ""
+  echo "SHOW USER XRAY VLESS XTLS"
+  echo "Select the existing client you want to renew"
+  echo " Press CTRL+C to return"
+  echo -e "==============================="
+  grep -E "^#vxtls " "/usr/local/etc/xray/config.json" | cut -d ' ' -f 2-3 | nl -s ') '
+  until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
+    if [[ ${CLIENT_NUMBER} == '1' ]]; then
+      read -rp "Select one client [1]: " CLIENT_NUMBER
+    else
+      read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+    fi
+  done
 export user=$(grep -E "^#vxtls " "/usr/local/etc/xray/config.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
 export harini=$(grep -E "^#vxtls " "/usr/local/etc/xray/config.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export exp=$(grep -E "^#vxtls " "/usr/local/etc/xray/config.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
@@ -1572,42 +1576,45 @@ xraay
 # CEK USER LOGIN VLESS XTLS
 function menu18 () {
 clear
-echo -n >/tmp/other.txt
-data=($(cat /usr/local/etc/xray/config.json | grep '^#=' | cut -d ' ' -f 2 | sort | uniq))
-echo -e "${BB}————————————————————————————————————————————————————${NC}"
-echo -e "              ${WB}Vless User Login Account${NC}              "
-echo -e "${BB}————————————————————————————————————————————————————${NC}"
-for akun in "${data[@]}"; do
+echo -n > /tmp/other.txt
+data=( `cat /usr/local/etc/xray/config.json | grep '^#vxtls' | cut -d ' ' -f 2`);
+echo -e "\033[0;34m══════════════════════════════════════════\033[0m"
+echo -e "\\E[0;44;37m     ⇱ XRAY Vless Xtls User Login ⇲       \E[0m"
+echo -e "\033[0;34m══════════════════════════════════════════\033[0m"
+for akun in "${data[@]}"
+do
 if [[ -z "$akun" ]]; then
-akun="Tidak Ada"
+akun="tidakada"
 fi
-echo -n >/tmp/ipvmess.txt
-data2=($(cat /var/log/xray/access.log | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq))
-for ip in "${data2[@]}"; do
-jum=$(cat /var/log/xray/access.log | grep -w "$akun" | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | grep -w "$ip" | sort | uniq)
+echo -n > /tmp/ipxray.txt
+data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
+for ip in "${data2[@]}"
+do
+jum=$(cat /var/log/xray/access.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
 if [[ "$jum" = "$ip" ]]; then
-echo "$jum" >>/tmp/ipvmess.txt
+echo "$jum" >> /tmp/ipxray.txt
 else
-echo "$ip" >>/tmp/other.txt
+echo "$ip" >> /tmp/other.txt
 fi
-jum2=$(cat /tmp/ipvmess.txt)
-sed -i "/$jum2/d" /tmp/other.txt >/dev/null 2>&1
+jum2=$(cat /tmp/ipxray.txt)
+sed -i "/$jum2/d" /tmp/other.txt > /dev/null 2>&1
 done
-jum=$(cat /tmp/ipvmess.txt)
+jum=$(cat /tmp/ipxray.txt)
 if [[ -z "$jum" ]]; then
-echo >/dev/null
+echo > /dev/null
 else
-jum2=$(cat /tmp/ipvmess.txt | nl)
-echo "user : $akun"
-echo "$jum2"
-echo -e "${BB}————————————————————————————————————————————————————${NC}"
-fi
-rm -rf /tmp/ipvmess.txt
-done
-rm -rf /tmp/other.txt
+jum2=$(cat /tmp/ipxray.txt | nl)
+echo "user : $akun";
+echo "$jum2";
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu"
-vless
+echo -e "\e[$line══════════════════════════════════════════\e[m"
+fi
+rm -rf /tmp/ipxray.txt
+rm -rf /tmp/other.txt
+done
+echo ""
+read -n 1 -s -r -p "Press any key to back on menu xray"
+xraay
 }
 
 # MENU XRAY VMESS & VLESS
@@ -1652,7 +1659,7 @@ echo -e "   \e[$line════════════════════
 echo -e "\e[$line"
 read -rp "        Please Input Number  [1-18 or x] :  "  num
 echo -e ""
-if   [[ "$num" = "1" ]]; then
+if [[ "$num" = "1" ]]; then
 menu1
 elif [[ "$num" = "2" ]]; then
 menu2
