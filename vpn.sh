@@ -1,11 +1,10 @@
 #wget https://github.com/${GitUser}/
-GitUser="Internetvps
-"
+GitUser="Internetvps"
 # initialisasi var
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
 MYIP=$(wget -qO- icanhazip.com);
-MYIP2="s/xxxxxxxxx/$MYIP/g";
+MYIP2=$(wget -qO- icanhazip.com);
 ANU=$(ip -o $ANU -4 route show to default | awk '{print $5}');
 domain=$(cat /root/domain)
 
@@ -14,8 +13,7 @@ apt install openvpn easy-rsa unzip -y
 apt install openssl iptables iptables-persistent -y
 mkdir -p /etc/openvpn/server/easy-rsa/
 cd /etc/openvpn/
-wget https://raw.githubusercontent.com/${GitUser}/drgvpnscript
-/main/vpn.zip
+wget https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/vpn.zip
 unzip vpn.zip
 rm -f vpn.zip
 chown -R root:root /etc/openvpn/server/easy-rsa/
