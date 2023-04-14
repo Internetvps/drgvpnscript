@@ -6,16 +6,14 @@ sleep 0.5
 cd
 
 # // GIT USER
-GitUser="Internetvps
-"
+GitUser="Internetvps"
 namafolder="websocket-python"
 
 # // SYSTEM WEBSOCKET HTTPS 443
 cat <<EOF> /etc/systemd/system/ws-https.service
 [Unit]
 Description=Python Proxy
-Documentation=https://github.com/Internetvps
-/
+Documentation=https://github.com/Internetvps/
 After=network.target nss-lookup.target
 
 [Service]
@@ -35,8 +33,7 @@ EOF
 cat <<EOF> /etc/systemd/system/ws-http.service
 [Unit]
 Description=Python Proxy
-Documentation=https://github.com/Internetvps
-/
+Documentation=https://github.com/Internetvps/
 After=network.target nss-lookup.target
 
 [Service]
@@ -55,8 +52,7 @@ EOF
 cat <<EOF> /etc/systemd/system/ws-ovpn.service
 [Unit]
 Description=Python Proxy
-Documentation=https://github.com/Internetvps
-/
+Documentation=https://github.com/Internetvps/
 After=network.target nss-lookup.target
 
 [Service]
@@ -73,16 +69,13 @@ WantedBy=multi-user.target
 EOF
 
 # // PYTHON WEBSOCKET TLS && NONE
-wget -q -O /usr/local/bin/ws-https https://raw.githubusercontent.com/${GitUser}/drgvpnscript
-/main/${namafolder}/ws-https; chmod +x /usr/local/bin/ws-https
+wget -q -O /usr/local/bin/ws-https https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/${namafolder}/ws-https; chmod +x /usr/local/bin/ws-https
 
 # // PYTHON WEBSOCKET DROPBEAR
-wget -q -O /usr/local/bin/ws-http https://raw.githubusercontent.com/${GitUser}/drgvpnscript
-/main/${namafolder}/ws-http; chmod +x /usr/local/bin/ws-http
+wget -q -O /usr/local/bin/ws-http https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/${namafolder}/ws-http; chmod +x /usr/local/bin/ws-http
 
 # // PYTHON WEBSOCKET OVPN
-wget -q -O /usr/local/bin/ws-ovpn https://raw.githubusercontent.com/${GitUser}/drgvpnscript
-/main/${namafolder}/ws-ovpn; chmod +x /usr/local/bin/ws-ovpn
+wget -q -O /usr/local/bin/ws-ovpn https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/${namafolder}/ws-ovpn; chmod +x /usr/local/bin/ws-ovpn
 
 # // RESTART && ENABLE SSHVPN WEBSOCKET TLS 
 systemctl daemon-reload
