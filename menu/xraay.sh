@@ -1,6 +1,5 @@
 #wget https://github.com/${GitUser}/
-GitUser="Internetvps
-"
+GitUser="Internetvps"
 
 # // IZIN SCRIPT
 export MYIP=$(curl -sS ipv4.icanhazip.com)
