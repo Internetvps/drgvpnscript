@@ -1,5 +1,6 @@
 #wget https://github.com/${GitUser}/
-GitUser="Internetvps"
+GitUser="Internetvps
+"
 #IZIN SCRIPT
 MYIP=$(curl -sS ipv4.icanhazip.com)
 # Valid Script
@@ -25,7 +26,7 @@ exit 0
 fi
 clear
 apt install jq curl -y
-DOMAIN=drgvpn-vpn.ovh
+DOMAIN=pakya-vpn.ovh
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c4)
 SUB_DOMAIN=${sub}.aquagurl.me
 CF_ID=aquagurl2601@gmail.com
