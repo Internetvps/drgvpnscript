@@ -6,7 +6,7 @@ GitUser="Internetvps"
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
 MYIP=$(wget -qO- icanhazip.com);
-MYIP2="s/xxxxxxxxx/$MYIP/g";
+MYIP1="s/xxxxxxxxx/$MYIP/g";
 ANU=$(ip -o $ANU -4 route show to default | awk '{print $5}');
 domain=$(cat /root/domain)
 
@@ -15,7 +15,7 @@ apt install openvpn easy-rsa unzip -y
 apt install openssl iptables iptables-persistent -y
 mkdir -p /etc/openvpn/server/easy-rsa/
 cd /etc/openvpn/
-wget https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/vpn.zip
+wget https://raw.githubusercontent.com/${GitUser}/Internetvps/main/vpn.zip
 unzip vpn.zip
 rm -f vpn.zip
 chown -R root:root /etc/openvpn/server/easy-rsa/
@@ -61,7 +61,7 @@ comp-lzo
 verb 3
 END
 
-sed -i $MYIP /etc/openvpn/client-tcp-1194.ovpn;
+sed -i $MYIP1 /etc/openvpn/client-tcp-1194.ovpn;
 
 # Buat config client UDP 2200
 cat > /etc/openvpn/client-udp-2200.ovpn <<-END
@@ -86,7 +86,7 @@ comp-lzo
 verb 3
 END
 
-sed -i $MYIP /etc/openvpn/client-udp-2200.ovpn;
+sed -i $MYIP1 /etc/openvpn/client-udp-2200.ovpn;
 
 # Buat config client SSL
 cat > /etc/openvpn/client-tcp-ssl.ovpn <<-END
@@ -111,7 +111,7 @@ comp-lzo
 verb 3
 END
 
-sed -i $MYIP /etc/openvpn/client-tcp-ssl.ovpn;
+sed -i $MYIP1 /etc/openvpn/client-tcp-ssl.ovpn;
 
 cd
 # pada tulisan xxx ganti dengan alamat ip address VPS anda 
