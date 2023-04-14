@@ -1,12 +1,12 @@
-# Script By DRGVPN
+# Script By PAKYAVPN
 # ==================================================
 #wget https://github.com/${GitUser}/
-GitUser="Internetvps"
+GitUser="huaweipadu"
 # initialisasi var
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
 MYIP=$(wget -qO- icanhazip.com);
-MYIP1="s/xxxxxxxxx/$MYIP/g";
+MYIP2="s/xxxxxxxxx/$MYIP/g";
 ANU=$(ip -o $ANU -4 route show to default | awk '{print $5}');
 domain=$(cat /root/domain)
 
@@ -15,7 +15,7 @@ apt install openvpn easy-rsa unzip -y
 apt install openssl iptables iptables-persistent -y
 mkdir -p /etc/openvpn/server/easy-rsa/
 cd /etc/openvpn/
-wget https://raw.githubusercontent.com/internetvps/drgvpnscript/main/vpn.zip
+wget https://raw.githubusercontent.com/${GitUser}/hangtuah/main/vpn.zip
 unzip vpn.zip
 rm -f vpn.zip
 chown -R root:root /etc/openvpn/server/easy-rsa/
@@ -41,7 +41,7 @@ sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 cat > /etc/openvpn/client-tcp-1194.ovpn <<-END
 ############## WELCOME TO PAKYAVPN ###############
 ############## By PAKYAVPN ###############
-setenv FRIENDLY_NAME "DRGVPN TCP"
+setenv FRIENDLY_NAME "PAKYAVPN TCP"
 client
 dev tun
 proto tcp
@@ -61,13 +61,13 @@ comp-lzo
 verb 3
 END
 
-sed -i $MYIP1 /etc/openvpn/client-tcp-1194.ovpn;
+sed -i $MYIP2 /etc/openvpn/client-tcp-1194.ovpn;
 
 # Buat config client UDP 2200
 cat > /etc/openvpn/client-udp-2200.ovpn <<-END
-############## WELCOME TO DRGVPN ###############
-############## By DRGVPN ###############
-setenv FRIENDLY_NAME "DRGVPN UDP"
+############## WELCOME TO PAKYAVPN ###############
+############## By PAKYAVPN ###############
+setenv FRIENDLY_NAME "PAKYAVPN UDP"
 client
 dev tun
 proto udp
@@ -86,13 +86,13 @@ comp-lzo
 verb 3
 END
 
-sed -i $MYIP1 /etc/openvpn/client-udp-2200.ovpn;
+sed -i $MYIP2 /etc/openvpn/client-udp-2200.ovpn;
 
 # Buat config client SSL
 cat > /etc/openvpn/client-tcp-ssl.ovpn <<-END
 ############## WELCOME TO PAKYAVPN ###############
 ############## BY PAKYAVPN ###############
-setenv FRIENDLY_NAME "DRGVPN SSL"
+setenv FRIENDLY_NAME "PAKYAVPN SSL"
 client
 dev tun
 proto tcp
@@ -111,7 +111,7 @@ comp-lzo
 verb 3
 END
 
-sed -i $MYIP1 /etc/openvpn/client-tcp-ssl.ovpn;
+sed -i $MYIP2 /etc/openvpn/client-tcp-ssl.ovpn;
 
 cd
 # pada tulisan xxx ganti dengan alamat ip address VPS anda 
