@@ -6,8 +6,7 @@ export BLUE='\e[0;34m'
 export NC='\e[0m'
 
 #wget https://github.com/${GitUser}/
-GitUser="Internetvps
-"
+GitUser="Internetvps"
 
 # // MY IPVPS
 export MYIP=$(curl -sS ipv4.icanhazip.com)
