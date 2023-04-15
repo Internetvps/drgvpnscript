@@ -1,3 +1,4 @@
+#!/bin/bash
 #wget https://github.com/${GitUser}/
 GitUser="Internetvps"
 
@@ -807,45 +808,42 @@ xraay
 # FUCTION CEK USER
 function menu6 () {
 clear
-echo -n > /tmp/other.txt
-data=( `cat /usr/local/etc/xray/vmess.json | grep '^#vms' | cut -d ' ' -f 2`); 
-echo -e "\033[0;34m══════════════════════════════════════════\033[0m"
-echo -e "\\E[0;44;37m      ⇱ XRAY Vmess WS User Login  ⇲       \E[0m"
-echo -e "\033[0;34m══════════════════════════════════════════\033[0m"
-for akun in "${data[@]}"
-do
+echo -n >/tmp/other.txt
+data=($(cat /usr/local/etc/xray/config.json | grep '^#=' | cut -d ' ' -f 2 | sort | uniq))
+echo -e "${BB}————————————————————————————————————————————————————${NC}"
+echo -e "              ${WB}Vless User Login Account${NC}              "
+echo -e "${BB}————————————————————————————————————————————————————${NC}"
+for akun in "${data[@]}"; do
 if [[ -z "$akun" ]]; then
-akun="tidakada"
+akun="Tidak Ada"
 fi
-echo -n > /tmp/ipvmess.txt
-data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
-for ip in "${data2[@]}"
-do
-jum=$(cat /var/log/xray/access.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
+echo -n >/tmp/ipvmess.txt
+data2=($(cat /var/log/xray/access.log | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq))
+for ip in "${data2[@]}"; do
+jum=$(cat /var/log/xray/access.log | grep -w "$akun" | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | grep -w "$ip" | sort | uniq)
 if [[ "$jum" = "$ip" ]]; then
-echo "$jum" >> /tmp/ipvmess.txt
+echo "$jum" >>/tmp/ipvmess.txt
 else
-echo "$ip" >> /tmp/other.txt
+echo "$ip" >>/tmp/other.txt
 fi
 jum2=$(cat /tmp/ipvmess.txt)
-sed -i "/$jum2/d" /tmp/other.txt > /dev/null 2>&1
+sed -i "/$jum2/d" /tmp/other.txt >/dev/null 2>&1
 done
 jum=$(cat /tmp/ipvmess.txt)
 if [[ -z "$jum" ]]; then
-echo > /dev/null
+echo >/dev/null
 else
 jum2=$(cat /tmp/ipvmess.txt | nl)
-echo "user : $akun";
-echo "$jum2";
-echo ""
-echo -e "\e[$line══════════════════════════════════════════\e[m"
+echo "user : $akun"
+echo "$jum2"
+echo -e "${BB}————————————————————————————————————————————————————${NC}"
 fi
 rm -rf /tmp/ipvmess.txt
-rm -rf /tmp/other.txt
 done
+rm -rf /tmp/other.txt
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu xray"
-xraay
+read -n 1 -s -r -p "Press any key to back on menu"
+vless
 }
 
 # ADD USER VLESS WS
@@ -1204,45 +1202,42 @@ xraay
 # USER LOGIN VLESS WS
 function menu12 () {
 clear
-echo -n > /tmp/other.txt
-data=( `cat /usr/local/etc/xray/vless.json | grep '^#vls' | cut -d ' ' -f 2`);
-echo -e "\033[0;34m══════════════════════════════════════════\033[0m"
-echo -e "\\E[0;44;37m      ⇱ XRAY Vless WS User Login ⇲        \E[0m"
-echo -e "\033[0;34m══════════════════════════════════════════\033[0m"
-for akun in "${data[@]}"
-do
+echo -n >/tmp/other.txt
+data=($(cat /usr/local/etc/xray/config.json | grep '^#=' | cut -d ' ' -f 2 | sort | uniq))
+echo -e "${BB}————————————————————————————————————————————————————${NC}"
+echo -e "              ${WB}Vless User Login Account${NC}              "
+echo -e "${BB}————————————————————————————————————————————————————${NC}"
+for akun in "${data[@]}"; do
 if [[ -z "$akun" ]]; then
-akun="tidakada"
+akun="Tidak Ada"
 fi
-echo -n > /tmp/ipvless.txt
-data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
-for ip in "${data2[@]}"
-do
-jum=$(cat /var/log/xray/access.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
+echo -n >/tmp/ipvmess.txt
+data2=($(cat /var/log/xray/access.log | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq))
+for ip in "${data2[@]}"; do
+jum=$(cat /var/log/xray/access.log | grep -w "$akun" | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | grep -w "$ip" | sort | uniq)
 if [[ "$jum" = "$ip" ]]; then
-echo "$jum" >> /tmp/ipvless.txt
+echo "$jum" >>/tmp/ipvmess.txt
 else
-echo "$ip" >> /tmp/other.txt
+echo "$ip" >>/tmp/other.txt
 fi
-jum2=$(cat /tmp/ipvless.txt)
-sed -i "/$jum2/d" /tmp/other.txt > /dev/null 2>&1
+jum2=$(cat /tmp/ipvmess.txt)
+sed -i "/$jum2/d" /tmp/other.txt >/dev/null 2>&1
 done
-jum=$(cat /tmp/ipvless.txt)
+jum=$(cat /tmp/ipvmess.txt)
 if [[ -z "$jum" ]]; then
-echo > /dev/null
+echo >/dev/null
 else
-jum2=$(cat /tmp/ipvless.txt | nl)
-echo "user : $akun";
-echo "$jum2";
-echo ""
-echo -e "\e[$line══════════════════════════════════════════\e[m"
+jum2=$(cat /tmp/ipvmess.txt | nl)
+echo "user : $akun"
+echo "$jum2"
+echo -e "${BB}————————————————————————————————————————————————————${NC}"
 fi
 rm -rf /tmp/ipvmess.txt
-rm -rf /tmp/other.txt
 done
+rm -rf /tmp/other.txt
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu xray"
-xraay
+read -n 1 -s -r -p "Press any key to back on menu"
+vless
 }
 
 # CREATE USER VLESS XTLS
@@ -1659,7 +1654,7 @@ echo -e "   \e[$line════════════════════
 echo -e "\e[$line"
 read -rp "        Please Input Number  [1-18 or x] :  "  num
 echo -e ""
-if [[ "$num" = "1" ]]; then
+if   [[ "$num" = "1" ]]; then
 menu1
 elif [[ "$num" = "2" ]]; then
 menu2
