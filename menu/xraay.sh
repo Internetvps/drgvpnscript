@@ -1,4 +1,3 @@
-#!/bin/bash
 #wget https://github.com/${GitUser}/
 GitUser="Internetvps"
 
@@ -87,8 +86,8 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-export patchtls=/aquagurl-vmesswstls
-export patchnontls=/aquagurl-vmesswsntls
+export patchtls=/drgvpnscript-vmesswstls
+export patchnontls=/drgvpnscript-vmesswsntls
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
 read -p "   Bug Address (Example: www.google.com) : " address
@@ -301,8 +300,8 @@ export exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
 
 # // Make Random Username 
 export user=Trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
-export patchtls=/aquagurl-vmesswstls
-export patchnontls=/aquagurl-vmesswsntls
+export patchtls=/drgvpnscript-vmesswstls
+export patchnontls=/drgvpnscript-vmesswsntls
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
 read -p "   Bug Address (Example: www.google.com) : " address
@@ -630,8 +629,8 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#vms " "/usr/local/etc/xray/vmess.json")
 			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 		fi
 	done
-export patchtls=/aquagurl-vmesswstls
-export patchnontls=/aquagurl-vmesswsntls
+export patchtls=/drgvpnscript-vmesswstls
+export patchnontls=/drgvpnscript-vmesswsntls
 export user=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
 export harini=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export exp=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
@@ -808,42 +807,45 @@ xraay
 # FUCTION CEK USER
 function menu6 () {
 clear
-echo -n >/tmp/other.txt
-data=($(cat /usr/local/etc/xray/config.json | grep '^#=' | cut -d ' ' -f 2 | sort | uniq))
-echo -e "${BB}————————————————————————————————————————————————————${NC}"
-echo -e "              ${WB}Vless User Login Account${NC}              "
-echo -e "${BB}————————————————————————————————————————————————————${NC}"
-for akun in "${data[@]}"; do
+echo -n > /tmp/other.txt
+data=( `cat /usr/local/etc/xray/vmess.json | grep '^#vms' | cut -d ' ' -f 2`); 
+echo -e "\033[0;34m══════════════════════════════════════════\033[0m"
+echo -e "\\E[0;44;37m      ⇱ XRAY Vmess WS User Login  ⇲       \E[0m"
+echo -e "\033[0;34m══════════════════════════════════════════\033[0m"
+for akun in "${data[@]}"
+do
 if [[ -z "$akun" ]]; then
-akun="Tidak Ada"
+akun="tidakada"
 fi
-echo -n >/tmp/ipvmess.txt
-data2=($(cat /var/log/xray/access.log | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq))
-for ip in "${data2[@]}"; do
-jum=$(cat /var/log/xray/access.log | grep -w "$akun" | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | grep -w "$ip" | sort | uniq)
+echo -n > /tmp/ipvmess.txt
+data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
+for ip in "${data2[@]}"
+do
+jum=$(cat /var/log/xray/access.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
 if [[ "$jum" = "$ip" ]]; then
-echo "$jum" >>/tmp/ipvmess.txt
+echo "$jum" >> /tmp/ipvmess.txt
 else
-echo "$ip" >>/tmp/other.txt
+echo "$ip" >> /tmp/other.txt
 fi
 jum2=$(cat /tmp/ipvmess.txt)
-sed -i "/$jum2/d" /tmp/other.txt >/dev/null 2>&1
+sed -i "/$jum2/d" /tmp/other.txt > /dev/null 2>&1
 done
 jum=$(cat /tmp/ipvmess.txt)
 if [[ -z "$jum" ]]; then
-echo >/dev/null
+echo > /dev/null
 else
 jum2=$(cat /tmp/ipvmess.txt | nl)
-echo "user : $akun"
-echo "$jum2"
-echo -e "${BB}————————————————————————————————————————————————————${NC}"
+echo "user : $akun";
+echo "$jum2";
+echo ""
+echo -e "\e[$line══════════════════════════════════════════\e[m"
 fi
 rm -rf /tmp/ipvmess.txt
-done
 rm -rf /tmp/other.txt
+done
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu"
-vless
+read -n 1 -s -r -p "Press any key to back on menu xray"
+xraay
 }
 
 # ADD USER VLESS WS
@@ -864,8 +866,8 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-export patchtls=/aquagurl-vlesswstls
-export patchnontls=/aquagurl-vlesswsntls
+export patchtls=/drgvpnscript-vlesswstls
+export patchnontls=/drgvpnscript-vlesswsntls
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
 read -p "   Bug Address (Example: www.google.com) : " address
@@ -951,8 +953,8 @@ export exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
 # Make Random Username 
 export user=Trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
 
-export patchtls=/aquagurl-vlesswstls
-export patchnontls=/aquagurl-vlesswsntls
+export patchtls=/drgvpnscript-vlesswstls
+export patchnontls=/drgvpnscript-vlesswsntls
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
 read -p "   Bug Address (Example: www.google.com) : " address
@@ -1148,8 +1150,8 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#vls " "/usr/local/etc/xray/vless.json")
 			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 		fi
 	done
-export patchtls=/aquagurl-vlesswstls
-export patchnontls=/aquagurl-vlesswsntls
+export patchtls=/drgvpnscript-vlesswstls
+export patchnontls=/drgvpnscript-vlesswsntls
 export user=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
 export harini=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export exp=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
@@ -1202,52 +1204,45 @@ xraay
 # USER LOGIN VLESS WS
 function menu12 () {
 clear
-NC='\e[0m'
-DEFBOLD='\e[39;1m'
-RB='\e[31;1m'
-GB='\e[32;1m'
-YB='\e[33;1m'
-BB='\e[34;1m'
-MB='\e[35;1m'
-CB='\e[35;1m'
-WB='\e[37;1m'
-clear
-echo -n >/tmp/other.txt
-data=($(cat /usr/local/etc/xray/config.json | grep '^#=' | cut -d ' ' -f 2 | sort | uniq))
-echo -e "${BB}————————————————————————————————————————————————————${NC}"
-echo -e "              ${WB}Vless User Login Account${NC}              "
-echo -e "${BB}————————————————————————————————————————————————————${NC}"
-for akun in "${data[@]}"; do
+echo -n > /tmp/other.txt
+data=( `cat /usr/local/etc/xray/vless.json | grep '^#vls' | cut -d ' ' -f 2`);
+echo -e "\033[0;34m══════════════════════════════════════════\033[0m"
+echo -e "\\E[0;44;37m      ⇱ XRAY Vless WS User Login ⇲        \E[0m"
+echo -e "\033[0;34m══════════════════════════════════════════\033[0m"
+for akun in "${data[@]}"
+do
 if [[ -z "$akun" ]]; then
-akun="Tidak Ada"
+akun="tidakada"
 fi
-echo -n >/tmp/ipvmess.txt
-data2=($(cat /var/log/xray/access.log | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq))
-for ip in "${data2[@]}"; do
-jum=$(cat /var/log/xray/access.log | grep -w "$akun" | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | grep -w "$ip" | sort | uniq)
+echo -n > /tmp/ipvless.txt
+data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
+for ip in "${data2[@]}"
+do
+jum=$(cat /var/log/xray/access.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
 if [[ "$jum" = "$ip" ]]; then
-echo "$jum" >>/tmp/ipvmess.txt
+echo "$jum" >> /tmp/ipvless.txt
 else
-echo "$ip" >>/tmp/other.txt
+echo "$ip" >> /tmp/other.txt
 fi
-jum2=$(cat /tmp/ipvmess.txt)
-sed -i "/$jum2/d" /tmp/other.txt >/dev/null 2>&1
+jum2=$(cat /tmp/ipvless.txt)
+sed -i "/$jum2/d" /tmp/other.txt > /dev/null 2>&1
 done
-jum=$(cat /tmp/ipvmess.txt)
+jum=$(cat /tmp/ipvless.txt)
 if [[ -z "$jum" ]]; then
-echo >/dev/null
+echo > /dev/null
 else
-jum2=$(cat /tmp/ipvmess.txt | nl)
-echo "user : $akun"
-echo "$jum2"
-echo -e "${BB}————————————————————————————————————————————————————${NC}"
+jum2=$(cat /tmp/ipvless.txt | nl)
+echo "user : $akun";
+echo "$jum2";
+echo ""
+echo -e "\e[$line══════════════════════════════════════════\e[m"
 fi
 rm -rf /tmp/ipvmess.txt
-done
 rm -rf /tmp/other.txt
+done
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu"
-vless
+read -n 1 -s -r -p "Press any key to back on menu xray"
+xraay
 }
 
 # CREATE USER VLESS XTLS
@@ -1664,7 +1659,7 @@ echo -e "   \e[$line════════════════════
 echo -e "\e[$line"
 read -rp "        Please Input Number  [1-18 or x] :  "  num
 echo -e ""
-if   [[ "$num" = "1" ]]; then
+if [[ "$num" = "1" ]]; then
 menu1
 elif [[ "$num" = "2" ]]; then
 menu2
