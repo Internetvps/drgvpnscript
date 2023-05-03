@@ -56,7 +56,7 @@ systemctl restart wg-quick@wg0
 
   Service & Port
 
-  - OpenSSH                 : 22
+  - OpenSSH                 : 22,443
   - OpenVPN                 : TCP 1194, UDP 2200, SSL 110
   - Stunnel4                : 222, 777
   - Dropbear                : 442, 109
@@ -69,10 +69,10 @@ systemctl restart wg-quick@wg0
   - Squid Proxy             : 3128, 8080, 8000
   - Badvpn                  : 7100, 7200, 7300
   - Nginx                   : 81
-  - Wireguard               : 5820
-  - Shadowsocks-R           : 1443-1543
-  - SS-OBFS TLS             : 2443-2543
-  - SS-OBFS HTTP            : 3443-3543
+
+
+
+
   - XRAY Vmess Ws Tls       : 443
   - XRAY Vless Ws Tls       : 443
   - XRAY Trojan Ws Tls      : 443
