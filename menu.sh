@@ -167,10 +167,7 @@ echo -e "  \e[$below Autoscript By        : DRGVPN"
 echo -e "  \e[$below Certificate Status   : Expired in $certifacate days"
 echo -e "  \e[$below remode by            : @info_android9"
 echo -e " \e[$line*************************************************************\e[m"
-echo -e "  \e[$below                kredit for"           
-echo -e "  \e[$below                 pakyavpn"
-echo -e "  \e[$below                  v-code"
-echo -e "  \e[$below            all team hakar malaya"
+
 echo -e " \e[$line*************************************************************\e[m"
 echo -e "  \e[$below[Ctrl + C] keluar-dari-script\e[m"
 echo -e "\e[$below "
@@ -181,7 +178,7 @@ case $menu in
     xraay
     ;;
 2)
-    trojaan
+    trojan
     ;;
 3)
     ssh
