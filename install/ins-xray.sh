@@ -131,12 +131,12 @@ cat> /usr/local/etc/xray/config.json << END
                         "xver": 1
                     },
                     {
-                        "path": "/drgvpnscript-vlesswstls", # // VMESS WS TLS
+                        "path": "/drgvpnscript-vlesswstls", # // VLESS WS TLS
                         "dest": 1212,
                         "xver": 1
                     },
                     {
-                        "path": "/drgvpnscript-vmesswstls", # // VLESS WS TLS
+                        "path": "/drgvpnscript-vmesswstls", # // VMESS WS TLS
                         "dest": 1213,
                         "xver": 1
                     },
