@@ -1,22 +1,40 @@
 #!/bin/bash
-#wget https://github.com/${GitUser}/
+# // wget https://github.com/${GitUser}/
 GitUser="Internetvps"
-#IZIN SCRIPT
-MYIP=$(curl -sS ipv4.icanhazip.com)
-clear
-# Update & Installing Requirement
-apt update -y
-apt upgrade -y
-apt install socat -y
-apt install python -y
-apt install curl -y
-apt install wget -y
-apt install sed -y
-apt install nano -y
-apt install python3 -y
 
-emailcf=$(cat /usr/local/etc/xray/email)
-domain=$(cat /root/domain)
+# // MY IPVPS
+export MYIP=$(curl -sS ipv4.icanhazip.com)
+
+# // GETTING
+VALIDITY () {
+    today=`date -d "0 days" +"%Y-%m-%d"`
+    Exp1=$(curl -sS https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
+    if [[ $today < $Exp1 ]]; then
+    echo -e "\e[32mYOUR SCRIPT ACTIVE..\e[0m"
+    else
+    echo -e "\e[31mYOUR SCRIPT HAS EXPIRED!\e[0m";
+    echo -e "\e[31mPlease renew your ipvps first\e[0m"
+    exit 0
+fi
+}
+IZIN=$(curl -sS https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | awk '{print $5}' | grep $MYIP)
+if [ $MYIP = $IZIN ]; then
+echo -e "\e[32mPermission Accepted...\e[0m"
+VALIDITY
+else
+echo -e "\e[31mPermission Denied!\e[0m";
+echo -e "\e[31mPlease buy script first\e[0m"
+exit 0
+fi
+clear
+
+# // install socat
+apt install socat
+
+# // EMAIL & DOMAIN
+export emailcf=$(cat /usr/local/etc/xray/email)
+export domain=$(cat /root/domain)
+
 apt install iptables iptables-persistent -y
 apt install curl socat xz-utils wget apt-transport-https gnupg gnupg2 gnupg1 dnsutils lsb-release -y 
 apt install socat cron bash-completion ntpdate -y
@@ -30,43 +48,48 @@ chronyc sourcestats -v
 chronyc tracking -v
 date
 
-# Acc Trojan XRAY TCP TLS
-mkdir -p /usr/local/etc/xray/
-touch /usr/local/etc/xray/akunxtr.conf
-
-# Ambil Xray Core Version Terbaru
-latest_version="$(curl -s https://api.github.com/repos/XTLS/Xray-core/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
-
-# Installation Xray Core
-xraycore_link="https://github.com/XTLS/Xray-core/releases/download/v$latest_version/xray-linux-64.zip"
-
-# Make Main Directory
-mkdir -p /usr/bin/xray
+# // MAKE FILE TROJAN TCP
 mkdir -p /etc/xray
+mkdir -p /usr/local/etc/xray/
+mkdir -p /var/log/xray/;
+touch /usr/local/etc/xray/akunxtr.conf
+touch /var/log/xray/access.log;
+touch /var/log/xray/error.log;
 
-# Unzip Xray Linux 64
-cd `mktemp -d`
-curl -sL "$xraycore_link" -o xray.zip
-unzip -q xray.zip && rm -rf xray.zip
-mv xray /usr/local/bin/xray
-chmod +x /usr/local/bin/xray
+# // VERSION XRAY
+export version="$(curl -s https://api.github.com/repos/XTLS/Xray-core/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
 
-# Make Folder XRay
-mkdir -p /var/log/xray/
+# // INSTALL CORE XRAY
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u www-data --version ${version}
 
-# Stop port 80
-sudo lsof -t -i tcp:80 -s tcp:listen | sudo xargs kill
+systemctl stop nginx
 
-# generate certificates
+# // INSTALL CERTIFICATES
 mkdir /root/.acme.sh
 curl https://acme-install.netlify.app/acme.sh -o /root/.acme.sh/acme.sh
 chmod +x /root/.acme.sh/acme.sh
 /root/.acme.sh/acme.sh --upgrade --auto-upgrade
 /root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
-/root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256
-~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /usr/local/etc/xray/xray.crt --keypath /usr/local/etc/xray/xray.key --ecc
+/root/.acme.sh/acme.sh --issue -d $domain -d sshws.$domain --standalone -k ec-256 --listen-v6
+~/.acme.sh/acme.sh --installcert -d $domain -d sshws.$domain --fullchainpath /usr/local/etc/xray/xray.crt --keypath /usr/local/etc/xray/xray.key --ecc
+chmod 755 /usr/local/etc/xray/xray.key;
 service squid start
-uuid=$(cat /proc/sys/kernel/random/uuid)
+systemctl restart nginx
+sleep 0.5;
+clear;
+
+# // UUID PATH
+export uuid=$(cat /proc/sys/kernel/random/uuid)
+export uuid1=$(cat /proc/sys/kernel/random/uuid)
+export uuid2=$(cat /proc/sys/kernel/random/uuid)
+export uuid3=$(cat /proc/sys/kernel/random/uuid)
+export uuid4=$(cat /proc/sys/kernel/random/uuid)
+export uuid5=$(cat /proc/sys/kernel/random/uuid)
+export uuid6=$(cat /proc/sys/kernel/random/uuid)
+export uuid7=$(cat /proc/sys/kernel/random/uuid)
+export uuid8=$(cat /proc/sys/kernel/random/uuid)
+
+# // JSON WS & TCP XTLS
 cat> /usr/local/etc/xray/config.json << END
 {
   "log": {
@@ -75,400 +98,16 @@ cat> /usr/local/etc/xray/config.json << END
     "loglevel": "info"
        },
     "inbounds": [
-           {
-            "port": 1311,
-            "listen": "127.0.0.1",
-            "protocol": "vmess",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "${uuid}",
-                        "alterId": 0,
-                        "level": 0,
-                        "email": "admin@drgvpn.com"
-#tls
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "none",
-        "wsSettings":
-            {
-              "acceptProxyProtocol": true,
-              "path": "/vmess"
-            }
-      }
-    }
-  ],
-    "outbounds": [
-    {
-      "protocol": "freedom",
-      "settings": {}
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "blocked"
-    }
-  ],
-  "routing": {
-    "rules": [
-      {
-        "type": "field",
-        "ip": [
-          "0.0.0.0/8",
-          "10.0.0.0/8",
-          "100.64.0.0/10",
-          "169.254.0.0/16",
-          "172.16.0.0/12",
-          "192.0.0.0/24",
-          "192.0.2.0/24",
-          "192.168.0.0/16",
-          "198.18.0.0/15",
-          "198.51.100.0/24",
-          "203.0.113.0/24",
-          "::1/128",
-          "fc00::/7",
-          "fe80::/10"
-        ],
-        "outboundTag": "blocked"
-      },
-      {
-        "inboundTag": [
-          "api"
-        ],
-        "outboundTag": "api",
-        "type": "field"
-      },
-      {
-        "type": "field",
-        "outboundTag": "blocked",
-        "protocol": [
-          "bittorrent"
-        ]
-      }
-    ]
-  },
-  "stats": {},
-  "api": {
-    "services": [
-      "StatsService"
-    ],
-    "tag": "api"
-  },
-  "policy": {
-    "levels": {
-      "0": {
-        "statsUserDownlink": true,
-        "statsUserUplink": true
-      }
-    },
-    "system": {
-      "statsInboundUplink": true,
-      "statsInboundDownlink": true
-    }
-  }
-}
-END
-cat> /usr/local/etc/xray/none.json << END
-{
-  "log": {
-    "access": "/var/log/xray/access.log",
-    "error": "/var/log/xray/error.log",
-    "loglevel": "info"
-       },
-    "inbounds": [
-           {
-            "port": 80,
-            "protocol": "vmess",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "${uuid}",
-                        "alterId": 0,
-                        "email": "admin@drgvpn.com"
-#none
-          }
-        ],
-        "decryption": "none"
-      },
-      "streamSettings": {
-        "network": "ws",
-	"security": "none",
-        "wsSettings": {
-          "path": "/vmess",
-          "headers": {
-            "Host": ""
-          }
-         },
-        "quicSettings": {},
-        "sockopt": {
-          "mark": 0,
-          "tcpFastOpen": true
-        }
-      },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls"
-        ]
-      },
-      "domain": "${domain}"
-    }
-  ],
-  "outbounds": [
-    {
-      "protocol": "freedom",
-      "settings": {}
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "blocked"
-    }
-  ],
-  "routing": {
-    "rules": [
-      {
-        "type": "field",
-        "ip": [
-          "0.0.0.0/8",
-          "10.0.0.0/8",
-          "100.64.0.0/10",
-          "169.254.0.0/16",
-          "172.16.0.0/12",
-          "192.0.0.0/24",
-          "192.0.2.0/24",
-          "192.168.0.0/16",
-          "198.18.0.0/15",
-          "198.51.100.0/24",
-          "203.0.113.0/24",
-          "::1/128",
-          "fc00::/7",
-          "fe80::/10"
-        ],
-        "outboundTag": "blocked"
-      },
-      {
-        "type": "field",
-        "outboundTag": "blocked",
-        "protocol": [
-          "bittorrent"
-        ]
-      }
-    ]
-  }
-}
-END
-cat> /usr/local/etc/xray/vless.json << END
-{
-  "log": {
-    "access": "/var/log/xray/access2.log",
-    "error": "/var/log/xray/error.log",
-    "loglevel": "info"
-       },
-    "inbounds": [
-           {
-            "port": 1312,
-            "listen": "127.0.0.1",
-            "protocol": "vless",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "${uuid}",
-                        "level": 0,
-                        "email": "admin@drgvpn.com"
-#tls
-          }
-        ],
-        "decryption": "none"
-      },
-	  "encryption": "none",
-      "streamSettings": {
-        "network": "ws",
-        "security": "none",
-        "wsSettings":
-            {
-              "acceptProxyProtocol": true,
-              "path": "/vless"
-            }
-      }
-    }
-  ],
-    "outbounds": [
-    {
-      "protocol": "freedom",
-      "settings": {}
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "blocked"
-    }
-  ],
-  "routing": {
-    "rules": [
-      {
-        "type": "field",
-        "ip": [
-          "0.0.0.0/8",
-          "10.0.0.0/8",
-          "100.64.0.0/10",
-          "169.254.0.0/16",
-          "172.16.0.0/12",
-          "192.0.0.0/24",
-          "192.0.2.0/24",
-          "192.168.0.0/16",
-          "198.18.0.0/15",
-          "198.51.100.0/24",
-          "203.0.113.0/24",
-          "::1/128",
-          "fc00::/7",
-          "fe80::/10"
-        ],
-        "outboundTag": "blocked"
-      },
-      {
-        "inboundTag": [
-          "api"
-        ],
-        "outboundTag": "api",
-        "type": "field"
-      },
-      {
-        "type": "field",
-        "outboundTag": "blocked",
-        "protocol": [
-          "bittorrent"
-        ]
-      }
-    ]
-  },
-  "stats": {},
-  "api": {
-    "services": [
-      "StatsService"
-    ],
-    "tag": "api"
-  },
-  "policy": {
-    "levels": {
-      "0": {
-        "statsUserDownlink": true,
-        "statsUserUplink": true
-      }
-    },
-    "system": {
-      "statsInboundUplink": true,
-      "statsInboundDownlink": true
-    }
-  }
-}
-END
-cat> /usr/local/etc/xray/vnone.json << END
-{
-  "log": {
-    "access": "/var/log/xray/access2.log",
-    "error": "/var/log/xray/error.log",
-    "loglevel": "info"
-       },
-    "inbounds": [
-           {
-            "port": 8080,
-            "protocol": "vless",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "${uuid}",
-                        "level": 0,
-                        "email": "admin@drgvpn.com"
-#none
-           }
-        ],
-        "decryption": "none"
-      },
-      "streamSettings": {
-        "network": "ws",
-	"security": "none",
-        "wsSettings": {
-          "path": "/vless",
-          "headers": {
-            "Host": ""
-          }
-         },
-        "quicSettings": {},
-        "sockopt": {
-          "mark": 0,
-          "tcpFastOpen": true
-        }
-      },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls"
-        ]
-      },
-      "domain": "${domain}"
-    }
-  ],
-  "outbounds": [
-    {
-      "protocol": "freedom",
-      "settings": {}
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "blocked"
-    }
-  ],
-  "routing": {
-    "rules": [
-      {
-        "type": "field",
-        "ip": [
-          "0.0.0.0/8",
-          "10.0.0.0/8",
-          "100.64.0.0/10",
-          "169.254.0.0/16",
-          "172.16.0.0/12",
-          "192.0.0.0/24",
-          "192.0.2.0/24",
-          "192.168.0.0/16",
-          "198.18.0.0/15",
-          "198.51.100.0/24",
-          "203.0.113.0/24",
-          "::1/128",
-          "fc00::/7",
-          "fe80::/10"
-        ],
-        "outboundTag": "blocked"
-      },
-      {
-        "type": "field",
-        "outboundTag": "blocked",
-        "protocol": [
-          "bittorrent"
-        ]
-      }
-    ]
-  }
-}
-END
-
-# // INSTALLING XRAY VLESS-XTLS
-cat> /usr/local/etc/xray/xtls.json << END
-{
-  "log": {
-    "access": "/var/log/xray/access3.log",
-    "error": "/var/log/xray/error.log",
-    "loglevel": "info"
-       },
-    "inbounds": [
         {
+      "listen": "127.0.0.1",
+      "port": 10085, # CEK USER QUOTA
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "127.0.0.1"
+      },
+      "tag": "api"
+            },
+            {
             "port": 443,
             "protocol": "vless",
             "settings": {
@@ -476,30 +115,34 @@ cat> /usr/local/etc/xray/xtls.json << END
                     {
                         "id": "${uuid}",
                         "flow": "xtls-rprx-direct",
-                        "level": 0,
-                        "email": "admin@drgvpn.xyz"
-#xtls
+                        "level": 0
+#xray-vless-xtls
                     }
                 ],
                 "decryption": "none",
                 "fallbacks": [
                     {
-                        "dest": 1310,
+                        "name": "sshws.${domain}", # // SSH WS TLS JNGN CURI BERDOSA!!
+                        "dest": 2091,
                         "xver": 1
                     },
                     {
-                        "path": "/vmess",
-                        "dest": 1311,
+                        "dest": 1211, # // TROJAN TCP TLS
                         "xver": 1
                     },
                     {
-                        "path": "/vless",
-                        "dest": 1312,
+                        "path": "/drgvpnscript-vlesswstls", # // VMESS WS TLS
+                        "dest": 1212,
                         "xver": 1
                     },
                     {
-                        "path": "/trojan",
-                        "dest": 1314,
+                        "path": "/drgvpnscript-vmesswstls", # // VLESS WS TLS
+                        "dest": 1213,
+                        "xver": 1
+                    },
+                    {
+                        "path": "/drgvpnscript-trojanwstls", # // TROJAN WS TLS
+                        "dest": 1214,
                         "xver": 1
                     }
                 ]
@@ -508,105 +151,19 @@ cat> /usr/local/etc/xray/xtls.json << END
                 "network": "tcp",
                 "security": "xtls",
                 "xtlsSettings": {
-                    "alpn": [
-                        "http/1.1"
-                    ],
-                    "certificates": [
-                        {
-                            "certificateFile": "/usr/local/etc/xray/xray.crt",
-                            "keyFile": "/usr/local/etc/xray/xray.key"
-                        }
-                    ]
-                }
-            }
-        }
-    ],
-    "outbounds": [
-        {
-            "protocol": "freedom"
-        }
-    ]
-}
-END
-cat> /usr/local/etc/xray/trojan.json << END
-{
-  "log": {
-    "access": "/var/log/xray/access4.log",
-    "error": "/var/log/xray/error.log",
-    "loglevel": "info"
-       },
-    "inbounds": [
-        {
-            "port": 1310,
-            "listen": "127.0.0.1",
-            "protocol": "trojan",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "${uuid}",
-                        "password": "xxxxx"
-#tr
-                    }
+                "alpn": ["http/1.1"],
+                "certificates": [
+                 {
+                 "certificateFile": "/usr/local/etc/xray/xray.crt",
+                  "keyFile": "/usr/local/etc/xray/xray.key"
+                  }
                 ],
-                "fallbacks": [
-                    {
-                        "dest": 80
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "none",
-                "wsSettings": {
-                    "acceptProxyProtocol": true
+                "minVersion": "1.2",
+                 "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256"
                 }
             }
         }
     ],
-    "outbounds": [
-        {
-            "protocol": "freedom"
-        }
-    ]
-}
-END
-
-# // INSTALLING TROJAN WS
-cat> /usr/local/etc/xray/trojanws.json << END
-{
-  "log": {
-    "access": "/var/log/xray/access5.log",
-    "error": "/var/log/xray/error.log",
-    "loglevel": "info"
-  },
-  "inbounds": [
-    {
-      "port": 1314,
-      "listen": "127.0.0.1",
-      "protocol": "trojan",
-      "settings": {
-        "clients": [
-          {
-            "password": "${uuid}",
-            "level": 0,
-            "email": "admin@drgvpn.com"
-#tls
-          }
-        ],
-        "decryption": "none"
-      },
-        "encryption": "none",
-      "streamSettings": {
-        "network": "ws",
-        "security": "none",
-        "wsSettings":
-            {
-              "acceptProxyProtocol": true,
-              "path": "/trojan"
-            }
-      }
-    }
-  ],
     "outbounds": [
     {
       "protocol": "freedom",
@@ -678,55 +235,51 @@ cat> /usr/local/etc/xray/trojanws.json << END
 }
 END
 
-# // XRAY TROJAN WS NONE
-cat > /usr/local/etc/xray/trnone.json << END
+# // JSON WS & TCP XTLS
+cat> /usr/local/etc/xray/tcp.json << END
 {
-"log": {
-        "access": "/var/log/xray/access5.log",
-        "error": "/var/log/xray/error.log",
-        "loglevel": "info"
-    },
-  "inbounds": [
-    {
-      "port": 8880,
-      "protocol": "trojan",
+  "log": {
+    "access": "/var/log/xray/access.log",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "info"
+       },
+    "inbounds": [
+        {
+      "listen": "127.0.0.1",
+      "port": 10085, # CEK USER QUOTA
+      "protocol": "dokodemo-door",
       "settings": {
-        "clients": [
-          {
-            "password": "${uuid}",
-            "level": 0,
-            "email": "admin@drgvpn.com"
-#none
-          }
-        ],
-        "decryption": "none"
+        "address": "127.0.0.1"
       },
-      "streamSettings": {
-        "network": "ws",
-      "security": "none",
-        "wsSettings": {
-          "path": "/trojan",
-          "headers": {
-            "Host": ""
-          }
-        },
-        "quicSettings": {},
-        "sockopt": {
-          "mark": 0,
-          "tcpFastOpen": true        
+      "tag": "api"
+            },
+            {
+         "port": 1211,
+         "listen": "127.0.0.1",
+          "protocol": "trojan",
+            "settings": {
+                "clients": [
+                    {
+                        "password": "${uuid1}"
+#trojan
+                    }
+                ],
+                "fallbacks": [
+                    {
+                        "dest": 81
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "none",
+                "tcpSettings": {
+                    "acceptProxyProtocol": true
+                }
+            }
         }
-      },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls"      
-        ]
-      },
-      "domain": "${domain}"
-    }
-  ],
-  "outbounds": [
+    ],
+    "outbounds": [
     {
       "protocol": "freedom",
       "settings": {}
@@ -760,6 +313,13 @@ cat > /usr/local/etc/xray/trnone.json << END
         "outboundTag": "blocked"
       },
       {
+        "inboundTag": [
+          "api"
+        ],
+        "outboundTag": "api",
+        "type": "field"
+      },
+      {
         "type": "field",
         "outboundTag": "blocked",
         "protocol": [
@@ -767,130 +327,891 @@ cat > /usr/local/etc/xray/trnone.json << END
         ]
       }
     ]
+  },
+  "stats": {},
+  "api": {
+    "services": [
+      "StatsService"
+    ],
+    "tag": "api"
+  },
+  "policy": {
+    "levels": {
+      "0": {
+        "statsUserDownlink": true,
+        "statsUserUplink": true
+      }
+    },
+    "system": {
+      "statsInboundUplink": true,
+      "statsInboundDownlink": true
+    }
   }
 }
 END
-# starting xray vmess ws tls core on sytem startup
-cat> /etc/systemd/system/xray.service << END
-[Unit]
-Description=Xray Service
-Documentation=https://github.com/xtls
-After=network.target nss-lookup.target
 
-[Service]
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/local/bin/xray run -config /usr/local/etc/xray/config.json
-Restart=on-failure
-RestartPreventExitStatus=23
-LimitNPROC=10000
-LimitNOFILE=1000000
+# // JSON VLESS WS 
+cat> /usr/local/etc/xray/vless.json << END
+{
+  "log": {
+    "access": "/var/log/xray/access.log",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "info"
+       },
+    "inbounds": [
+        {
+      "listen": "127.0.0.1",
+      "port": 10086, # CEK USER QUOTA
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "127.0.0.1"
+      },
+      "tag": "api"
+            },
+            {
+        "port": 1212,
+        "listen": "127.0.0.1",
+         "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "${uuid2}",
+                        "level": 0
+#xray-vless-tls
+                    }
+                ],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "none",
+                "wsSettings": {
+                    "acceptProxyProtocol": true,
+                    "path": "/drgvpnscript-vlesswstls"
+                }
+            }
+        }
+    ],
+    "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "0.0.0.0/8",
+          "10.0.0.0/8",
+          "100.64.0.0/10",
+          "169.254.0.0/16",
+          "172.16.0.0/12",
+          "192.0.0.0/24",
+          "192.0.2.0/24",
+          "192.168.0.0/16",
+          "198.18.0.0/15",
+          "198.51.100.0/24",
+          "203.0.113.0/24",
+          "::1/128",
+          "fc00::/7",
+          "fe80::/10"
+        ],
+        "outboundTag": "blocked"
+      },
+      {
+        "inboundTag": [
+          "api"
+        ],
+        "outboundTag": "api",
+        "type": "field"
+      },
+      {
+        "type": "field",
+        "outboundTag": "blocked",
+        "protocol": [
+          "bittorrent"
+        ]
+      }
+    ]
+  },
+  "stats": {},
+  "api": {
+    "services": [
+      "StatsService"
+    ],
+    "tag": "api"
+  },
+  "policy": {
+    "levels": {
+      "0": {
+        "statsUserDownlink": true,
+        "statsUserUplink": true
+      }
+    },
+    "system": {
+      "statsInboundUplink": true,
+      "statsInboundDownlink": true
+    }
+  }
+}
+END
+# // JSON VLESS WS 
+cat> /usr/local/etc/xray/vlessnone.json << END
+{
+  "log": {
+    "access": "/var/log/xray/access.log",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "info"
+       },
+    "inbounds": [
+        {
+      "listen": "127.0.0.1",
+      "port": 10086, # CEK USER QUOTA
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "127.0.0.1"
+      },
+      "tag": "api"
+            },
+            {
+        "port": "1301",
+        "listen": "127.0.0.1",
+        "protocol": "vless",
+        "settings": {
+          "decryption":"none",
+            "clients": [
+               {
+                 "id": "${uuid3}"
+#xray-vless-nontls
+             }
+          ]
+       },
+       "streamSettings":{
+         "network": "ws",
+            "wsSettings": {
+              "acceptProxyProtocol": true,
+                "path": "/drgvpnscript-vlesswsntls"
 
-[Install]
-WantedBy=multi-user.target
-
+                }
+            }
+        }
+    ],
+    "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "0.0.0.0/8",
+          "10.0.0.0/8",
+          "100.64.0.0/10",
+          "169.254.0.0/16",
+          "172.16.0.0/12",
+          "192.0.0.0/24",
+          "192.0.2.0/24",
+          "192.168.0.0/16",
+          "198.18.0.0/15",
+          "198.51.100.0/24",
+          "203.0.113.0/24",
+          "::1/128",
+          "fc00::/7",
+          "fe80::/10"
+        ],
+        "outboundTag": "blocked"
+      },
+      {
+        "inboundTag": [
+          "api"
+        ],
+        "outboundTag": "api",
+        "type": "field"
+      },
+      {
+        "type": "field",
+        "outboundTag": "blocked",
+        "protocol": [
+          "bittorrent"
+        ]
+      }
+    ]
+  },
+  "stats": {},
+  "api": {
+    "services": [
+      "StatsService"
+    ],
+    "tag": "api"
+  },
+  "policy": {
+    "levels": {
+      "0": {
+        "statsUserDownlink": true,
+        "statsUserUplink": true
+      }
+    },
+    "system": {
+      "statsInboundUplink": true,
+      "statsInboundDownlink": true
+    }
+  }
+}
 END
 
-# starting xray vmess ws tls core on sytem startup
-cat> /etc/systemd/system/xray@.service << END
-[Unit]
-Description=Xray Service
-Documentation=https://github.com/xtls
-After=network.target nss-lookup.target
-
-[Service]
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/local/bin/xray run -config /usr/local/etc/xray/%i.json
-Restart=on-failure
-RestartPreventExitStatus=23
-LimitNPROC=10000
-LimitNOFILE=1000000
-
-[Install]
-WantedBy=multi-user.target
-
+# // VMESS JSON
+cat> /usr/local/etc/xray/vmess.json << END
+{
+  "log": {
+    "access": "/var/log/xray/access.log",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "info"
+       },
+    "inbounds": [
+        {
+      "listen": "127.0.0.1",
+      "port": 10087, # CEK USER QUOTA
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "127.0.0.1"
+      },
+      "tag": "api"
+            },
+            {
+        "port": 1213,
+        "listen": "127.0.0.1",
+         "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "${uuid4}",
+                        "alterId": 0,
+                        "level": 0
+#xray-vmess-tls
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "none",
+                "wsSettings": {
+                    "acceptProxyProtocol": true,
+                    "path": "/drgvpnscript-vmesswstls"
+                }
+            }
+        }
+    ],
+    "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "0.0.0.0/8",
+          "10.0.0.0/8",
+          "100.64.0.0/10",
+          "169.254.0.0/16",
+          "172.16.0.0/12",
+          "192.0.0.0/24",
+          "192.0.2.0/24",
+          "192.168.0.0/16",
+          "198.18.0.0/15",
+          "198.51.100.0/24",
+          "203.0.113.0/24",
+          "::1/128",
+          "fc00::/7",
+          "fe80::/10"
+        ],
+        "outboundTag": "blocked"
+      },
+      {
+        "inboundTag": [
+          "api"
+        ],
+        "outboundTag": "api",
+        "type": "field"
+      },
+      {
+        "type": "field",
+        "outboundTag": "blocked",
+        "protocol": [
+          "bittorrent"
+        ]
+      }
+    ]
+  },
+  "stats": {},
+  "api": {
+    "services": [
+      "StatsService"
+    ],
+    "tag": "api"
+  },
+  "policy": {
+    "levels": {
+      "0": {
+        "statsUserDownlink": true,
+        "statsUserUplink": true
+      }
+    },
+    "system": {
+      "statsInboundUplink": true,
+      "statsInboundDownlink": true
+    }
+  }
+}
 END
 
+cat> /usr/local/etc/xray/vmessnone.json << END
+{
+  "log": {
+    "access": "/var/log/xray/access.log",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "info"
+       },
+    "inbounds": [
+        {
+      "listen": "127.0.0.1",
+      "port": 10087, # CEK USER QUOTA
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "127.0.0.1"
+      },
+      "tag": "api"
+            },
+            {
+        "port": "1302",
+         "listen": "127.0.0.1",
+         "protocol": "vmess",
+         "settings": {
+            "clients": [
+               {
+                 "id": "${uuid5}",
+                 "alterId": 0
+#xray-vmess-nontls
+             }
+          ]
+       },
+       "streamSettings":{
+         "network": "ws",
+            "wsSettings": {
+              "acceptProxyProtocol": true,
+                "path": "/drgvpnscript-vmesswsntls"
+                }
+            }
+        }
+    ],
+    "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "0.0.0.0/8",
+          "10.0.0.0/8",
+          "100.64.0.0/10",
+          "169.254.0.0/16",
+          "172.16.0.0/12",
+          "192.0.0.0/24",
+          "192.0.2.0/24",
+          "192.168.0.0/16",
+          "198.18.0.0/15",
+          "198.51.100.0/24",
+          "203.0.113.0/24",
+          "::1/128",
+          "fc00::/7",
+          "fe80::/10"
+        ],
+        "outboundTag": "blocked"
+      },
+      {
+        "inboundTag": [
+          "api"
+        ],
+        "outboundTag": "api",
+        "type": "field"
+      },
+      {
+        "type": "field",
+        "outboundTag": "blocked",
+        "protocol": [
+          "bittorrent"
+        ]
+      }
+    ]
+  },
+  "stats": {},
+  "api": {
+    "services": [
+      "StatsService"
+    ],
+    "tag": "api"
+  },
+  "policy": {
+    "levels": {
+      "0": {
+        "statsUserDownlink": true,
+        "statsUserUplink": true
+      }
+    },
+    "system": {
+      "statsInboundUplink": true,
+      "statsInboundDownlink": true
+    }
+  }
+}
+END
+
+# // TROJAN JSON
+cat> /usr/local/etc/xray/trojan.json << END
+{
+  "log": {
+    "access": "/var/log/xray/access.log",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "info"
+       },
+    "inbounds": [
+        {
+      "listen": "127.0.0.1",
+      "port": 10088, # CEK USER QUOTA
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "127.0.0.1"
+      },
+      "tag": "api"
+            },
+            {
+        "port": "1214",
+        "listen": "127.0.0.1",
+        "protocol": "trojan",
+        "settings": {
+          "decryption":"none",
+           "clients": [
+              {
+                 "password": "${uuid6}"
+#xray-trojan-tls
+              }
+          ],
+         "udp": true
+       },
+       "streamSettings":{
+           "network": "ws",
+           "wsSettings": {
+             "acceptProxyProtocol": true,
+               "path": "/drgvpnscript-trojanwstls"
+             }
+          }
+       }
+    ],
+    "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "0.0.0.0/8",
+          "10.0.0.0/8",
+          "100.64.0.0/10",
+          "169.254.0.0/16",
+          "172.16.0.0/12",
+          "192.0.0.0/24",
+          "192.0.2.0/24",
+          "192.168.0.0/16",
+          "198.18.0.0/15",
+          "198.51.100.0/24",
+          "203.0.113.0/24",
+          "::1/128",
+          "fc00::/7",
+          "fe80::/10"
+        ],
+        "outboundTag": "blocked"
+      },
+      {
+        "inboundTag": [
+          "api"
+        ],
+        "outboundTag": "api",
+        "type": "field"
+      },
+      {
+        "type": "field",
+        "outboundTag": "blocked",
+        "protocol": [
+          "bittorrent"
+        ]
+      }
+    ]
+  },
+  "stats": {},
+  "api": {
+    "services": [
+      "StatsService"
+    ],
+    "tag": "api"
+  },
+  "policy": {
+    "levels": {
+      "0": {
+        "statsUserDownlink": true,
+        "statsUserUplink": true
+      }
+    },
+    "system": {
+      "statsInboundUplink": true,
+      "statsInboundDownlink": true
+    }
+  }
+}
+END
+
+cat> /usr/local/etc/xray/trojannone.json << END
+{
+  "log": {
+    "access": "/var/log/xray/access.log",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "info"
+       },
+    "inbounds": [
+        {
+      "listen": "127.0.0.1",
+      "port": 10088, # CEK USER QUOTA
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "127.0.0.1"
+      },
+      "tag": "api"
+            },
+            {
+        "port": "1303",
+        "listen": "127.0.0.1",
+        "protocol": "trojan",
+        "settings": {
+          "decryption":"none",
+           "clients": [
+              {
+                 "password": "${uuid7}"
+#xray-trojan-nontls
+              }
+          ],
+         "udp": true
+       },
+       "streamSettings":{
+           "network": "ws",
+           "wsSettings": {
+             "acceptProxyProtocol": true,
+               "path": "/drgvpnscript-trojanwsntls"
+             }
+          }
+       }
+    ],
+    "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "0.0.0.0/8",
+          "10.0.0.0/8",
+          "100.64.0.0/10",
+          "169.254.0.0/16",
+          "172.16.0.0/12",
+          "192.0.0.0/24",
+          "192.0.2.0/24",
+          "192.168.0.0/16",
+          "198.18.0.0/15",
+          "198.51.100.0/24",
+          "203.0.113.0/24",
+          "::1/128",
+          "fc00::/7",
+          "fe80::/10"
+        ],
+        "outboundTag": "blocked"
+      },
+      {
+        "inboundTag": [
+          "api"
+        ],
+        "outboundTag": "api",
+        "type": "field"
+      },
+      {
+        "type": "field",
+        "outboundTag": "blocked",
+        "protocol": [
+          "bittorrent"
+        ]
+      }
+    ]
+  },
+  "stats": {},
+  "api": {
+    "services": [
+      "StatsService"
+    ],
+    "tag": "api"
+  },
+  "policy": {
+    "levels": {
+      "0": {
+        "statsUserDownlink": true,
+        "statsUserUplink": true
+      }
+    },
+    "system": {
+      "statsInboundUplink": true,
+      "statsInboundDownlink": true
+    }
+  }
+}
+END
+
+# // JSON WS NONE 
+cat> /usr/local/etc/xray/none.json << END
+{
+  "log" : {
+    "access": "/var/log/xray/access.log",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "warning"
+  },
+  "inbounds": [
+      {
+      "listen": "127.0.0.1",
+      "port": 10089, # CEK USER QUOTA
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "127.0.0.1"
+      },
+      "tag": "api"
+      },
+      {
+      "port": 80,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "${uuid8}"
+          }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "dest": 2092, # // SSH WS NONE CURI JA REJA HANGPA!!!
+            "xver": 1
+          },
+          {
+            "path": "/drgvpnscript-vlesswsntls", # // VLESS NONE
+            "dest": 1301,
+            "xver": 1
+          },
+          {
+            "path": "/drgvpnscript-vmesswsntls", # // VMESS NONE
+            "dest": 1302,
+            "xver": 1
+          },
+          {
+             "path": "/drgvpnscript-trojanwsntls", # // TROJAN NONE
+            "dest": 1303,
+            "xver": 1
+          }
+        ]
+      },
+      "streamSettings": {
+       "network": "tcp",
+        "security": "none",
+         "tlsSettings": {
+          "alpn": ["http/1.1"]
+             }
+          }
+       }
+    ],
+    "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "0.0.0.0/8",
+          "10.0.0.0/8",
+          "100.64.0.0/10",
+          "169.254.0.0/16",
+          "172.16.0.0/12",
+          "192.0.0.0/24",
+          "192.0.2.0/24",
+          "192.168.0.0/16",
+          "198.18.0.0/15",
+          "198.51.100.0/24",
+          "203.0.113.0/24",
+          "::1/128",
+          "fc00::/7",
+          "fe80::/10"
+        ],
+        "outboundTag": "blocked"
+      },
+      {
+        "inboundTag": [
+          "api"
+        ],
+        "outboundTag": "api",
+        "type": "field"
+      },
+      {
+        "type": "field",
+        "outboundTag": "blocked",
+        "protocol": [
+          "bittorrent"
+        ]
+      }
+    ]
+  },
+  "stats": {},
+  "api": {
+    "services": [
+      "StatsService"
+    ],
+    "tag": "api"
+  },
+  "policy": {
+    "levels": {
+      "0": {
+        "statsUserDownlink": true,
+        "statsUserUplink": true
+      }
+    },
+    "system": {
+      "statsInboundUplink": true,
+      "statsInboundDownlink": true
+    }
+  }
+}
+END
+
+# // IPTABLE TCP 
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8880 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 1310 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 1311 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 1312 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 1314 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10085 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10086 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10087 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10088 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10089 -j ACCEPT
+
+
+# // IPTABLE UDP
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8080 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8880 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 1310 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 1311 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 1312 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 1314 -j ACCEPT
-
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10085 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10086 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10087 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10088 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10089 -j ACCEPT
 iptables-save > /etc/iptables.up.rules
 iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save
 netfilter-persistent reload
 
-# enable xray vmess ws
+# // ENABLE XRAY TCP XTLS 80/443
 systemctl daemon-reload
-systemctl enable xray
-systemctl start xray
-systemctl restart xray
+systemctl enable xray.service
+systemctl restart xray.service
 systemctl enable xray@none
-systemctl start xray@none
 systemctl restart xray@none
+systemctl enable xray@tcp
+systemctl restart xray@tcp
 
-# enable xray vless ws
+# // ENABLE XRAY WS TLS && NONE TLS
 systemctl enable xray@vless
-systemctl start xray@vless
 systemctl restart xray@vless
-systemctl enable xray@vnone
-systemctl start xray@vnone
-systemctl restart xray@vnone
+systemctl enable xray@vlessnone
+systemctl restart xray@vlessnone
 
-# enable xray trojan ws
-systemctl enable xray@trojanws
-systemctl start xray@trojanws
-systemctl restart xray@trojanws
-systemctl enable xray@trnone
-systemctl start xray@trnone
-systemctl restart xray@trnone
+systemctl enable xray@vmess
+systemctl restart xray@vmess
+systemctl enable xray@vmessnone
+systemctl restart xray@vmessnone
 
-# enable xray vless xtls direct & splice
-systemctl daemon-reload
-systemctl enable xray@xtls
-systemctl start xray@xtls
-systemctl restart xray@xtls
-
-# enable xray trojan
-systemctl daemon-reload
 systemctl enable xray@trojan
-systemctl start xray@trojan
 systemctl restart xray@trojan
+systemctl enable xray@trojannone
+systemctl restart xray@trojannone
 
 # download script
 cd /usr/bin
-wget -O port-xray "https://raw.githubusercontent.com/${GitUser}/i-code/main/change-port/port-xray.sh"
-wget -O port-trojan "https://raw.githubusercontent.com/${GitUser}/i-code/main/change-port/port-trojan.sh"
-wget -O certv2ray "https://raw.githubusercontent.com/${GitUser}/i-code/main/cert.sh"
-wget -O trojaan "https://raw.githubusercontent.com/${GitUser}/i-code/main/menu/trojaan.sh"
-wget -O xraay "https://raw.githubusercontent.com/${GitUser}/i-code/main/menu/xraay.sh"
-wget -O trafficxray "https://raw.githubusercontent.com/${GitUser}/i-code/main/trafficxray.sh"
+wget -O port-xray "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/change-port/port-xray.sh"
+wget -O certv2ray "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/cert.sh"
+wget -O trojaan "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/menu/trojaan.sh"
+wget -O xraay "https://raw.githubusercontent.com/${GitUser}/drgvpnscript/main/menu/xraay.sh"
 chmod +x port-xray
-chmod +x port-trojan
 chmod +x certv2ray
 chmod +x trojaan
 chmod +x xraay
-chmod +x trafficxray
 
 cd
 rm -f ins-xray.sh
 mv /root/domain /usr/local/etc/xray/domain
-
+cp /usr/local/etc/xray/domain /etc/xray/domain
+sleep 1
+clear;
