@@ -1215,10 +1215,10 @@ if [[ -z "$akun" ]]; then
 akun="tidakada"
 fi
 echo -n > /tmp/ipvless.txt
-data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
+data2=( `cat /var/log/xray/access2.log | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq`);
 for ip in "${data2[@]}"
 do
-jum=$(cat /var/log/xray/access.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
+jum=$(cat /var/log/xray/access2.log | grep -w "$akun" | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | grep -w "$ip" | sort | uniq)
 if [[ "$jum" = "$ip" ]]; then
 echo "$jum" >> /tmp/ipvless.txt
 else
@@ -1235,15 +1235,11 @@ jum2=$(cat /tmp/ipvless.txt | nl)
 echo "user : $akun";
 echo "$jum2";
 echo ""
-total=$(cat /var/log/xray/access.log | grep -w $useracc | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
-echo -e "\e[$line══════════════════════════════════════════\e[m"
+echo "-------------------------------"
 fi
 rm -rf /tmp/ipvless.txt
 rm -rf /tmp/other.txt
 done
-echo ""
-read -n 1 -s -r -p "Press any key to back on menu xray"
-xraay
 }
 
 # CREATE USER VLESS XTLS
