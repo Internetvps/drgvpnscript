@@ -1,3 +1,6 @@
+#!/bin/bash
+# Script By drgvpn
+# ==================================================
 #wget https://github.com/${GitUser}/
 GitUser="Internetvps"
 # initialisasi var
@@ -37,13 +40,12 @@ sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 
 # Buat config client TCP 1194
 cat > /etc/openvpn/client-tcp-1194.ovpn <<-END
-setenv FRIENDLY_NAME "OVPN TCP"
+########## WELCOME ###########
+########### OVPN  ############
 client
 dev tun
 proto tcp
-setenv CLIENT_CERT 0
 remote $domain 1194
-http-proxy xxxxxxxxx 8000
 resolv-retry infinite
 route-method exe
 nobind
@@ -55,17 +57,25 @@ persist-tun
 auth-user-pass
 comp-lzo
 verb 3
+
+setenv FRIENDLY_NAME "Ovpn Tcp"
+http-proxy xxxxxxxxx 3128
+http-proxy-option CUSTOM-HEADER CONNECT HTTP/1.1
+http-proxy-option CUSTOM-HEADER Host bug.com
+http-proxy-option CUSTOM-HEADER X-Online-Host bug.com
+http-proxy-option CUSTOM-HEADER X-Forward-Host bug.com
+http-proxy-option CUSTOM-HEADER Connection: keep-alive
 END
 
 sed -i $MYIP2 /etc/openvpn/client-tcp-1194.ovpn;
 
 # Buat config client UDP 2200
 cat > /etc/openvpn/client-udp-2200.ovpn <<-END
-setenv FRIENDLY_NAME "OVPN UDP"
+########## WELCOME ###########
+########### OVPN  ############
 client
 dev tun
 proto udp
-setenv CLIENT_CERT 0
 remote $domain 2200
 resolv-retry infinite
 route-method exe
@@ -78,17 +88,18 @@ persist-tun
 auth-user-pass
 comp-lzo
 verb 3
+setenv FRIENDLY_NAME "Ovpn Udp"
 END
 
 sed -i $MYIP2 /etc/openvpn/client-udp-2200.ovpn;
 
 # Buat config client SSL
 cat > /etc/openvpn/client-tcp-ssl.ovpn <<-END
-setenv FRIENDLY_NAME "OVPN SSL"
+########## WELCOME ###########
+########### OVPN  ############
 client
 dev tun
 proto tcp
-setenv CLIENT_CERT 0
 remote $domain 110
 resolv-retry infinite
 route-method exe
@@ -152,3 +163,4 @@ systemctl start openvpn
 # Delete script
 history -c
 rm -f /root/vpn.sh
+
