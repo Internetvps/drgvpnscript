@@ -239,7 +239,7 @@ END
 cat> /usr/local/etc/xray/tcp.json << END
 {
   "log": {
-    "access": "/var/log/xray/access.log",
+    "access": "/var/log/xray/access1.log",
     "error": "/var/log/xray/error.log",
     "loglevel": "info"
        },
@@ -354,7 +354,7 @@ END
 cat> /usr/local/etc/xray/vless.json << END
 {
   "log": {
-    "access": "/var/log/xray/access.log",
+    "access": "/var/log/xray/access2.log",
     "error": "/var/log/xray/error.log",
     "loglevel": "info"
        },
@@ -466,7 +466,7 @@ END
 cat> /usr/local/etc/xray/vlessnone.json << END
 {
   "log": {
-    "access": "/var/log/xray/access.log",
+    "access": "/var/log/xray/access3.log",
     "error": "/var/log/xray/error.log",
     "loglevel": "info"
        },
@@ -578,7 +578,7 @@ END
 cat> /usr/local/etc/xray/vmess.json << END
 {
   "log": {
-    "access": "/var/log/xray/access.log",
+    "access": "/var/log/xray/access4.log",
     "error": "/var/log/xray/error.log",
     "loglevel": "info"
        },
@@ -690,7 +690,7 @@ END
 cat> /usr/local/etc/xray/vmessnone.json << END
 {
   "log": {
-    "access": "/var/log/xray/access.log",
+    "access": "/var/log/xray/access5.log",
     "error": "/var/log/xray/error.log",
     "loglevel": "info"
        },
@@ -801,7 +801,7 @@ END
 cat> /usr/local/etc/xray/trojan.json << END
 {
   "log": {
-    "access": "/var/log/xray/access.log",
+    "access": "/var/log/xray/access6.log",
     "error": "/var/log/xray/error.log",
     "loglevel": "info"
        },
@@ -912,7 +912,7 @@ END
 cat> /usr/local/etc/xray/trojannone.json << END
 {
   "log": {
-    "access": "/var/log/xray/access.log",
+    "access": "/var/log/xray/access7.log",
     "error": "/var/log/xray/error.log",
     "loglevel": "info"
        },
@@ -1024,7 +1024,7 @@ END
 cat> /usr/local/etc/xray/none.json << END
 {
   "log" : {
-    "access": "/var/log/xray/access.log",
+    "access": "/var/log/xray/access8.log",
     "error": "/var/log/xray/error.log",
     "loglevel": "warning"
   },
