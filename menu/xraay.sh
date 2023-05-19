@@ -86,8 +86,8 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-export patchtls=/drgvpnscript-vmesswstls
-export patchnontls=/drgvpnscript-vmesswsntls
+export patchtls=/vmess-tls
+export patchnontls=/vmess-ntls
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
 read -p "   Bug Address (Example: www.google.com) : " address
@@ -300,8 +300,8 @@ export exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
 
 # // Make Random Username 
 export user=Trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
-export patchtls=/drgvpnscript-vmesswstls
-export patchnontls=/drgvpnscript-vmesswsntls
+export patchtls=/vmess-tls
+export patchnontls=/vmess-ntls
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
 read -p "   Bug Address (Example: www.google.com) : " address
@@ -629,8 +629,8 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#vms " "/usr/local/etc/xray/vmess.json")
 			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 		fi
 	done
-export patchtls=/drgvpnscript-vmesswstls
-export patchnontls=/drgvpnscript-vmesswsntls
+export patchtls=/vmess-tls
+export patchnontls=/vmess-ntls
 export user=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
 export harini=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export exp=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
@@ -821,7 +821,7 @@ echo -n > /tmp/ipvmess.txt
 data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
 for ip in "${data2[@]}"
 do
-jum=$(cat /var/log/xray/access4.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
+jum=$(cat /var/log/xray/access.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
 if [[ "$jum" = "$ip" ]]; then
 echo "$jum" >> /tmp/ipvmess.txt
 else
@@ -866,8 +866,8 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-export patchtls=/drgvpnscript-vlesswstls
-export patchnontls=/drgvpnscript-vlesswsntls
+export patchtls=/vless-tls
+export patchnontls=/vless-ntls
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
 read -p "   Bug Address (Example: www.google.com) : " address
@@ -953,8 +953,8 @@ export exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
 # Make Random Username 
 export user=Trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
 
-export patchtls=/drgvpnscript-vlesswstls
-export patchnontls=/drgvpnscript-vlesswsntls
+export patchtls=/vless-tls
+export patchnontls=/vless-ntls
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
 read -p "   Bug Address (Example: www.google.com) : " address
@@ -1150,8 +1150,8 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#vls " "/usr/local/etc/xray/vless.json")
 			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 		fi
 	done
-export patchtls=/drgvpnscript-vlesswstls
-export patchnontls=/drgvpnscript-vlesswsntls
+export patchtls=/vless-tls
+export patchnontls=/vless-ntls
 export user=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
 export harini=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export exp=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
@@ -1215,10 +1215,10 @@ if [[ -z "$akun" ]]; then
 akun="tidakada"
 fi
 echo -n > /tmp/ipvless.txt
-data2=( `cat /var/log/xray/access3.log | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq`);
+data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
 for ip in "${data2[@]}"
 do
-jum=$(cat /var/log/xray/access3.log | grep -w "$akun" | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | grep -w "$ip" | sort | uniq)
+jum=$(cat /var/log/xray/access.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
 if [[ "$jum" = "$ip" ]]; then
 echo "$jum" >> /tmp/ipvless.txt
 else
@@ -1235,11 +1235,14 @@ jum2=$(cat /tmp/ipvless.txt | nl)
 echo "user : $akun";
 echo "$jum2";
 echo ""
-echo "-------------------------------"
+echo -e "\e[$line══════════════════════════════════════════\e[m"
 fi
-rm -rf /tmp/ipvless.txt
+rm -rf /tmp/ipvmess.txt
 rm -rf /tmp/other.txt
 done
+echo ""
+read -n 1 -s -r -p "Press any key to back on menu xray"
+xraay
 }
 
 # CREATE USER VLESS XTLS
