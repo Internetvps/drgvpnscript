@@ -131,17 +131,17 @@ cat> /usr/local/etc/xray/config.json << END
                         "xver": 1
                     },
                     {
-                        "path": "/drgvpnscript-vlesswstls", # // VMESS WS TLS
+                        "path": "/aquagurl-vlesswstls", # // VMESS WS TLS
                         "dest": 1212,
                         "xver": 1
                     },
                     {
-                        "path": "/drgvpnscript-vmesswstls", # // VLESS WS TLS
+                        "path": "/aquagurl-vmesswstls", # // VLESS WS TLS
                         "dest": 1213,
                         "xver": 1
                     },
                     {
-                        "path": "/drgvpnscript-trojanwstls", # // TROJAN WS TLS
+                        "path": "/aquagurl-trojanwstls", # // TROJAN WS TLS
                         "dest": 1214,
                         "xver": 1
                     }
@@ -239,7 +239,7 @@ END
 cat> /usr/local/etc/xray/tcp.json << END
 {
   "log": {
-    "access": "/var/log/xray/access1.log",
+    "access": "/var/log/xray/access.log",
     "error": "/var/log/xray/error.log",
     "loglevel": "info"
        },
@@ -354,7 +354,7 @@ END
 cat> /usr/local/etc/xray/vless.json << END
 {
   "log": {
-    "access": "/var/log/xray/access2.log",
+    "access": "/var/log/xray/access.log",
     "error": "/var/log/xray/error.log",
     "loglevel": "info"
        },
@@ -387,7 +387,7 @@ cat> /usr/local/etc/xray/vless.json << END
                 "security": "none",
                 "wsSettings": {
                     "acceptProxyProtocol": true,
-                    "path": "/drgvpnscript-vlesswstls"
+                    "path": "/aquagurl-vlesswstls"
                 }
             }
         }
@@ -466,7 +466,7 @@ END
 cat> /usr/local/etc/xray/vlessnone.json << END
 {
   "log": {
-    "access": "/var/log/xray/access3.log",
+    "access": "/var/log/xray/access.log",
     "error": "/var/log/xray/error.log",
     "loglevel": "info"
        },
@@ -497,7 +497,7 @@ cat> /usr/local/etc/xray/vlessnone.json << END
          "network": "ws",
             "wsSettings": {
               "acceptProxyProtocol": true,
-                "path": "/drgvpnscript-vlesswsntls"
+                "path": "/aquagurl-vlesswsntls"
 
                 }
             }
@@ -578,7 +578,7 @@ END
 cat> /usr/local/etc/xray/vmess.json << END
 {
   "log": {
-    "access": "/var/log/xray/access4.log",
+    "access": "/var/log/xray/access.log",
     "error": "/var/log/xray/error.log",
     "loglevel": "info"
        },
@@ -611,7 +611,7 @@ cat> /usr/local/etc/xray/vmess.json << END
                 "security": "none",
                 "wsSettings": {
                     "acceptProxyProtocol": true,
-                    "path": "/drgvpnscript-vmesswstls"
+                    "path": "/aquagurl-vmesswstls"
                 }
             }
         }
@@ -690,7 +690,7 @@ END
 cat> /usr/local/etc/xray/vmessnone.json << END
 {
   "log": {
-    "access": "/var/log/xray/access5.log",
+    "access": "/var/log/xray/access.log",
     "error": "/var/log/xray/error.log",
     "loglevel": "info"
        },
@@ -721,7 +721,7 @@ cat> /usr/local/etc/xray/vmessnone.json << END
          "network": "ws",
             "wsSettings": {
               "acceptProxyProtocol": true,
-                "path": "/drgvpnscript-vmesswsntls"
+                "path": "/aquagurl-vmesswsntls"
                 }
             }
         }
@@ -801,7 +801,7 @@ END
 cat> /usr/local/etc/xray/trojan.json << END
 {
   "log": {
-    "access": "/var/log/xray/access6.log",
+    "access": "/var/log/xray/access.log",
     "error": "/var/log/xray/error.log",
     "loglevel": "info"
        },
@@ -833,7 +833,7 @@ cat> /usr/local/etc/xray/trojan.json << END
            "network": "ws",
            "wsSettings": {
              "acceptProxyProtocol": true,
-               "path": "/drgvpnscript-trojanwstls"
+               "path": "/aquagurl-trojanwstls"
              }
           }
        }
@@ -912,7 +912,7 @@ END
 cat> /usr/local/etc/xray/trojannone.json << END
 {
   "log": {
-    "access": "/var/log/xray/access7.log",
+    "access": "/var/log/xray/access.log",
     "error": "/var/log/xray/error.log",
     "loglevel": "info"
        },
@@ -944,7 +944,7 @@ cat> /usr/local/etc/xray/trojannone.json << END
            "network": "ws",
            "wsSettings": {
              "acceptProxyProtocol": true,
-               "path": "/drgvpnscript-trojanwsntls"
+               "path": "/aquagurl-trojanwsntls"
              }
           }
        }
@@ -1024,7 +1024,7 @@ END
 cat> /usr/local/etc/xray/none.json << END
 {
   "log" : {
-    "access": "/var/log/xray/access8.log",
+    "access": "/var/log/xray/access.log",
     "error": "/var/log/xray/error.log",
     "loglevel": "warning"
   },
@@ -1054,17 +1054,17 @@ cat> /usr/local/etc/xray/none.json << END
             "xver": 1
           },
           {
-            "path": "/drgvpnscript-vlesswsntls", # // VLESS NONE
+            "path": "/aquagurl-vlesswsntls", # // VLESS NONE
             "dest": 1301,
             "xver": 1
           },
           {
-            "path": "/drgvpnscript-vmesswsntls", # // VMESS NONE
+            "path": "/aquagurl-vmesswsntls", # // VMESS NONE
             "dest": 1302,
             "xver": 1
           },
           {
-             "path": "/drgvpnscript-trojanwsntls", # // TROJAN NONE
+             "path": "/aquagurl-trojanwsntls", # // TROJAN NONE
             "dest": 1303,
             "xver": 1
           }
