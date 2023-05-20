@@ -20,9 +20,9 @@ echo ''
 clear
 echo ''
 echo "                                                              "
-echo -e "$Lyellow                ⚡ PREMIUM SPEED SCRIPT ⚡"$NC
+echo -e "$Lyellow                ⚡PREMIUM SPEED SCRIPT⚡"$NC
 echo -e "$green.........................................................."$NC
-echo -e "$Lyellow                  Autoscript By AQUAGURL"$NC
+echo -e "$Lyellow                  Autoscript By drgvpn"$NC
 echo -e "$Lyellow                    CONTACT TELEGRAM"$NC
 echo -e "$Lyellow                      @info_android9"$NC
 echo -e "$green.........................................................."$NC
