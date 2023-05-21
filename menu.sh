@@ -166,7 +166,7 @@ echo -e "  \e[$below[Ctrl + C] For exit from main menu\e[m"
 echo -e " \e[$line════════════════════════════════════════════════════════════\e[m"
 echo -e "  \e[$below Version Name         : DRGVPN $Info1"
 echo -e "  \e[$below Autoscript By        : DRGVPN"
-echo -e "  \e[$below Client Name          : $username"
+echo -e "  \e[$text Order ID              : $oid"
 echo -e " \e[$line════════════════════════════════════════════════════════════\e[m"
 echo -e "\e[$below "
 read -p " Select number :  " menu
