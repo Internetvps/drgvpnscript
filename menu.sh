@@ -140,7 +140,7 @@ echo -e "  \e[$text System Uptime        : $uptime"
 echo -e "  \e[$text Ip Vps/Address       : $IPVPS"
 echo -e "  \e[$text Domain Name          : $domain\e[0m"
 echo -e "  \e[$text Provided By          : $creditt"
-echo -e "  \e[$text Status Update        : $stl"
+
 echo -e " \e[$line════════════════════════════════════════════════════════════\e[m"
 echo -e "  \e[$text Traffic\e[0m       \e[${text}Today      Yesterday     Month   "
 echo -e "  \e[$text Download\e[0m   \e[${text}   $dtoday    $dyest       $dmon   \e[0m"
