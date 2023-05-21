@@ -93,7 +93,7 @@ export uuid8=$(cat /proc/sys/kernel/random/uuid)
 cat> /usr/local/etc/xray/config.json << END
 {
   "log": {
-    "access": "/var/log/xray/access.log",
+    "access": "/var/log/xray/access1.log",
     "error": "/var/log/xray/error.log",
     "loglevel": "info"
        },
@@ -239,7 +239,7 @@ END
 cat> /usr/local/etc/xray/tcp.json << END
 {
   "log": {
-    "access": "/var/log/xray/access.log",
+    "access": "/var/log/xray/access2.log",
     "error": "/var/log/xray/error.log",
     "loglevel": "info"
        },
