@@ -1,5 +1,6 @@
 #wget https://github.com/${GitUser}/
-GitUser="Internetvps"
+GitUser="Internetvps
+"
 
 # // IZIN SCRIPT
 export MYIP=$(curl -sS ipv4.icanhazip.com)
@@ -86,8 +87,8 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-export patchtls=/vmess-tls
-export patchnontls=/vmess-ntls
+export patchtls=/aquagurl-vmesswstls
+export patchnontls=/aquagurl-vmesswsntls
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
 read -p "   Bug Address (Example: www.google.com) : " address
@@ -300,8 +301,8 @@ export exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
 
 # // Make Random Username 
 export user=Trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
-export patchtls=/vmess-tls
-export patchnontls=/vmess-ntls
+export patchtls=/aquagurl-vmesswstls
+export patchnontls=/aquagurl-vmesswsntls
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
 read -p "   Bug Address (Example: www.google.com) : " address
@@ -629,8 +630,8 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#vms " "/usr/local/etc/xray/vmess.json")
 			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 		fi
 	done
-export patchtls=/vmess-tls
-export patchnontls=/vmess-ntls
+export patchtls=/aquagurl-vmesswstls
+export patchnontls=/aquagurl-vmesswsntls
 export user=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
 export harini=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export exp=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
@@ -866,8 +867,8 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-export patchtls=/vless-tls
-export patchnontls=/vless-ntls
+export patchtls=/aquagurl-vlesswstls
+export patchnontls=/aquagurl-vlesswsntls
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
 read -p "   Bug Address (Example: www.google.com) : " address
@@ -953,8 +954,8 @@ export exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
 # Make Random Username 
 export user=Trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
 
-export patchtls=/vless-tls
-export patchnontls=/vless-ntls
+export patchtls=/aquagurl-vlesswstls
+export patchnontls=/aquagurl-vlesswsntls
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
 read -p "   Bug Address (Example: www.google.com) : " address
@@ -1150,8 +1151,8 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#vls " "/usr/local/etc/xray/vless.json")
 			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 		fi
 	done
-export patchtls=/vless-tls
-export patchnontls=/vless-ntls
+export patchtls=/aquagurl-vlesswstls
+export patchnontls=/aquagurl-vlesswsntls
 export user=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
 export harini=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export exp=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
