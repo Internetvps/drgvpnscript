@@ -24,10 +24,10 @@ echo -e "$Lyellow                ⚡PREMIUM SPEED SCRIPT⚡"$NC
 echo -e "$green.........................................................."$NC
 echo -e "$Lyellow                  Autoscript By drgvpn"$NC
 echo -e "$Lyellow                    CONTACT TELEGRAM"$NC
-echo -e "$Lyellow                      @info_android9"$NC
+echo -e "$Lyellow                      @DRG_VPN$NC
 echo -e "$green.........................................................."$NC
 echo ''
-echo -e "$Lyellow                       Tunggu 6 Saat!"$NC
+echo -e "$Lyellow                     Tunggu 10 Saat!"$NC
 echo -e "$green.........................................................."$NC
 sleep 6
 clear
