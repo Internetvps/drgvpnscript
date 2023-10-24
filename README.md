@@ -1,6 +1,6 @@
 # Script drgvpn Websocket
 
- <h2 align="center">AutoScript VPN <img src="https://img.shields.io/badge/Version-drgvpn_v1.0-blue.svg"></h2>
+ <h2 align="center">AutoScript VPN <img src="https://img.shields.io/badge/Version-senip_1.4-blue.svg"></h2>
 
 ## ⏩ DM ME IF YOU WANT USE THIS SCRIPT... ⏪
 ## JUST DM ME FOR REG IP http://t.me/info_android9
@@ -56,7 +56,7 @@ systemctl restart wg-quick@wg0
 
   Service & Port
 
-  - OpenSSH                 : 22,443
+  - OpenSSH                 : 22
   - OpenVPN                 : TCP 1194, UDP 2200, SSL 110
   - Stunnel4                : 222, 777
   - Dropbear                : 442, 109
@@ -69,10 +69,10 @@ systemctl restart wg-quick@wg0
   - Squid Proxy             : 3128, 8080, 8000
   - Badvpn                  : 7100, 7200, 7300
   - Nginx                   : 81
-
-
-
-
+  - Wireguard               : 5820
+  - Shadowsocks-R           : 1443-1543
+  - SS-OBFS TLS             : 2443-2543
+  - SS-OBFS HTTP            : 3443-3543
   - XRAY Vmess Ws Tls       : 443
   - XRAY Vless Ws Tls       : 443
   - XRAY Trojan Ws Tls      : 443
