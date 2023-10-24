@@ -818,9 +818,9 @@ if [[ -z "$akun" ]]; then
 akun="Tidak Ada"
 fi
 echo -n >/tmp/ipvmess.txt
-data2=($(cat /var/log/xray/access3.log | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq))
+data2=($(cat /var/log/xray/access1.log | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq))
 for ip in "${data2[@]}"; do
-jum=$(cat /var/log/xray/access3.log | grep -w "$akun" | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | grep -w "$ip" | sort | uniq)
+jum=$(cat /var/log/xray/access1.log | grep -w "$akun" | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | grep -w "$ip" | sort | uniq)
 if [[ "$jum" = "$ip" ]]; then
 echo "$jum" >>/tmp/ipvmess.txt
 else
@@ -1585,7 +1585,7 @@ echo -n > /tmp/ipxray.txt
 data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
 for ip in "${data2[@]}"
 do
-jum=$(cat /var/log/xray/access3.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
+jum=$(cat /var/log/xray/access.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
 if [[ "$jum" = "$ip" ]]; then
 echo "$jum" >> /tmp/ipxray.txt
 else
@@ -1694,7 +1694,7 @@ elif [[ "$num" = "x" ]]; then
 menu
 else
 clear
-echo -e "\e[1;31mYou Entered The Wrong Number, Please Try Again!!!\e[0m"
+echo -e "\e[1;31mYou Entered The Wrong Number, Please Try Again!\e[0m"
 sleep 1
 xraay
 fi
