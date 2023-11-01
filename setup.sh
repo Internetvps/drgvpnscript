@@ -21,9 +21,9 @@ echo ''
 echo "                                                                   "
 echo -e "$Lyellow                    PREMIUM AUTO SCRIPT "$NC
 echo -e "$green.........................................................."$NC
-echo -e "$Lyellow                   Autoscript By drgvpn"$NC
+echo -e "$Lyellow                   Autoscript By DRGVPN"$NC
 echo -e "$Lyellow                    CONTACT TELEGRAM"$NC
-echo -e "$Lyellow                     @info_android9"$NC
+echo -e "$Lyellow                        @DRG_VPN"$NC
 echo -e "$green.........................................................."$NC
 echo ''
 echo -e "$Lyellow                      proses install..."$NC
@@ -50,11 +50,11 @@ VALIDITY() {
     today=$(date -d "0 days" +"%Y-%m-%d")
     Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
     if [[ $today < $Exp1 ]]; then
-        echo -e "\e[32mTahniah! Anda Dibenarkan menggunakan AUTOSCRIPT DRGVPN..\e[0m"
+        echo -e "\e[32mPROSES INSTALL AUTOSCRIPT DRGVPN..\e[0m"
         sleep 5
     else
         echo -e "\e[31mYOUR SCRIPT HAS EXPIRED!\e[0m"
-        echo -e "\e[31mPlease renew your ipvps first\e[0m"
+        echo -e "\e[31mSILA DM ADMIN\e[0m"
         exit 0
     fi
 }
@@ -63,7 +63,7 @@ VALIDITY() {
     today=$(date -d "0 days" +"%Y-%m-%d")
     Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
     if [[ $today < $Exp1 ]]; then
-        echo -e "\e[32mTahniah! Anda Dibenarkan menggunakan AUTOSCRIPT DRGVPN..\e[0m"
+        echo -e "\e[32mPROSES INSTALL AUTOSCRIPT DRGVPN..\e[0m"
         sleep 5
     else
         echo -e "\e[31mYOUR SCRIPT HAS EXPIRED!\e[0m"
@@ -274,7 +274,7 @@ clear
 echo ""
 echo -e "    \e[1;32m.------------------------------------------.\e[0m"
 echo -e "    \e[1;32m|     SUCCESFULLY INSTALLED THE SCRIPT     |\e[0m"
-echo -e "    \e[1;32m|         PREMIUM BY INFOANDROID           |\e[0m"
+echo -e "    \e[1;32m|            PREMIUM BY DRGVPN           |\e[0m"
 echo -e "    \e[1;32m'------------------------------------------'\e[0m"
 echo ""
 echo -e "   \e[1;32mYour VPS Will Be Automatical Reboot In 5 seconds\e[0m"
