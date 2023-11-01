@@ -101,12 +101,9 @@ systemctl restart wg-quick@wg0
 
 ## ⏩ BUY ME A COFFEE IF YOU LIKE THIS SCRIPT... ⏪
 
-<b>
-<br>
-<p align="center">
-<img src="https://user-images.githubusercontent.com/89685787/213615495-bf99dc3a-8e9d-48cc-a1e9-2a3691c2cd88.jpg" width="300" title="Autoscript-Lite">
-<b>
+![no_markReactNative-snapshot-image](https://github.com/Internetvps/slowdns/assets/89685787/b648ba16-1f1c-40e1-b080-87f9b6209b5f)
 
+ 
 
 
 <p align="center">
